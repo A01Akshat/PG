@@ -10,7 +10,7 @@ import Auth from "../../Models/Auth";
 
 const { JWT_SECRET, JWT_REFRESH_TOKEN_SECRET } = Config;
 
-const otpgen = (length:number) => {
+const otpgen = (length: number) => {
 	const alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 	const digits = "0123456789";
 	let otp = "";
@@ -425,7 +425,7 @@ const logout = async (req: Request, res: Response, next: NextFunction) => {
 			return res.status(200).json(null);
 		} else {
 			RefreshToken.findOne({ refreshToken: refreshToken })
-				.then((foundToken:any) => {
+				.then((foundToken: any) => {
 					// console.log(foundToken);
 					if (!foundToken) {
 						throw new Error("Invalid refreshToken");
@@ -438,7 +438,7 @@ const logout = async (req: Request, res: Response, next: NextFunction) => {
 						{ $pull: { refreshToken: refreshToken } }
 					);
 				})
-				.then((result:any) => {
+				.then((result: any) => {
 					if (result.nModified === 0) {
 						throw new Error("Failed to remove refreshToken");
 					}
@@ -446,7 +446,7 @@ const logout = async (req: Request, res: Response, next: NextFunction) => {
 					// console.log("Successfully removed the refreshToken from the array");
 					return res.status(200).json(null);
 				})
-				.catch((err:any) => {
+				.catch((err: any) => {
 					console.error(err.message);
 					return res.status(200).json(null);
 				});

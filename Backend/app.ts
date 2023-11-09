@@ -4,6 +4,7 @@ import consola from "consola";
 import Config from "./Config";
 import Auth from "./Routes/Auth";
 import College from "./Routes/College";
+import Property from "./Routes/Property";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 const app = express();
@@ -34,6 +35,7 @@ app.get("/", (req: Request, res: Response, next: NextFunction) => {
 
 app.use("/api/auth", Auth);
 app.use("/api/college", College);
+app.use("/api/property", Property);
 
 app.use((req: Request, res: Response, next: NextFunction) => {
 	res.send({
