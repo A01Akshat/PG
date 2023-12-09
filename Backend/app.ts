@@ -3,6 +3,8 @@ import mongoose from "mongoose";
 import consola from "consola";
 import Config from "./Config";
 import Auth from "./Routes/Auth";
+import College from "./Routes/College";
+import Property from "./Routes/Property";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 const app = express();
@@ -10,7 +12,7 @@ const app = express();
 app.use(
 	cors({
 		credentials: true,
-		origin: ["https://frontend.unknownclub.me", "http://localhost:5173"],
+		origin: ["http://localhost:5173","http://localhost:5000"],
 	})
 );
 
@@ -19,10 +21,16 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cookieParser());
 
+app.use((req: Request, res: Response, next: NextFunction) => {
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+	next();
+})
+
 app.get("/", (req: Request, res: Response, next: NextFunction) => {
 	res.send({
 		data: {
-			appName: "Get-Me-Through",
+			appName: "PG | Backend",
 			developedBy: "Aditya Choudhury",
 			maintainedBy: "Aditya Choudhury",
 			version: "1.0.0.0",
@@ -32,6 +40,8 @@ app.get("/", (req: Request, res: Response, next: NextFunction) => {
 });
 
 app.use("/api/auth", Auth);
+app.use("/api/college", College);
+app.use("/api/property", Property);
 
 app.use((req: Request, res: Response, next: NextFunction) => {
 	res.send({
