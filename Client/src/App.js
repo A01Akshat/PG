@@ -1,8 +1,14 @@
 import React from 'react'
-
+import Login from './Login/Login'
+import Login_Student from './Login/Login_Student'
 const App = () => {
   return (
-    <div>App DIV</div>
+    <div>
+    <div className="flex">
+      <Login/>
+      <Login_Student/>
+      </div>
+    </div>
   )
 }
 

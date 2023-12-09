@@ -1,0 +1,51 @@
+.owner{
+    background-color: #f4bf96c7;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+    
+}
+.hh
+{
+    color: #f4bf9600;
+}
+.email_owner
+{
+    padding: 10px;
+    border-radius: 1rem;
+}
+.email_owner::placeholder {
+    font-size: 13px;
+    
+    opacity: 1; 
+  }
+  .student
+  { 
+    background-color: #FCF5ED;    
+    height: 100vh;
+    display: flex;
+   text-align: center;
+   justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .email_stud
+  {
+    
+    padding: 10px;
+    border-radius: 1rem;
+  }
+  .email_stud::placeholder {
+    font-size: 13px;
+    
+    opacity: 1; 
+  }
+  .stud_inputfields{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+  }
