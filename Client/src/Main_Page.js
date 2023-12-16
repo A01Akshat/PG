@@ -34,10 +34,10 @@ const Main_Page = () => {
 
   return (
     <>
-
-      <div style={{ width: "100%", height: "250px", backgroundColor: "#EEF5FF" }}>
+      {/* , backgroundColor: "#EEF5FF" */}
+      <div style={{ width: "100%", height: "250px" }} className="hero-div">
         <div style={{ display: "flex", marginTop: "80px", alignItems: "center", flexDirection: "column", gap: "20px" }}>
-          <h1 style={{ textAlign: "center" }} className=" text-3xl">Search {newName}</h1>
+          <h1 style={{ textAlign: "center" }} className=" text-3xl text-white">Search {newName}</h1>
           <div className="search-bar">
             <FaSearch className="search-icon" />
             <input type="text" placeholder="Search..." name="search" id="search" value={search} onChange={handleChange} />
