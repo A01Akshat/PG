@@ -13,7 +13,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-brand">
-        <span className="navbar-logo">ᖇᗴᖴᗴᖇᕼᑌᗷ</span>
+        <span className="navbar-logo">PG-ᕼᑌᗷ</span>
         
         {/* <span className="navbar-logo">𝚁𝚎𝚏𝚎𝚛𝙷𝚞𝚋</span> */}
         
