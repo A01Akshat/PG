@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import axios from 'axios';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import "./Login.css";
 const accessToken = localStorage.getItem("access token");
 console.log(accessToken)
@@ -30,12 +33,12 @@ const Login = () => {
       .then((res) => {
         if (res.status === 200) {
           localStorage.setItem("token", res.token)
-          alert("DONE")
+          toast("DONE")
         }
         else
           console.log("error")
       }).catch((err) => {
-        alert("already exist")
+        toast("already exist")
       })
   };
 
@@ -54,10 +57,10 @@ const Login = () => {
             <h1 className=" text-black text-2xl flex items-center justify-center">Are you a Owner?</h1>
 
             <h3>Join us today for the best deal to rent your PG!</h3>
-            <input className="email_owner" placeholder="E-Mail" name="owner_email" id='owner_email'
+            <input className="email_owner w-[13rem]" placeholder="E-Mail" name="owner_email" id='owner_email'
               value={owner_email} onChange={handleChange} ></input>
             {/* <h1 className="hh">dhsjdsjd</h1> */}
-            <input className="email_owner" placeholder="Password" name="owner_pass" id='owner_pass'
+            <input className="email_owner w-[13rem]" placeholder="Password" name="owner_pass" id='owner_pass'
               value={owner_pass} onChange={handleChangePass} ></input>
 
             <button type="submit">Submit</button>

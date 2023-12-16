@@ -1,0 +1,25 @@
+.Apply
+{
+    background-color: #EA4C89;
+    border-radius: 4px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    height: 25px;
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: color 100ms;   
+    text-align: center;
+    text-decoration: none;
+    transition: color 100ms;
+   
+}
+.Apply:hover,
+.Apply:focus {
+  background-color: #F082AC;
+}
