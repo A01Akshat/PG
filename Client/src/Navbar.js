@@ -22,7 +22,7 @@ const Navbar = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
       </div>
-      <ul className={`navbar-menu ${isOpen ? 'open' : ''}`}>
+      {/* <ul className={`navbar-menu ${isOpen ? 'open' : ''}`}>
         <div>
         <h2 style={{fontSize:"1.2rem"}}>Home</h2>
         </div>
@@ -32,7 +32,7 @@ const Navbar = () => {
         <div>
         <h2 style={{fontSize:"1.2rem"}}>Contact Us</h2>
         </div>
-      </ul>
+      </ul> */}
     </nav>
   );
 };

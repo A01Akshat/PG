@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 import "./Login.css";
+
 const accessToken = localStorage.getItem("access token");
 console.log(accessToken)
 const config = {
@@ -32,7 +32,7 @@ const Login = () => {
     axios.post("https://pgbackend.adityachoudhury.com/api/auth/login", signup,config)
       .then((res) => {
         if (res.status === 200) {
-          localStorage.setItem("token", res.token)
+          localStorage.setItem("token", res.data.token)
           toast("DONE")
         }
         else
@@ -67,10 +67,6 @@ const Login = () => {
 
           </div>
         </form>
-
-
-
-
       </div>
     </>
 
