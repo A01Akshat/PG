@@ -110,12 +110,47 @@ const getFavourite = async (
 	}
 };
 
+
+const getDashboardProperty = async (
+	req: Request,
+	res: Response,
+	next: NextFunction
+) => {
+	try {
+		// Extract page number and records per page from query parameters
+		const page = parseInt(req.query.page as string) || 1;
+		const perPage = parseInt(req.query.perPage as string) || 10;
+
+		// Calculate the skip value based on the page number and records per page
+		const skip = (page - 1) * perPage;
+
+		// Query the database with pagination if page is specified, otherwise get all records
+		const query = Property.find()
+			.select("name rent rooms nearbyColleges nearbyCollegesDistances")
+			.populate("nerbyColleges");
+
+		const properties = page ? await query.skip(skip).limit(perPage) : await query;
+		const totalCount = await Property.countDocuments();
+		const totalPages = Math.ceil(totalCount / perPage);
+
+		return res.status(200).json({properties,totalPages,currentPage:page,perPage,totalCount});
+	} catch (err: any) {
+		console.log(err);
+		return res
+			.status(500)
+			.json({ message: "Internal Server Error!!", success: false });
+	}
+};
+
+
+
 const controllers = {
 	addProperty,
 	getProperty,
 	getAllProperty,
 	addFavourite,
 	getFavourite,
+	getDashboardProperty,
 };
 
 export default controllers;

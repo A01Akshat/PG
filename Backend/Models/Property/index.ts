@@ -76,6 +76,10 @@ const propertySchema = new mongoose.Schema(
 			required: true,
 			ref: "Colleges",
 		},
+		nearbyCollegesDistances: {
+			type: [Number],
+			required: true,
+		},
 	},
 	{ timestamps: true }
 );
