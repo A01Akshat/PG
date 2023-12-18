@@ -21,6 +21,7 @@ const propertyJoiSchema = Joi.object({
 		hotWater: Joi.boolean().default(false),
 	}),
 	nerbyColleges: Joi.array().items(Joi.string()).required(),
+	nearbyCollegesDistances: Joi.array().items(Joi.number()).required(),
 });
 
 export default {

@@ -12,7 +12,7 @@ const app = express();
 app.use(
 	cors({
 		credentials: true,
-		origin: ["http://localhost:5173","http://localhost:5000"],
+		origin: ["http://localhost:5173", "http://localhost:5000"],
 	})
 );
 
@@ -37,6 +37,13 @@ app.get("/", (req: Request, res: Response, next: NextFunction) => {
 		},
 		success: true,
 	});
+});
+
+app.get("/health", (req: Request, res: Response) => {
+	return res.status(200).json({
+		status: 200,
+		message:"Server is up and running"
+	})
 });
 
 app.use("/api/auth", Auth);
