@@ -1,7 +1,9 @@
 import propertyValidator from "../../Validators/Property";
 import Property from "../../Models/Property";
+import College from "../../Models/College";
 import { Request, Response, NextFunction } from "express";
 import Favourites from "../../Models/Favourites";
+import mongoose from "mongoose";
 interface customRequest extends Request {
 	user_id: string;
 	_id: string;
@@ -146,6 +148,68 @@ const getDashboardProperty = async (
 };
 
 
+const propertySearch = async (req: Request, res: Response, next: NextFunction) => {
+	try {
+		// Define filters based on query parameters
+		const filters: any = {};
+
+		if (typeof req.query.city === 'string') {
+			filters['address'] = { $regex: new RegExp(req.query.city, 'i') };
+		}
+
+		if (req.query.minPrice || req.query.maxPrice) {
+			filters['rent'] = {};
+			if (typeof req.query.minPrice === 'string') filters['rent'].$gte = parseInt(req.query.minPrice, 10);
+			if (typeof req.query.maxPrice === 'string') filters['rent'].$lte = parseInt(req.query.maxPrice, 10);
+		}
+
+		if (typeof req.query.minRooms === 'string') {
+			filters['rooms'] = { $gte: parseInt(req.query.minRooms, 10) };
+		}
+
+		if (typeof req.query.furnished === 'string') {
+			filters['furnished'] = req.query.furnished.toLowerCase() === 'true';
+		}
+
+		if (typeof req.query.nearbyCollege === 'string' && req.query.distance) {
+			const colleges = await College.find({ collegeName: req.query.nearbyCollege });
+			if (colleges.length > 0) {
+				filters['nerbyColleges'] = { $in: colleges.map(college => college._id) };
+				// You may want to add a geospatial query for distance, depending on your data model.
+			} else {
+				return res.status(404).json({ success: false, message: 'No matching colleges found.' });
+			}
+		}
+
+		// Pagination parameters
+		const page = parseInt(req.query.page as string, 10) || 1;
+		const pageSize = parseInt(req.query.pageSize as string, 10) || 10;
+
+		// Create separate queries for results and count
+		const queryResults = Property.find(filters).skip((page - 1) * pageSize).limit(pageSize);
+		const totalCount = await Property.countDocuments(filters);
+
+		// Calculate total pages for pagination info
+		const totalPages = Math.ceil(totalCount / pageSize);
+
+		// Add pagination metadata to the response
+		const metadata: any = { currentPage: page, perPage: pageSize, totalPages };
+		if (page > 1) metadata.prevPage = page - 1;
+		if (page < totalPages) metadata.nextPage = page + 1;
+
+		// Execute the property search query with pagination
+		const results = await queryResults;
+
+		res.status(200).json({ success: true, results, metadata });
+	} catch (error) {
+		console.error(error);
+		res.status(500).json({ success: false, error: 'Internal Server Error' });
+	}
+};
+
+
+
+
 
 const controllers = {
 	addProperty,
@@ -154,6 +218,7 @@ const controllers = {
 	addFavourite,
 	getFavourite,
 	getDashboardProperty,
+	propertySearch
 };
 
 export default controllers;
