@@ -127,13 +127,16 @@ const getDashboardProperty = async (
 		// Query the database with pagination if page is specified, otherwise get all records
 		const query = Property.find()
 			.select("name rent rooms nearbyColleges nearbyCollegesDistances")
-			.populate("nerbyColleges");
+			.populate({
+				path: "nerbyColleges",
+				select: "-_id collegeName"
+			});
 
 		const properties = page ? await query.skip(skip).limit(perPage) : await query;
 		const totalCount = await Property.countDocuments();
 		const totalPages = Math.ceil(totalCount / perPage);
 
-		return res.status(200).json({properties,totalPages,currentPage:page,perPage,totalCount});
+		return res.status(200).json({ properties, totalPages, currentPage: page, perPage, totalCount });
 	} catch (err: any) {
 		console.log(err);
 		return res
