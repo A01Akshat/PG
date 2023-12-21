@@ -7,10 +7,11 @@ router.get("/", Property.getAllProperty);
 router.get("/:id", Property.getProperty);
 router.get("/get/dashboard", Property.getDashboardProperty);
 router.get("/get/favourite", Auth.verifytoken as any,Property.getFavourite as any);
-
 router.post(
 	"/favourite/add/:propertyId",
 	Auth.verifytoken as any,
 	Property.addFavourite as any
 );
+
+router.get("/get/search", Property.propertySearch);
 export default router;
