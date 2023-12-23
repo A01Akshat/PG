@@ -40,7 +40,7 @@ const Main_Page = () => {
           <h1 style={{ textAlign: "center" }} className=" text-3xl text-white">Search {newName}</h1>
           <div className="search-bar">
             <FaSearch className="search-icon" />
-            <input type="text" placeholder="Search..." name="search" id="search" value={search} onChange={handleChange} />
+            <input type="text" placeholder="Nearest College..." name="search" id="search" value={search} onChange={handleChange} />
           </div>
 
         </div>

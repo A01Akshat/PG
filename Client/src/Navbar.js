@@ -15,6 +15,7 @@ const Navbar = () => {
       <div className="navbar-brand">
         <span className="navbar-logo">PG-ᕼᑌᗷ</span>
         
+        
         {/* <span className="navbar-logo">𝚁𝚎𝚏𝚎𝚛𝙷𝚞𝚋</span> */}
         
         {/* <span className="navbar-logo">ʀᴇғᴇʀʜᴜʙ</span> */}
@@ -22,17 +23,17 @@ const Navbar = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
       </div>
-      {/* <ul className={`navbar-menu ${isOpen ? 'open' : ''}`}>
-        <div>
+      <ul className={`navbar-menu ${isOpen ? 'open' : ''}`}>
+        {/* <div>
         <h2 style={{fontSize:"1.2rem"}}>Home</h2>
-        </div>
+        </div> */}
         <div>
-        <h2 style={{fontSize:"1.2rem"}} >About</h2>
+        <h2 style={{fontSize:"1.2rem"}} className="cursor-pointer">Favourites</h2>
         </div>
-        <div>
+        {/* <div>
         <h2 style={{fontSize:"1.2rem"}}>Contact Us</h2>
-        </div>
-      </ul> */}
+        </div> */}
+      </ul>
     </nav>
   );
 };
