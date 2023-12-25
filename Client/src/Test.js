@@ -52,12 +52,13 @@ const Test = () => {
             ...prevFavorites,
             [itemId]: !prevFavorites[itemId],
         }));
-        const url_fav=`https://pgbackend.adityachoudhury.com/api/property/favourite/add/${itemId}`
+        const url_fav=`https://pgbackend.adityachoudhury.com/api/college/654cd72a4d9b397aed240e50`
         axios.post(url_fav, config)
         .then((res) => {
             if (res.status === 200) {
-                console.log("DONE");
-               
+                
+                // console.log("DONE");
+                // console.log(res);
                 // toast("DONE")
 
                 // console.log(dataeach[0].name);
@@ -67,12 +68,13 @@ const Test = () => {
         }).catch((err) => {
             toast("already exist")
         })
-        const url_each=`https://pgbackend.adityachoudhury.com/api/college/${itemId}`
+        const url_each=`https://pgbackend.adityachoudhury.com/api/property/${itemId}`
     axios.get(url_each, config)
     .then((res) => {
         if (res.status === 200) {
+            
             console.log(res);
-           
+            alert("done each")
             // toast("DONE")
 
             // console.log(dataeach[0].name);
