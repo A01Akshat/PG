@@ -269,7 +269,21 @@ const getuser = async (
 };
 
 const verifytoken = (req: customRequest, res: Response, next: NextFunction) => {
-	const { token, refreshToken } = req.cookies;
+
+	let token: string | any;
+
+	if (req.cookies && req.cookies.token) {
+		token = req.cookies.token;
+	} else if (req.headers['authorization']) {
+		const authHeader = req.headers['authorization'];
+		const bearerTokenMatch = authHeader && authHeader.match(/^Bearer (.+)$/);
+
+		if (bearerTokenMatch) {
+			token = bearerTokenMatch[1];
+		}
+	}
+
+
 	if (!token) {
 		return res.status(200).json(null);
 	}
@@ -328,8 +342,18 @@ const verifyRefreshToken = async (
 	res: Response,
 	next: NextFunction
 ) => {
-	const { refreshToken } = req.cookies;
-	const token = refreshToken;
+	let token: string | any;
+
+	if (req.cookies && req.cookies.refreshToken) {
+		token = req.cookies.refreshToken;
+	} else if (req.headers['authorization']) {
+		const authHeader = req.headers['authorization'];
+		const bearerTokenMatch = authHeader && authHeader.match(/^Refresh (.+)$/);
+
+		if (bearerTokenMatch) {
+			token = bearerTokenMatch[1];
+		}
+	}
 
 	if (!token) {
 		return res.status(200).json(null);
@@ -402,8 +426,21 @@ const verify = async (
 };
 
 const logout = async (req: Request, res: Response, next: NextFunction) => {
-	const { refreshToken } = req.cookies;
-	const token = refreshToken;
+	let token: string | any;
+	let refreshToken: string | any;
+
+	if (req.cookies && req.cookies.refreshToken) {
+		token = req.cookies.refreshToken;
+		refreshToken = req.cookies.refreshToken;
+	} else if (req.headers['authorization']) {
+		const authHeader = req.headers['authorization'];
+		const bearerTokenMatch = authHeader && authHeader.match(/^Refresh (.+)$/);
+
+		if (bearerTokenMatch) {
+			token = bearerTokenMatch[1];
+			refreshToken = bearerTokenMatch[1];
+		}
+	}
 
 	res.clearCookie("token");
 	res.clearCookie("refreshToken");
