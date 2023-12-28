@@ -149,7 +149,7 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
 					verified: user.verified,
 				},
 				JWT_SECRET,
-				{ expiresIn: "10m" }
+				{ expiresIn: "24h" }
 			);
 
 			let refreshToken = jsonwebtoken.sign(
@@ -326,7 +326,7 @@ const refresh = async (
 				verified: user?.verified,
 			},
 			JWT_SECRET,
-			{ expiresIn: "10m" }
+			{ expiresIn: "24h" }
 		);
 		res.cookie("token", token);
 		return res.status(200).json({
