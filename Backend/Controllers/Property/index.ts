@@ -171,8 +171,9 @@ const propertySearch = async (req: Request, res: Response, next: NextFunction) =
 			filters['furnished'] = req.query.furnished.toLowerCase() === 'true';
 		}
 
-		if (typeof req.query.nearbyCollege === 'string' && req.query.distance) {
+		if (typeof req.query.nearbyCollege === 'string') {
 			const colleges = await College.find({ collegeName: req.query.nearbyCollege });
+			console.log(colleges);
 			if (colleges.length > 0) {
 				filters['nerbyColleges'] = { $in: colleges.map(college => college._id) };
 				// You may want to add a geospatial query for distance, depending on your data model.
