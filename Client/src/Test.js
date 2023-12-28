@@ -77,6 +77,7 @@ const Test = () => {
 
 
                 {dataeach?.map((item, index) => {
+                    
                     return (
                         <div style={{ height: "260px", width: "300px", border: "2px solid black", margin: "1rem", borderRadius: "19px" }} key={item._id}>
                             {/* IMAGE DIV */}

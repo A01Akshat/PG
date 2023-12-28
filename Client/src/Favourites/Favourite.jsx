@@ -67,7 +67,8 @@ const Favourite = () => {
           justifyContent: 'center',
         }}
       >
-        {data.map((item, index) => (
+        {data.map((item, index) => {
+        return(
           <div
             style={{
               height: '260px',
@@ -76,7 +77,7 @@ const Favourite = () => {
               margin: '1rem',
               borderRadius: '19px',
             }}
-            key={item._id}
+            key={item.propertyId._id}
           >
             {/* IMAGE DIV */}
             <div style={{ borderRadius: '20px' }}>
@@ -94,14 +95,14 @@ const Favourite = () => {
             {/* INFO DIV */}
             <div style={{ margin: '1px', padding: '7px', fontSize: '14.5px' }}>
               <div style={{ display: 'flex', flexDirection: 'row' }}>
-                <h3>Rent:₹{item?.rent}</h3>
+                <h3>Rent:₹{item.propertyId.rent}</h3>
                 <button
                   style={{ marginLeft: '11.5rem' }}
                   onClick={() => {
-                    togglefav(item._id);
+                    togglefav(item.propertyId._id);
                   }}
                 >
-                  {favorites[item._id] ? (
+                  {favorites[item.propertyId._id] ? (
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       height="20"
@@ -122,9 +123,9 @@ const Favourite = () => {
                   )}
                 </button>
               </div>
-              <h3>Nearest College: {item?.nerbyColleges[0]?.collegeName}</h3>
-              <h3>Rooms Available: {item?.rooms}</h3>
-              <h3>Within: {item?.nearbyCollegesDistances[0]} KM</h3>
+              <h3 style={{color:"black"}}>Nearest College: {item.propertyId.nerbyColleges[0]?.collegeName}</h3>
+              <h3>Rooms Available: {item.propertyId.rooms}</h3>
+              <h3>Within: {item.propertyId.nearbyCollegesDistances[0]} KM</h3>
               <h1
                 style={{
                   marginLeft: '11.9rem',
@@ -132,14 +133,14 @@ const Favourite = () => {
                   cursor: 'pointer',
                 }}
                 onClick={() => {
-                  navigate('/More_Info', { state: { name: item._id } });
+                  navigate('/More_Info', { state: { name: item.propertyId._id } });
                 }}
               >
                 More Info ➡️
               </h1>
             </div>
           </div>
-        ))}
+        )})}
       </div>
     </div>
   );

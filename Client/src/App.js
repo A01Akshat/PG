@@ -9,6 +9,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { Routes } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import Favourite from './Favourites/Favourite';
+import FavouritePage from './Favourites/FavouritePage';
 const App = () => {
   return (
     <div className="flex">
@@ -21,7 +22,7 @@ const App = () => {
     <Router>
     <Navbar/>
     <Routes>
-    <Route path='/fav' element={<Favourite/>} />
+    <Route path='/fav' element={<FavouritePage/>} />
     <Route path='/login' element={<Login/>} />
     <Route path='/' element={<Main_Page/>} />
     <Route path='/more_info' element={<More_Info/>} />
