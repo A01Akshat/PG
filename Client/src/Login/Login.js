@@ -3,16 +3,18 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "./Login.css";
+import { useNavigate } from "react-router";
 
-const accessToken = localStorage.getItem("access token");
+const accessToken = localStorage.getItem("token");
 console.log(accessToken)
 const config = {
-    header:{
+    headers:{
         Authorization: `Bearer ${accessToken}`
     }
 }
 
 const Login = () => {
+  const navigate = useNavigate();
 
   const [owner_email, setowner_email] = useState('');
   const [owner_pass, setpass_email] = useState('');
@@ -29,11 +31,12 @@ const Login = () => {
       username: owner_email,
       password: owner_pass,
     }
-    axios.post("https://pgbackend.adityachoudhury.com/api/auth/login", signup,config)
+    axios.post("https://pgbackend.adityachoudhury.com/api/auth/login", signup)
       .then((res) => {
         if (res.status === 200) {
           localStorage.setItem("token", res.data.token)
           toast("DONE")
+          navigate("/")
         }
         else
           console.log("error")
@@ -68,6 +71,31 @@ const Login = () => {
           </div>
         </form>
       </div>
+
+
+
+
+
+
+
+    <div className="student w-1/2">
+    <h1 className=" text-black text-2xl">Are you a Student?</h1>
+    <h3>Grab the best deal to rent a PG!</h3>
+    <div className="stud_inputfields">
+    <input className="email_stud w-[13rem]" placeholder="E-Mail"></input>
+    <input className="email_stud  w-[13rem]" placeholder="Password"></input>
+    <button type="submit">Submit</button>
+    </div>
+     </div>
+
+
+
+
+
+
+
+
+
     </>
 
   )

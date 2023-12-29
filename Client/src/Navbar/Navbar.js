@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Navbar.css';
-
+import { useNavigate } from 'react-router';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -8,6 +8,8 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  const navigate=useNavigate();
 
 
   return (
@@ -28,7 +30,7 @@ const Navbar = () => {
         <h2 style={{fontSize:"1.2rem"}}>Home</h2>
         </div> */}
         <div>
-        <h2 style={{fontSize:"1.2rem"}} className="cursor-pointer">Favourites</h2>
+        <h2 style={{fontSize:"1.2rem"}} className="cursor-pointer" onClick={()=>{navigate("/fav")}}>Favourites</h2>
         </div>
         {/* <div>
         <h2 style={{fontSize:"1.2rem"}}>Contact Us</h2>

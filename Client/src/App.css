@@ -1,3 +1,4 @@
+
 .search-bar {
   display: flex;
   align-items: center;
@@ -26,4 +27,51 @@ input {
   /* background-image: linear-gradient( 178.9deg,  rgba(176,57,105,1) 5.1%, rgba(229,113,159,1) 109.3% ); */
   /* background-image: linear-gradient( 58.2deg,  rgba(40,91,212,0.73) -3%, rgba(171,53,163,0.45) 49.3%, rgba(255,204,112,0.37) 97.7% );; */
   /* background-image: linear-gradient( 99.6deg,  rgba(112,128,152,1) 10.6%, rgba(242,227,234,1) 32.9%, rgba(234,202,213,1) 52.7%, rgba(220,227,239,1) 72.8%, rgba(185,205,227,1) 81.1%, rgba(154,180,212,1) 102.4% ); */
+}
+.line-img
+{
+  position: absolute;
+    height: 23.5rem;
+    margin-left: 17rem;
+    margin-top: 125px 
+}
+.info_div
+{
+  position: absolute;
+  margin-left: 24rem;
+  margin-top: 14rem;
+}
+.line-img2
+{
+  position: absolute;
+    height: 23.5rem;
+    margin-left: 27rem;
+    margin-top: 125px 
+
+
+    }
+
+.Amnety{
+  
+  background-color: rgba(32, 178, 171, 0.411); /* Green */
+  border: 2px solid black;
+  border-radius: 20px;
+  color: black;
+  padding: 2px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  
+}
+.Amnety2{
+  
+  background-color: lightgoldenrodyellow; /* Green */
+  border: 2px solid black;
+  border-radius: 20px;
+  color: black;
+  padding: 0px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  
 }
