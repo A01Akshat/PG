@@ -22,9 +22,10 @@ const App = () => {
     <Router>
     <Navbar/>
     <Routes>
-    <Route path='/fav' element={<FavouritePage/>} />
+  
     <Route path='/login' element={<Login/>} />
     <Route path='/' element={<Main_Page/>} />
+    <Route path='/fav' element={<FavouritePage/>} />
     <Route path='/more_info' element={<More_Info/>} />
     </Routes>
     </Router>

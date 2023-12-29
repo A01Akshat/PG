@@ -3,6 +3,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "./Login.css";
+import { useNavigate } from "react-router";
 
 const accessToken = localStorage.getItem("token");
 console.log(accessToken)
@@ -13,6 +14,7 @@ const config = {
 }
 
 const Login = () => {
+  const navigate = useNavigate();
 
   const [owner_email, setowner_email] = useState('');
   const [owner_pass, setpass_email] = useState('');
@@ -34,6 +36,7 @@ const Login = () => {
         if (res.status === 200) {
           localStorage.setItem("token", res.data.token)
           toast("DONE")
+          navigate("/")
         }
         else
           console.log("error")

@@ -5,6 +5,7 @@ import { FaSearch } from 'react-icons/fa';
 import '../App.css'
 import AOS from 'aos';
 import axios from 'axios';
+import WrapCards from '../DashBoardStudent/WrapCards';
 // import { Toast } from 'react-toastify/dist/components';
 const names = [
   'PG', 'Home', 'Rooms'
@@ -13,6 +14,7 @@ const names = [
 const FavouritePage = () => {
     const [newName, setnewName] = useState("");
     const [search, setsearch] = useState("");
+    const [check,setCheck] = useState("Hi");
     useEffect(() => {
       AOS.init({
         duration: 2000
@@ -49,7 +51,7 @@ const FavouritePage = () => {
   
   return (
     <div>
-        <div style={{ width: "100%", height: "250px" }} className="hero-div">
+        <div style={{ width: "100%", height: "250px" , paddingTop:"0.1rem"}} className="hero-div">
         <div style={{ display: "flex", marginTop: "80px", alignItems: "center", flexDirection: "column", gap: "20px" }}>
           <h1 style={{ textAlign: "center" }} className=" text-3xl text-white">Search {newName}</h1>
           <div className="search-bar">
@@ -65,7 +67,7 @@ const FavouritePage = () => {
           </div>
 
           <div className="w-4/5" data-aos={"fade-left"} >
-            <Favourite />
+            <Favourite check={check} />
           </div>
         </div>
       </div>
