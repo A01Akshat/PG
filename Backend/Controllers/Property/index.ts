@@ -187,7 +187,7 @@ const propertySearch = async (req: Request, res: Response, next: NextFunction) =
 		const pageSize = parseInt(req.query.pageSize as string, 10) || 10;
 
 		// Create separate queries for results and count
-		const queryResults = Property.find(filters).skip((page - 1) * pageSize).limit(pageSize);
+		const queryResults = Property.find(filters).populate("nerbyColleges").skip((page - 1) * pageSize).limit(pageSize);
 		const totalCount = await Property.countDocuments(filters);
 
 		// Calculate total pages for pagination info
