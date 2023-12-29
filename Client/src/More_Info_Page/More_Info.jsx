@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import image from './Image/1669125652900.jpg';
-import line from './Image/line.png';
-import './App.css';
+import image from '../Image/1669125652900.jpg';
+import line from '../Image/line.png';
+import '../App.css';
 import { useLocation } from 'react-router-dom';
 import AOS from 'aos';
 import { toast } from 'react-toastify';

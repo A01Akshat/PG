@@ -1,10 +1,10 @@
 import React from 'react'
 import Login from './Login/Login'
 import Login_Student from './Login/Login_Student'
-import Test from './Test';
-import Main_Page from './Main_Page'
-import Navbar from './Navbar';
-import More_Info from './More_Info';
+import Test from './DashBoardStudent/WrapCards';
+import Main_Page from './DashBoardStudent/Main_Page';
+import Navbar from './Navbar/Navbar';
+import More_Info from './More_Info_Page/More_Info';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Routes } from 'react-router-dom';
 import { Route } from 'react-router-dom';

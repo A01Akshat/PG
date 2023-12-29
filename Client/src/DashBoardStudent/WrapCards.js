@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router';
-import image from "./Image/1669125652900.jpg"
+import image from "../Image/1669125652900.jpg"
 import AOS from 'aos';
 import "aos/dist/aos.css";
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import More_Info from './More_Info';
+
 
 const accessToken = localStorage.getItem("token");
 let config = {
@@ -17,23 +17,38 @@ let config = {
 };
 
 
-const Test = () => {
+const WrapCards = (props) => {
+    
+//   console.log(props.check)
+    const [search , setsearch] = useState("Hi");
+    
     const [fill, setfill] = useState(true);
     const [dataeach, setDataeach] = useState([]);
     const [favorites, setFavorites] = useState({});
-    const navigate = useNavigate();
-
-
-    const url = `https://pgbackend.adityachoudhury.com/api/property/get/dashboard`;
-
     useEffect(() => {
+        setsearch(props.check)
+        console.log(search)
+    },[props.check])
+    
+    const navigate = useNavigate();
+    if(search === "Hi")
+    var url = `https://pgbackend.adityachoudhury.com/api/property/get/search`
+    else
+    var url = `https://pgbackend.adityachoudhury.com/api/property/get/search?nearbyCollege=KIIT`
+     
 
+    //const url = `https://pgbackend.adityachoudhury.com/api/property/get/dashboard`;
+    
+    useEffect(() => {
+        // console.log(props.check)
+        
         axios.get(url, config)
             .then((res) => {
                 if (res.status === 200) {
-                    console.log(res.data.properties);
-                    setDataeach(res.data.properties);
-                    toast("DONE")
+                    
+                    console.log(res.data.results);
+                    setDataeach(res.data.results);
+                    // toast("DONE")
 
                     // console.log(dataeach[0].name);
                 }
@@ -118,4 +133,4 @@ const Test = () => {
     )
 }
 
-export default Test;
+export default WrapCards;

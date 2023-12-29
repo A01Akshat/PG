@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Favourite from './Favourite'
-import Filters from '../Filters'
+import Filters from '../Filters/Filters'
 import { FaSearch } from 'react-icons/fa';
 import '../App.css'
 import AOS from 'aos';

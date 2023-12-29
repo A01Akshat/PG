@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import Test from './Test'
-import Filters from './Filters'
+import WrapCards from './WrapCards';
+import Filters from '../Filters/Filters'
 import { FaSearch } from 'react-icons/fa';
-import './App.css'
+import '../App.css'
 import AOS from 'aos';
 import axios from 'axios';
 // import { Toast } from 'react-toastify/dist/components';
@@ -14,6 +14,7 @@ const Main_Page = () => {
 
   const [newName, setnewName] = useState("");
   const [search, setsearch] = useState("");
+  const [check,setCheck] = useState("Hi");
   useEffect(() => {
     AOS.init({
       duration: 2000
@@ -21,19 +22,21 @@ const Main_Page = () => {
   }, []);
   const handleChange = (e) => {
     if (e.key === 'Enter') {
-    const f=` https://pgbackend.adityachoudhury.com/api/property/get/search?nearbyCollege=${e.target.value}`
-    axios.get(f) 
-    .then((res) => {
-        if (res.status === 200) {
-            console.log("DONE");
-            console.log(res);
-            // console.log(dataeach[0].name);
-        }
-        else
-            console.log("error")
-    }).catch((err) => {
+      
+       setCheck(search);
+    // const f=` https://pgbackend.adityachoudhury.com/api/property/get/search?nearbyCollege=${e.target.value}`
+    // axios.get(f) 
+    // .then((res) => {
+    //     if (res.status === 200) {
+    //         console.log("DONE");
+    //         console.log(res);
+    //         // console.log(dataeach[0].name);
+    //     }
+    //     else
+    //         console.log("error")
+    // }).catch((err) => {
         
-    })
+    // })
   }
     // {{locahost}}/api/property/get/search?city=street&minPrice=500&maxPrice=1500&minRooms=1&furnished=true&nearbyCollege=KIIT&distance=1&page=1&pageSize=10
   };
@@ -67,7 +70,7 @@ const Main_Page = () => {
           </div>
 
           <div className="w-4/5" data-aos={"fade-left"} >
-            <Test />
+            <WrapCards check={check} />
           </div>
         </div>
       </div>
