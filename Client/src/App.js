@@ -10,6 +10,7 @@ import { Routes } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import Favourite from './Favourites/Favourite';
 import FavouritePage from './Favourites/FavouritePage';
+import Main_PageOwner from './DashBoardOwner/Main_PageOwner';
 const App = () => {
   return (
     <div className="flex">
@@ -20,13 +21,14 @@ const App = () => {
       <Login_Student/> */}
       {/* <More_Info/> */}
     <Router>
-    <Navbar/>
+    {/* <Navbar/> */}
     <Routes>
   
     <Route path='/login' element={<Login/>} />
     <Route path='/' element={<Main_Page/>} />
     <Route path='/fav' element={<FavouritePage/>} />
     <Route path='/more_info' element={<More_Info/>} />
+    <Route path='/dasboardOwner' element={<Main_PageOwner/>} />
     </Routes>
     </Router>
       
