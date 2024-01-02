@@ -99,9 +99,15 @@ const getFavourite = async (
 	next: NextFunction
 ) => {
 	try {
-		const favourites = await Favourites.find({ userId: req._id }).populate(
-			"propertyId"
-		);
+		const favourites = await Favourites.find({ userId: req._id })
+			.populate("propertyId")
+			.populate({
+				path: "propertyId",
+				populate: {
+					path: "nerbyColleges",
+					model: "Colleges",
+				},
+			});
 		return res.status(200).json(favourites);
 	} catch (err) {
 		console.log(err);

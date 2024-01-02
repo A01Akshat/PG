@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom';
 import AOS from 'aos';
 import { toast } from 'react-toastify';
 import axios from 'axios';
-
+import Navbar from "../Navbar/Navbar";
 
 const More_Info = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -42,6 +42,7 @@ const More_Info = () => {
     };
     return (
         <>
+        <Navbar/>
             <div className={`hero-div w-[100%] h-[100vh] ${isModalOpen ? 'blur' : ''}`}>
                 <img src={line} className="line-img" alt="line"></img>
                 <div className="info_div  text-lg">
