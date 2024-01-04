@@ -65,7 +65,7 @@ const Main_Page = () => {
 
         </div>
 
-        <div style={{ display: "flex", flexDirection: "row", marginTop: "6rem" }}>
+        <div style={{ display: "flex", flexDirection: "row", marginTop: "5.1rem" }}>
           <div className="w-1/5">
             <SidebarOwner />
           </div>

@@ -46,7 +46,7 @@ const More_Info = () => {
             <div className={`hero-div w-[100%] h-[100vh] ${isModalOpen ? 'blur' : ''}`}>
                 <img src={line} className="line-img" alt="line"></img>
                 <div className="info_div  text-lg">
-                    <h1 style={{ marginTop: "-5rem" }}>PG's Name: <span className="text-lg" style={{ marginLeft: "3.6rem", fontWeight: "600" }}>{data.name} <button className="Apply2" style={{ marginLeft: "29rem" }} onClick={openModal}>Book Now</button></span></h1>
+                    <h1 style={{ marginTop: "-5rem" }}>PG's Name: <span className="text-lg" style={{ marginLeft: "3.6rem", fontWeight: "600" }}>{data.name} <button className="Apply2" style={{ marginLeft: "29rem" , height:"2rem" }} onClick={openModal}>Book Now</button></span></h1>
                     <h1 style={{ marginTop: "3rem" }}>Contact: <span className="text-lg" style={{ marginLeft: "5.3rem", fontWeight: "600" }}>{data.ownerContact}</span></h1>
                     <h1 style={{ marginTop: "3rem" }}>Address:<span className="text-lg" style={{ marginLeft: "5.5rem", fontWeight: "600" }}>{data.address}</span></h1>
                     <h1 style={{ marginTop: "3rem" }}>Nearest College: <span className="text-lg Amnety2" style={{ marginLeft: "21px", fontWeight: "600" }}>{data?.nerbyColleges?.[0]?.collegeName}</span></h1>
@@ -122,8 +122,8 @@ const More_Info = () => {
                             />
                         </div>
                         {/* Add more content or form fields as needed */}
-                        <button className="Apply2" style={{marginRight:"2rem"}}>Submit</button>
-                        <button onClick={closeModal} className="Apply2" style={{marginTop:"20px",marginBottom:"-25px"}}>Close</button>
+                        <button className="Apply2" style={{marginRight:"2rem" , height:"2rem" , background:"#3bf594"}}>Submit</button>
+                        <button onClick={closeModal} className="Apply2" style={{marginTop:"20px",marginBottom:"-25px" , background:"red" , height:"2rem"}}>Close</button>
                     </div>
                 </div>
             )}
