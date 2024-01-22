@@ -6,7 +6,7 @@ import "aos/dist/aos.css";
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import "../App.css"
 
 const accessToken = localStorage.getItem("token");
 let config = {
@@ -113,7 +113,7 @@ const WrapCards = (props) => {
                                 <h3 >Nearest College: {item?.nerbyColleges[0]?.collegeName}</h3>
                                 <h3 >Rooms Available: {item?.rooms}</h3>
                                 <h3>Within: {item?.nearbyCollegesDistances[0]} KM</h3>
-                                <h1 style={{ marginLeft: "11.9rem", marginTop: "-1.5rem", cursor: "pointer" }} onClick={() => {
+                                <h1 className="more" style={{ marginLeft: "11.9rem", marginTop: "-1.5rem", cursor: "pointer" }} onClick={() => {
                                     navigate("/More_Info", { state: { name: item._id } });
                                 }}>More Info ➡️</h1>
                             </div>

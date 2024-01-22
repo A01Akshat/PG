@@ -1,0 +1,108 @@
+.navbar {
+    /* background-image: linear-gradient( 58.2deg,  rgba(40,91,212,0.73) -3%, rgba(171,53,163,0.45) 49.3%, rgba(255,204,112,0.37) 97.7% );; */
+    color: #fff;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      position: fixed;
+      width: 100%;
+    }
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      z-index: -10;
+    }
+    
+    .navbar-logo {
+      letter-spacing: 0.1rem;
+      font-weight: bold;
+      font-size: 1.5rem;
+      margin-right: 20px;
+      
+  
+    }
+    
+    .navbar-toggler {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      display: none;
+    }
+    
+    .navbar-toggler-icon {
+      width: 20px;
+      height: 3px;
+      background-color: #fff;
+      display: block;
+      position: relative;
+      transition: background-color 0.3s ease;
+    }
+    
+    .navbar-toggler-icon:before,
+    .navbar-toggler-icon:after {
+      content: '';
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      position: absolute;
+      transition: transform 0.3s ease;
+    }
+    
+    .navbar-toggler-icon:before {
+      top: -7px;
+    }
+    
+    .navbar-toggler-icon:after {
+      top: 7px;
+    }
+    
+    .navbar-menu {
+      display: flex;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      gap: 2rem;
+    }
+    
+    .navbar-item {
+      margin-right: 40px;
+      margin-top: -0.2rem;
+    }
+    .navbar-item a{
+      margin-left: -1rem;
+    }
+    .navbar-menu a {
+      color: #fff;
+      text-decoration: none;
+    }
+    
+    @media (max-width: 768px) {
+      .navbar-brand {
+        justify-content: space-between;
+      }
+    
+      .navbar-toggler {
+        display: block;
+      }
+    
+      .navbar-menu {
+        display: none;
+        flex-direction: column;
+        padding-top: 10px;
+      }
+    
+      .navbar-menu.open {
+        display: flex;
+      }
+    
+      .navbar-item {
+        margin-right: 0;
+        margin-bottom: 10px;
+      }
+    }
+    .user-pic-navbar{
+      border-radius: 50%;
+      margin-left: -5rem;
+    }
+    
+  

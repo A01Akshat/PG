@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import WrapCards from './WrapCards';
+import WrapCards from '../DashBoardStudent/WrapCards';
 import Filters from '../Filters/Filters'
 import { FaSearch } from 'react-icons/fa';
 import '../App.css'
 import AOS from 'aos';
 import axios from 'axios';
 // import { Toast } from 'react-toastify/dist/components';
-import Navbar from "../Navbar/Navbar"
+import SidebarOwner from "./SidebarOwner";
+import StatusOwner from "./StatusOwner";
+import NavOwner from "./NavOwner"
 const names = [
   'PG', 'Home', 'Rooms'
 ]
@@ -54,25 +56,22 @@ const Main_Page = () => {
 
   return (
     <>
-    <Navbar/>
+    <NavOwner/>
       {/* , backgroundColor: "#EEF5FF" */}
-      <div style={{ width: "100%", height: "250px" }} className="hero-div">
+      <div style={{ width: "100%", height: "200px" }} className="hero-div2">
         <div style={{ display: "flex", marginTop: "80px", alignItems: "center", flexDirection: "column", gap: "20px" }}>
           <h1 style={{ textAlign: "center" }} className=" text-3xl text-white">Search {newName}</h1>
-          <div className="search-bar">
-            <FaSearch className="search-icon" />
-            <input type="text" placeholder="Nearest College..." name="search" id="search" value={search} onChange={(e)=>setsearch(e.target.value)} onKeyDown={handleChange}   />
-          </div>
+         
 
         </div>
 
-        <div style={{ display: "flex", flexDirection: "row", marginTop: "6rem" }}>
+        <div style={{ display: "flex", flexDirection: "row", marginTop: "5.1rem" }}>
           <div className="w-1/5">
-            <Filters />
+            <SidebarOwner />
           </div>
 
           <div className="w-4/5" data-aos={"fade-left"} >
-            <WrapCards check={check} />
+            <StatusOwner />
           </div>
         </div>
       </div>

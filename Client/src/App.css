@@ -75,3 +75,131 @@ input {
   display: inline-block;
   
 }
+
+
+/* Add this to your existing CSS */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  width: 26rem;
+}
+
+.modal-content {
+  text-align: center;
+}
+
+.blur {
+  filter: blur(5px);
+}
+
+.input2 {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc; /* Set your desired border color */
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.input2:focus {
+  border-color: #007bff; /* Set your desired focus border color */
+}
+.more:hover
+{
+  color: rgba(255,163,77,1);
+}
+
+.sidebar-dashboard-list{
+ 
+ padding: 10px 10px 50px 20px;
+ background-image: linear-gradient( 179.6deg,  rgba(0,19,26,1) -4.9%, rgba(0,77,105,1) 108.4% );
+ border-radius: 3px;
+ /* background-image: linear-gradient( 124.1deg,  rgba(255,148,215,1) 12.3%, rgba(251,223,242,1) 65.2% ); background-image: radial-gradient( circle 993px at 0.5% 50.5%,  rgba(137,171,245,0.37) 0%, rgba(245,247,252,1) 100.2% );} */
+}
+.each-sidebar-list{
+  font-size: 1.5rem;
+  color: white;
+  margin-top: 3rem;
+}
+.each-sidebar-list p:hover{
+  cursor: pointer;
+  color: rgb(161, 167, 182);
+  text-decoration: overline;
+  letter-spacing: 0.1rem;
+  transition: 0.3s;
+}
+
+.StatusOwner{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.ListOfStudents{
+  /* width: 75vw;
+  height: 25rem;
+  background: #000; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+
+  height: 25rem;
+  width: 60rem;
+  padding-left: 2rem;
+  
+
+}
+.eachStudentApplied{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 2px solid black;
+  border-radius: 5px;
+  width: 70vw;
+  height: 3rem;
+  background: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.btn-ProfleStatusOwner{
+  margin-top: 0.4rem;
+  margin-right: 1rem;
+  font-size: 1.2rem;
+  /* margin-right: 5rem; */
+  background: rgb(131, 248, 141);
+  border: none;
+  border-radius: 5px;
+  height: 1.9rem;
+  width: 6rem;
+}
+.btn-ProfleStatusOwner:hover{
+  cursor:pointer;
+  color: white;
+  background: rgb(64, 243, 28);
+  letter-spacing: 0.1rem;
+  transition: 0.3s;
+}
+.eachStudentApplied-name{
+  margin-top: 0.55rem;
+  width: 40rem;
+  padding-left: 1rem;
+}
+.eachStudentApplied-name p{
+  font-size: 1.1rem;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.hero-div2
+{
+
+  background-image: radial-gradient( circle 263px at 100.2% 3%,  rgba(12,85,141,1) 31.1%, rgba(205,181,93,1) 36.4%, rgba(244,102,90,1) 50.9%, rgba(199,206,187,1) 60.7%, rgba(249,140,69,1) 72.5%, rgba(12,73,116,1) 72.6% );  /* background-image: radial-gradient( circle farthest-corner at -8.9% 51.2%,  rgba(255,124,0,1) 0%, rgba(255,124,0,1) 15.9%, rgba(255,163,77,1) 15.9%, rgba(255,163,77,1) 24.4%, rgba(19,30,37,1) 24.5%, rgba(19,30,37,1) 66% ); */
+  /* background-image: linear-gradient( 293.5deg,  rgba(181,149,208,1) 3.2%, rgba(251,148,207,1) 9.9%, rgba(181,149,208,1) 22.9%, rgba(251,148,207,1) 36.4%, rgba(181,149,208,1) 50.1%, rgba(251,148,207,1) 61.1%, rgba(181,149,208,1) 71.2%, rgba(251,148,207,1) 84.2%, rgba(181,149,208,1) 92.2% ); */
+  /* background-image: linear-gradient( 178.9deg,  rgba(176,57,105,1) 5.1%, rgba(229,113,159,1) 109.3% ); */
+  /* background-image: linear-gradient( 58.2deg,  rgba(40,91,212,0.73) -3%, rgba(171,53,163,0.45) 49.3%, rgba(255,204,112,0.37) 97.7% );; */
+  /* background-image: linear-gradient( 99.6deg,  rgba(112,128,152,1) 10.6%, rgba(242,227,234,1) 32.9%, rgba(234,202,213,1) 52.7%, rgba(220,227,239,1) 72.8%, rgba(185,205,227,1) 81.1%, rgba(154,180,212,1) 102.4% ); */
+}
