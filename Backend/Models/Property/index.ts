@@ -80,6 +80,11 @@ const propertySchema = new mongoose.Schema(
 			type: [Number],
 			required: true,
 		},
+		owner: {
+			type: mongoose.Schema.Types.ObjectId,
+			required: true,
+			ref: "Users",
+		},
 	},
 	{ timestamps: true }
 );

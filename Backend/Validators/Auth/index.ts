@@ -86,6 +86,18 @@ const isOTP = (req: customRequest, res: Response, next: NextFunction) => {
 	}
 };
 
+const isAdmin = (req: customRequest, res: Response, next: NextFunction) => {
+	if (req.role === "admin") {
+		next();
+	} else {
+		return res.status(401).json({
+			success: false,
+			message: "Unauthorized",
+			reason: "Need elevated permission to access this API! If this is a mistake please contact the administrator!!"
+		})
+	}
+}
+
 export default {
 	signupValidator,
 	validateEmail,
@@ -93,4 +105,5 @@ export default {
 	loginSchema,
 	verification,
 	isOTP,
+	isAdmin
 };
