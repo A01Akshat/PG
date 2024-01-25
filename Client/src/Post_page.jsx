@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import WrapCards from './WrapCards';
-import Filters from '../Filters/Filters'
 import { FaSearch } from 'react-icons/fa';
-import '../App.css'
+import './App.css'
 import AOS from 'aos';
 import axios from 'axios';
 // import { Toast } from 'react-toastify/dist/components';
-import Navbar from "../Navbar/Navbar";
-import SidebarOwner from '../DashBoardOwner/SidebarOwner';
+import Navbar from "./Navbar/Navbar";
+import SidebarOwner from './DashBoardOwner/SidebarOwner';
+import { useNavigate } from "react-router";
+
 const names = [
   'PG', 'Home', 'Rooms'
 ]
@@ -17,6 +17,7 @@ const Main_Page = () => {
   const [newName, setnewName] = useState("");
   const [search, setsearch] = useState("");
   const [check,setCheck] = useState("Hi");
+  const navigate = useNavigate();
   useEffect(() => {
     AOS.init({
       duration: 2000
@@ -72,9 +73,7 @@ const Main_Page = () => {
             <SidebarOwner/>
           </div>
 
-          <div className="w-4/5" data-aos={"fade-left"} >
-            <WrapCards check={check} />
-          </div>
+         
         </div>
       </div>
     </>
