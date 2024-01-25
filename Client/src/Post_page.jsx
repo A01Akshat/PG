@@ -13,10 +13,16 @@ const names = [
 ]
 const Main_Page = () => {
 
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [newName, setnewName] = useState("");
   const [search, setsearch] = useState("");
   const [check,setCheck] = useState("Hi");
+  const [name , setname] = useState("");
+    const [phone , setphone] = useState("");
+    const [email , setemail] = useState("");
+    const [gender , setgender] = useState("");
+    const [year , setyear] = useState("");
+    const [coll , setcoll] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
     AOS.init({
@@ -51,14 +57,21 @@ const Main_Page = () => {
   useEffect(() => {
     const intervalID = setInterval(shuffle, 1000);
     return () => clearInterval(intervalID);
-  }, [shuffle])
+  }, [shuffle]);
 
+  const openModal = () => {
+    setIsModalOpen(true);
+};
+
+const closeModal = () => {
+    setIsModalOpen(false);
+};
 
   return (
     <>
     <Navbar/>
       {/* , backgroundColor: "#EEF5FF" */}
-      <div style={{ width: "100%", height: "250px" }} className="hero-div">
+      <div style={{ width: "100%", height: "250px" }} className="hero-div ${isModalOpen ? 'blur' : ''}">
         <div style={{ display: "flex", marginTop: "80px", alignItems: "center", flexDirection: "column", gap: "20px" }}>
           <h1 style={{ textAlign: "center" }} className=" text-3xl text-white">Search {newName}</h1>
           <div className="search-bar">
@@ -73,11 +86,145 @@ const Main_Page = () => {
             <SidebarOwner/>
           </div>
 
+          <div className="StatusOwner">
+            <div className="ListOfStudents" style={{marginTop:"-140px",gap:"4rem"}}>
+          <div className="eachStudentApplied" style={{marginLeft:"3.5rem"}}>
+                    <div className='eachStudentApplied-name' style={{cursor:"pointer"}}>
+                    <p>Add Property</p>
+                    </div>
+                    <div>
+                        <button className='btn-ProfleStatusOwner'></button>
+                    </div>
+                </div>
+                <div className="eachStudentApplied" style={{marginLeft:"3.5rem"}}>
+                    <div className='eachStudentApplied-name'>
+                    <p>Show Your Listed Property</p>
+                    </div>
+                    <div>
+                        <button className='btn-ProfleStatusOwner'></button>
+                    </div>
+                </div>
+                </div>
+                </div>
+
          
         </div>
       </div>
+      {isModalOpen && (
+                <div className="modal">
+                    <div className="modal-content">
+                        <h1 style={{marginBottom:"10px"}}><u>Share you details:</u></h1>
+                        <div style={{display:"flex",flexDirection:"column",gap:"7px"}}>
+                            <input
+                                type="text"
+                                id="exampleInput"
+                                name="exampleInput"
+                                placeholder="Enter your name"
+                                className="input2"
+                                value={name}
+                                onChange={(e) => {
+                                    setname(e.target.value)
+                                }}
+                            />
+                        
+                            <input
+                                type="text"
+                                id="exampleInput"
+                                name="exampleInput"
+                                placeholder="Enter your phone number"
+                                className="input2"
+                                value={phone}
+                                onChange={(e) => {
+                                    setphone(e.target.value)
+                                }}
+                            />
+                           <input
+                                type="text"
+                                id="exampleInput"
+                                name="exampleInput"
+                                placeholder="Enter your email"
+                                className="input2"
+                                value={email}
+                                onChange={(e) => {
+                                    setemail(e.target.value)
+                                }}
+                            />
+                            <input
+                                type="text"
+                                id="exampleInput"
+                                name="exampleInput"
+                                placeholder="Enter your gender"
+                                className="input2"
+                                value={gender}
+                                onChange={(e) => {
+                                    setgender(e.target.value)
+                                }}
+                            />
+                            <input
+                                type="text"
+                                id="exampleInput"
+                                name="exampleInput"
+                                placeholder="Enter your current year"
+                                className="input2"
+                                value={year}
+                                onChange={(e) => {
+                                    setyear(e.target.value)
+                                }}
+                            />
+                            <input
+                                type="text"
+                                id="exampleInput"
+                                name="exampleInput"
+                                placeholder="Enter your college name"
+                                className="input2"
+                                value={coll}
+                                onChange={(e) => {
+                                    setcoll(e.target.value)
+                                }}
+                            />
+                        </div>
+                        {/* Add more content or form fields as needed */}
+                        <button onClick={() => {
+                            const body = {
+                                // propertyId: data._id,
+                                name: name,
+                                contact: phone,
+                                email: email,
+                                gender: gender,
+                                currentYear: year,
+                                collegeName: coll
+                            }
+                              // axios.post("https://pgbackend.adityachoudhury.com/api/property/interested", body , config)
+                                .then((res) => {
+                                  if (res.status === 201) {
+                                   alert("done")
+                                    // toast("DONE")
+                                    // navigate("/")
+                                  }
+                                  else
+                                    alert("error")
+                                }).catch((err) => {
+                                //   toast("already exist")
+                                alert("exist")
+                                })
+                           
+                          
+                        }} className="Apply2" style={{marginRight:"2rem" , height:"2rem" , background:"#3bf594"}}>Submit</button>
+                        <button 
+                        onClick={closeModal} 
+                        className="Apply2" style={{marginTop:"20px",marginBottom:"-25px" , background:"red" , height:"2rem"}}>Close</button>
+                    </div>
+                </div>
+            )}
     </>
   )
 }
 
 export default Main_Page;
+
+
+
+
+
+
+
