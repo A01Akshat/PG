@@ -188,24 +188,7 @@ const More_Info = () => {
                           
                         }} className="Apply2" style={{marginRight:"2rem" , height:"2rem" , background:"#3bf594"}}>Submit</button>
                         <button 
-                        // onClick={closeModal} 
-                        onClick={() => {
-                            axios.get("https://pgbackend.adityachoudhury.com/api/property/get/interested/658cee91815b6541149be9bf" , config)
-                            .then((res) => {
-                              if (res.status === 200) {
-                               alert("done")
-                               console.log(res)
-                                // toast("DONE")
-                                // navigate("/")
-                              }
-                              else
-                                alert("error")
-                            }).catch((err) => {
-                            //   toast("already exist")
-                            alert("exist")
-                            })
-
-                        }}
+                        onClick={closeModal} 
                         className="Apply2" style={{marginTop:"20px",marginBottom:"-25px" , background:"red" , height:"2rem"}}>Close</button>
                     </div>
                 </div>

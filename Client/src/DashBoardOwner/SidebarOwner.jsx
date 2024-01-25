@@ -9,12 +9,17 @@ const SidebarOwner = () => {
     <div>
       <div className="SidebarOwner" style={{marginTop:"-1.3rem"}}>
         <div className="sidebar-dashboard-list">
+        <div className="each-sidebar-list">
+            <p onClick={() => {
+                navigate('/')
+            }}>FEED</p>
+          </div>
           <div className="each-sidebar-list">
             <p onClick={() => {
                 navigate('/Post_page')
             }}>POST</p>
           </div>
-          <div className="each-sidebar-list">
+          {/* <div className="each-sidebar-list">
             <p onClick={() => {
                 navigate('/dasboardOwner');
             }}></p>
@@ -28,7 +33,7 @@ const SidebarOwner = () => {
             <p onClick={() => {
                 navigate('/dasboardOwner');
             }}>STATUS</p>
-          </div>
+          </div> */}
           <div className="each-sidebar-list">
             <p
               onClick={() => {
