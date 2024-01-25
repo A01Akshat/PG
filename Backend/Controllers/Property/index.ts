@@ -4,6 +4,7 @@ import College from "../../Models/College";
 import { Request, Response, NextFunction } from "express";
 import Favourites from "../../Models/Favourites";
 import mongoose from "mongoose";
+import InterestedProperty from "../../Models/InterestedProperty";
 interface customRequest extends Request {
 	user_id: string;
 	_id: string;
@@ -14,13 +15,14 @@ interface customRequest extends Request {
 	verified: Boolean;
 }
 
-const addProperty = async (req: Request, res: Response, next: NextFunction) => {
+const addProperty = async (req: customRequest, res: Response, next: NextFunction) => {
 	try {
 		const propertyRequest =
 			await propertyValidator.propertyJoiSchema.validateAsync(req.body);
 
 		const property = new Property({
 			...propertyRequest,
+			owner: req._id
 		});
 
 		await property.save();
@@ -214,6 +216,67 @@ const propertySearch = async (req: Request, res: Response, next: NextFunction) =
 	}
 };
 
+const interestedGet = async (req: customRequest, res: Response, next: NextFunction) => {
+	try {
+		const { id } = req.params;
+		let properties
+		if (id) {
+			properties = await Property.find({ owner: req._id, _id: id }).select("_id");
+		} else {
+			properties = await Property.find({ owner: req._id }).select("_id");
+		}
+		const interested = await InterestedProperty.find({ propertyId: { $in: properties } }).populate("propertyId", "name address");
+		res.json(interested);
+	} catch (error) {
+		return res.status(500).json({
+			reason: "server",
+			message: "Internal Server Error",
+			success: false,
+		});
+	}
+};
+
+const interestedPut = async (req: Request, res: Response, next: NextFunction) => {
+	try {
+		const interestedData = await propertyValidator.interestedPropertySchema.validateAsync(req.body);
+		const interested = new InterestedProperty({
+			...interestedData,
+		});
+		await interested.save();
+		return res.status(201).json();
+
+	} catch (e: any) {
+		let errorMsg = "Internal Server Error";
+		if (e.isJoi === true) {
+			e.status = 403;
+			errorMsg = e.message;
+		}
+		return res.status(e.status || 500).json({
+			reason: "server",
+			message: errorMsg,
+			success: false,
+		});
+	}
+};
+
+const updateDb = async (req: Request, res: Response, next: NextFunction) => {
+	try {
+		// You can set the owner field to a specific value or use any logic to determine its value
+		const ownerValue = '654b53c2db93916cf4aaafb7';
+
+		// Update all documents that don't have the owner field
+		const result = await Property.updateMany(
+			{ owner: { $exists: false } },
+			{ $set: { owner: ownerValue } }
+		);
+
+		res.json({ success: true, message: `${result} records updated successfully.` });
+	} catch (error) {
+		console.error('Error updating records:', error);
+		res.status(500).json({ success: false, message: 'Internal server error' });
+	}
+}
+
 
 
 
@@ -225,7 +288,10 @@ const controllers = {
 	addFavourite,
 	getFavourite,
 	getDashboardProperty,
-	propertySearch
+	propertySearch,
+	interestedPut,
+	interestedGet,
+	updateDb
 };
 
 export default controllers;

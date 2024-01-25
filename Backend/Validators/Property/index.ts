@@ -24,6 +24,17 @@ const propertyJoiSchema = Joi.object({
 	nearbyCollegesDistances: Joi.array().items(Joi.number()).required(),
 });
 
+const interestedPropertySchema = Joi.object({
+	name: Joi.string().required(),
+	contact: Joi.string().required(),
+	email: Joi.string().required(),
+	gender: Joi.string().required(),
+	currentYear: Joi.string().required(),
+	collegeName: Joi.string().required(),
+	propertyId: Joi.string().required()
+});
+
 export default {
 	propertyJoiSchema,
+	interestedPropertySchema
 };
