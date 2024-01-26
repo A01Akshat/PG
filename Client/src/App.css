@@ -160,7 +160,8 @@ input {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border: 2px solid black;
+  border: 3px solid;
+  border-image: linear-gradient(45deg,red,blue) 10;
   border-radius: 5px;
   width: 70vw;
   height: 3rem;
