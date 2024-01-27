@@ -192,7 +192,7 @@ const propertySearch = async (req: Request, res: Response, next: NextFunction) =
 
 		// Pagination parameters
 		const page = parseInt(req.query.page as string, 10) || 1;
-		const pageSize = parseInt(req.query.pageSize as string, 10) || 10;
+		const pageSize = parseInt(req.query.pageSize as string, 10) || 100;
 
 		// Create separate queries for results and count
 		const queryResults = Property.find(filters).populate("nerbyColleges").skip((page - 1) * pageSize).limit(pageSize);
