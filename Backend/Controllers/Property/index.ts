@@ -277,8 +277,15 @@ const updateDb = async (req: Request, res: Response, next: NextFunction) => {
 	}
 }
 
-
-
+const getUserProperties = async (req: customRequest, res: Response, next: NextFunction) => {
+	const owner = req._id;
+	try {
+		const properties = await Property.find({ owner: owner });
+		return res.status(200).json(properties);
+	} catch (err) {
+		return res.status(500).json({ message: "Internal Server Error!!" });
+	}
+}
 
 
 const controllers = {
@@ -291,7 +298,8 @@ const controllers = {
 	propertySearch,
 	interestedPut,
 	interestedGet,
-	updateDb
+	updateDb,
+	getUserProperties
 };
 
 export default controllers;

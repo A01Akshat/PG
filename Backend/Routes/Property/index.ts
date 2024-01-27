@@ -16,6 +16,7 @@ router.post(
 
 router.get("/get/search", Property.propertySearch);
 router.get("/get/interested/:id?", Auth.verifytoken as any, Property.interestedGet as any);
+router.get("/get/userProperties", Auth.verifytoken as any, Property.getUserProperties as any);
 
 router.put("/update/db", Property.updateDb);
 export default router;
