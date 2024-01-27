@@ -6,7 +6,8 @@ import '../App.css'
 import AOS from 'aos';
 import axios from 'axios';
 // import { Toast } from 'react-toastify/dist/components';
-import Navbar from "../Navbar/Navbar"
+import Navbar from "../Navbar/Navbar";
+import SidebarOwner from '../DashBoardOwner/SidebarOwner';
 const names = [
   'PG', 'Home', 'Rooms'
 ]
@@ -68,7 +69,7 @@ const Main_Page = () => {
 
         <div style={{ display: "flex", flexDirection: "row", marginTop: "6rem" }}>
           <div className="w-1/5">
-            <Filters />
+            <SidebarOwner/>
           </div>
 
           <div className="w-4/5" data-aos={"fade-left"} >

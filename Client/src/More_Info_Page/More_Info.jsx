@@ -8,10 +8,25 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 import Navbar from "../Navbar/Navbar";
 
+const accessToken = localStorage.getItem('token');
+
+const config = {
+  headers: {
+    Authorization: `Bearer ${accessToken}`,
+  },
+};
+
+
 const More_Info = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const [data, setData] = useState({});
+    const [name , setname] = useState("");
+    const [phone , setphone] = useState("");
+    const [email , setemail] = useState("");
+    const [gender , setgender] = useState("");
+    const [year , setyear] = useState("");
+    const [coll , setcoll] = useState("");
     const location = useLocation();
     const s = location.state?.name;
 
@@ -83,6 +98,10 @@ const More_Info = () => {
                                 name="exampleInput"
                                 placeholder="Enter your name"
                                 className="input2"
+                                value={name}
+                                onChange={(e) => {
+                                    setname(e.target.value)
+                                }}
                             />
                         
                             <input
@@ -91,6 +110,10 @@ const More_Info = () => {
                                 name="exampleInput"
                                 placeholder="Enter your phone number"
                                 className="input2"
+                                value={phone}
+                                onChange={(e) => {
+                                    setphone(e.target.value)
+                                }}
                             />
                            <input
                                 type="text"
@@ -98,6 +121,10 @@ const More_Info = () => {
                                 name="exampleInput"
                                 placeholder="Enter your email"
                                 className="input2"
+                                value={email}
+                                onChange={(e) => {
+                                    setemail(e.target.value)
+                                }}
                             />
                             <input
                                 type="text"
@@ -105,6 +132,10 @@ const More_Info = () => {
                                 name="exampleInput"
                                 placeholder="Enter your gender"
                                 className="input2"
+                                value={gender}
+                                onChange={(e) => {
+                                    setgender(e.target.value)
+                                }}
                             />
                             <input
                                 type="text"
@@ -112,6 +143,10 @@ const More_Info = () => {
                                 name="exampleInput"
                                 placeholder="Enter your current year"
                                 className="input2"
+                                value={year}
+                                onChange={(e) => {
+                                    setyear(e.target.value)
+                                }}
                             />
                             <input
                                 type="text"
@@ -119,11 +154,42 @@ const More_Info = () => {
                                 name="exampleInput"
                                 placeholder="Enter your college name"
                                 className="input2"
+                                value={coll}
+                                onChange={(e) => {
+                                    setcoll(e.target.value)
+                                }}
                             />
                         </div>
                         {/* Add more content or form fields as needed */}
-                        <button className="Apply2" style={{marginRight:"2rem" , height:"2rem" , background:"#3bf594"}}>Submit</button>
-                        <button onClick={closeModal} className="Apply2" style={{marginTop:"20px",marginBottom:"-25px" , background:"red" , height:"2rem"}}>Close</button>
+                        <button onClick={() => {
+                            const body = {
+                                propertyId: data._id,
+                                name: name,
+                                contact: phone,
+                                email: email,
+                                gender: gender,
+                                currentYear: year,
+                                collegeName: coll
+                            }
+                              axios.post("https://pgbackend.adityachoudhury.com/api/property/interested", body , config)
+                                .then((res) => {
+                                  if (res.status === 201) {
+                                   alert("done")
+                                    // toast("DONE")
+                                    // navigate("/")
+                                  }
+                                  else
+                                    alert("error")
+                                }).catch((err) => {
+                                //   toast("already exist")
+                                alert("exist")
+                                })
+                           
+                          
+                        }} className="Apply2" style={{marginRight:"2rem" , height:"2rem" , background:"#3bf594"}}>Submit</button>
+                        <button 
+                        onClick={closeModal} 
+                        className="Apply2" style={{marginTop:"20px",marginBottom:"-25px" , background:"red" , height:"2rem"}}>Close</button>
                     </div>
                 </div>
             )}

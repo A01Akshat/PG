@@ -160,28 +160,31 @@ input {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border: 2px solid black;
+  border: 3px solid;
+  border-image: linear-gradient(45deg,red,blue) 10;
   border-radius: 5px;
   width: 70vw;
   height: 3rem;
   background: #ffffff;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  /* box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; */
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 20px 20px, rgba(0, 0, 0, 0.12) 0px -52px 70px
+
 }
 .btn-ProfleStatusOwner{
-  margin-top: 0.4rem;
-  margin-right: 1rem;
+  margin-top: 0px;
+  margin-right: 0px;
   font-size: 1.2rem;
   /* margin-right: 5rem; */
-  background: rgb(131, 248, 141);
+  background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
   border: none;
-  border-radius: 5px;
-  height: 1.9rem;
+  border-radius: 3px;
+  height: 44px;
   width: 6rem;
 }
 .btn-ProfleStatusOwner:hover{
   cursor:pointer;
   color: white;
-  background: rgb(64, 243, 28);
+  background-image: radial-gradient(100% 100% at 100% 0, #5adbffb8 0, #5468ff91 100%);
   letter-spacing: 0.1rem;
   transition: 0.3s;
 }
@@ -203,3 +206,15 @@ input {
   /* background-image: linear-gradient( 58.2deg,  rgba(40,91,212,0.73) -3%, rgba(171,53,163,0.45) 49.3%, rgba(255,204,112,0.37) 97.7% );; */
   /* background-image: linear-gradient( 99.6deg,  rgba(112,128,152,1) 10.6%, rgba(242,227,234,1) 32.9%, rgba(234,202,213,1) 52.7%, rgba(220,227,239,1) 72.8%, rgba(185,205,227,1) 81.1%, rgba(154,180,212,1) 102.4% ); */
 }
+
+
+
+
+
+
+
+
+
+
+
+
