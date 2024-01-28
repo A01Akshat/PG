@@ -192,7 +192,7 @@ const propertySearch = async (req: Request, res: Response, next: NextFunction) =
 
 		// Pagination parameters
 		const page = parseInt(req.query.page as string, 10) || 1;
-		const pageSize = parseInt(req.query.pageSize as string, 10) || 10;
+		const pageSize = parseInt(req.query.pageSize as string, 10) || 100;
 
 		// Create separate queries for results and count
 		const queryResults = Property.find(filters).populate("nerbyColleges").skip((page - 1) * pageSize).limit(pageSize);
@@ -277,8 +277,15 @@ const updateDb = async (req: Request, res: Response, next: NextFunction) => {
 	}
 }
 
-
-
+const getUserProperties = async (req: customRequest, res: Response, next: NextFunction) => {
+	const owner = req._id;
+	try {
+		const properties = await Property.find({ owner: owner });
+		return res.status(200).json(properties);
+	} catch (err) {
+		return res.status(500).json({ message: "Internal Server Error!!" });
+	}
+}
 
 
 const controllers = {
@@ -291,7 +298,8 @@ const controllers = {
 	propertySearch,
 	interestedPut,
 	interestedGet,
-	updateDb
+	updateDb,
+	getUserProperties
 };
 
 export default controllers;
