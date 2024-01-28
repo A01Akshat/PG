@@ -7,7 +7,7 @@ import axios from 'axios';
 import Navbar from "./Navbar/Navbar";
 import SidebarOwner from './DashBoardOwner/SidebarOwner';
 import { useNavigate } from "react-router";
-import { grey } from '@mui/material/colors';
+// import { grey } from '@mui/material/colors';
 import { toast } from 'react-toastify';
 // import { MultiSelect } from 'primereact/multiselect';
 
@@ -17,6 +17,7 @@ const names = [
   'PG', 'Home', 'Rooms'
 ]
 const Main_Page = () => {
+  
   let yellow = '#ffc800';
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newName, setnewName] = useState("");
@@ -144,7 +145,7 @@ const config = {
                 })
 
                 }}>
-                  <p>Show Your Listed Property</p>
+                  <p onClick={()=>{navigate('/prev')}}>Show Your Listed Property</p>
                 </div>
                 <div>
                   <button className='btn-ProfleStatusOwner'></button>
