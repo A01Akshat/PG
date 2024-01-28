@@ -16,7 +16,7 @@ const Main_Page = () => {
 
   const [newName, setnewName] = useState("");
   const [search, setsearch] = useState("");
-  const [check,setCheck] = useState("Hi");
+  const [check,setCheck] = useState("");
   useEffect(() => {
     AOS.init({
       duration: 2000

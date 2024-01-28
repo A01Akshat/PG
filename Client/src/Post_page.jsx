@@ -7,7 +7,9 @@ import axios from 'axios';
 import Navbar from "./Navbar/Navbar";
 import SidebarOwner from './DashBoardOwner/SidebarOwner';
 import { useNavigate } from "react-router";
-import { MultiSelect } from 'primereact/multiselect';
+import { grey } from '@mui/material/colors';
+import { toast } from 'react-toastify';
+// import { MultiSelect } from 'primereact/multiselect';
 
 
 
@@ -23,11 +25,24 @@ const Main_Page = () => {
   const [name, setname] = useState("");
   const [phone, setphone] = useState("");
   const [email, setemail] = useState("");
+  const [address , setaddress] = useState("");
   const [gender, setgender] = useState("");
-  const [year, setyear] = useState("");
+  const [rent, setrent] = useState("");
+  const [rooms, setrooms] = useState("");
   const [coll, setcoll] = useState("");
   const [bgColor, setBgColor] = useState(yellow);
   const navigate = useNavigate();
+
+  const accessToken = localStorage.getItem('token');
+
+const config = {
+  headers: {
+    Authorization: `Bearer ${accessToken}`,
+  },
+};
+
+
+
   useEffect(() => {
     AOS.init({
       duration: 2000
@@ -70,6 +85,15 @@ const Main_Page = () => {
   const closeModal = () => {
     setIsModalOpen(false);
   };
+  const [wifi, setwifi] = useState(false);
+  const [ac, setac] = useState(false);
+  const [parking, setparking] = useState(false);
+  const [laundry, setlaundry] = useState(false);
+  const [mess, setmess] = useState(false);
+  const [geyser, setgeyser] = useState(false);
+  const [furnished, setfurnished] = useState(false);
+  const [nonfurnished, setnonfurnished] = useState(false);
+  const [semifurnished, setsemifurnished] = useState(false);
 
   return (
     <>
@@ -102,7 +126,24 @@ const Main_Page = () => {
                 </div>
               </div>
               <div className="eachStudentApplied" style={{ marginLeft: "3.5rem" }}>
-                <div className='eachStudentApplied-name'>
+                <div className='eachStudentApplied-name' onClick={() => {
+               
+                  axios.get("https://pgbackend.adityachoudhury.com/api/property/get/userProperties", config)
+                .then((res) => {
+                  if (res.status === 200) {
+                    alert("done")
+                    console.log(res)
+                    // toast("DONE")
+                    // navigate("/")
+                  }
+                  else
+                    alert("error")
+                }).catch((err) => {
+                  //   toast("already exist")
+                  alert("exist")
+                })
+
+                }}>
                   <p>Show Your Listed Property</p>
                 </div>
                 <div>
@@ -116,10 +157,11 @@ const Main_Page = () => {
         </div>
       </div>
       {isModalOpen && (
-        <div className="modal">
-          <div className="modal-content">
+        <div className="modal" style={{width:"40rem"}}>
+          <div className="modal-content" >
             <h1 style={{ marginBottom: "10px" }}><u>Share you details:</u></h1>
             <div style={{ display: "flex", flexDirection: "column", gap: "7px" }}>
+            <div style={{display:"flex" , flexDirection:"row" , flexWrap:"wrap",gap:"0.2rem"}}>
               <input
                 type="text"
                 id="exampleInput"
@@ -161,9 +203,9 @@ const Main_Page = () => {
                 name="exampleInput"
                 placeholder="Enter your PG's Address"
                 className="input2"
-                value={name}
+                value={address}
                 onChange={(e) => {
-                  setname(e.target.value)
+                  setaddress(e.target.value)
                 }}
               />
 
@@ -173,9 +215,9 @@ const Main_Page = () => {
                 name="exampleInput"
                 placeholder="Enter your PG's Rent"
                 className="input2"
-                value={year}
+                value={rent}
                 onChange={(e) => {
-                  setyear(e.target.value)
+                  setrent(e.target.value)
                 }}
               />
               <input
@@ -184,9 +226,9 @@ const Main_Page = () => {
                 name="exampleInput"
                 placeholder="Enter number of rooms available"
                 className="input2"
-                value={coll}
+                value={rooms}
                 onChange={(e) => {
-                  setcoll(e.target.value)
+                  setrooms(e.target.value)
                 }}
               />
               <input
@@ -200,50 +242,147 @@ const Main_Page = () => {
                   setcoll(e.target.value)
                 }}
               />
-              <div style={{border:"2px solid grey"}}>
-              <select>
+              <div>
+              <select className='input2' >
+              <option value="" style={{color:"grey"}} disabled selected>Bathroom condition </option>
+                <option value="common">Common</option>
+                <option value="attached">Attached</option>
+                
+              </select>
+              </div>
+              </div>
+              {/* <div style={{border:"2px solid grey"}}>
+              <select >
                 <option value="someOption">Furnished</option>
                 <option value="otherOption">Not Furnished</option>
                 <option value="otherOption">Semi-Furnished</option>
               </select>
+              </div> */}
+
+              <div>
+              <h2 className='input2' style={{color:"grey" , fontSize:"14px" , width:"100%"}}>How the property is Furnished</h2>
+              <div style={{display:"flex",flexDirection:"row",gap:"1rem",flexWrap:"wrap" , marginTop:"0.7rem"}}>
+             {(furnished) ? (<button  className="each-amenities"  style={{background:"rgba(32, 178, 171, 0.411)" , width:"8rem"}} onClick={() => {
+              setfurnished(false)
+             }} >Fully Furnished</button>) :(<button  className="each-amenities" style={{width:"8rem"}}  onClick={() => {
+              setfurnished(true)
+              setsemifurnished(false)
+              setnonfurnished(false)
+             }} >Fully Furnished</button>)}
+            
+            
+            {(semifurnished) ? (<button  className="each-amenities"  style={{background:"rgba(32, 178, 171, 0.411)", width:"8rem"}} onClick={() => {
+              setsemifurnished(false)
+             }} >Semi Furnished</button>) :(<button  className="each-amenities" style={{width:"8rem"}} onClick={() => {
+              setsemifurnished(true)
+              setnonfurnished(false)
+              setfurnished(false)
+             }} >Semi Furnished</button>)}
+
+{(nonfurnished) ? (<button  className="each-amenities"  style={{background:"rgba(32, 178, 171, 0.411)", width:"8rem"}} onClick={() => {
+              setnonfurnished(false)
+             }} >Non Furnished</button>) :(<button  className="each-amenities" style={{width:"8rem"}}  onClick={() => {
+              setnonfurnished(true)
+              setfurnished(false)
+              setsemifurnished(false)
+             }} >Non Furnished</button>)}
+   </div>             
+         
               </div>
-             <div style={{display:"flex",flexDirection:"row",gap:"2rem",flexWrap:"nowrap"}}>
-             <button style={{border:"2px solid  rgba(32, 178, 171, 0.411)"}} >Wifi</button>
-             <button style={{border:"2px solid  rgba(32, 178, 171, 0.411)"}}>Parking</button>
-             <button style={{border:"2px solid  rgba(32, 178, 171, 0.411)"}}>Laundry</button>
-             <button style={{border:"2px solid  rgba(32, 178, 171, 0.411)"}}>AC</button>
-             <button style={{border:"2px solid  rgba(32, 178, 171, 0.411)"}}>Geyser</button>
-             <button style={{border:"2px solid  rgba(32, 178, 171, 0.411)"}}>Mess</button>
+              <div>
+                <h2 className='input2' style={{color:"grey" , fontSize:"14px", width:"100%"}}>Select the Facilities offered</h2>
+             <div style={{display:"flex",flexDirection:"row",gap:"1rem",flexWrap:"wrap" , marginTop:"0.7rem"}}>
+             {(wifi) ? (<button  className="each-amenities" style={{background:"rgba(32, 178, 171, 0.411)"}} onClick={() => {
+              setwifi(false)
+             }} >Wifi</button>) :(<button  className="each-amenities" onClick={() => {
+              setwifi(true)
+             }} >Wifi</button>)}
+            
+            
+            {(ac) ? (<button  className="each-amenities" style={{background:"rgba(32, 178, 171, 0.411)"}} onClick={() => {
+              setac(false)
+             }} >AC</button>) :(<button  className="each-amenities" onClick={() => {
+              setac(true)
+             }} >AC</button>)}
+
+{(parking) ? (<button  className="each-amenities" style={{background:"rgba(32, 178, 171, 0.411)"}} onClick={() => {
+              setparking(false)
+             }} >Parking</button>) :(<button  className="each-amenities" onClick={() => {
+              setparking(true)
+             }} >Parking</button>)}
+
+{(mess) ? (<button  className="each-amenities" style={{background:"rgba(32, 178, 171, 0.411)"}} onClick={() => {
+              setmess(false)
+             }} >Mess</button>) :(<button  className="each-amenities" onClick={() => {
+              setmess(true)
+             }} >Mess</button>)}
+
+{(laundry) ? (<button  className="each-amenities" style={{background:"rgba(32, 178, 171, 0.411)"}} onClick={() => {
+              setlaundry(false)
+             }} >Laundry</button>) :(<button  className="each-amenities" onClick={() => {
+              setlaundry(true)
+             }} >Laundry</button>)}
+
+{(geyser) ? (<button  className="each-amenities" style={{background:"rgba(32, 178, 171, 0.411)"}} onClick={() => {
+              setgeyser(false)
+             }} >Geyser</button>) :(<button  className="each-amenities" onClick={() => {
+              setgeyser(true)
+             }} >Geyser</button>)}
              </div>             
          
-              
+             </div>
              
             </div>
             {/* Add more content or form fields as needed */}
             <button onClick={() => {
+              // if(name === "" || ownerContact === "" || address === "" || rent === "" || rooms === ""){
+              //   toast("Incomplete Data")
+              // }
+              // else{
+              
               const body = {
-                // propertyId: data._id,
                 name: name,
-                contact: phone,
-                email: email,
-                gender: gender,
-                currentYear: year,
-                collegeName: coll
+                description: "Secluded property with stunning hill views",
+                ownerContact: phone,
+                address: address,
+                rent: rent,
+                specialOffers: "Nature trails for residents",
+                photos: [
+                  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...",
+                  "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDA...",
+                  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA..."
+                ],
+                furnished: true,
+                rooms: rooms,
+                bathroom: 1,
+                facilities: {
+                  wifi: wifi,
+                  parking: parking,
+                  laundry: laundry,
+                  ac: ac,
+                  lift: false,
+                  food: mess,
+                  hotWater: geyser
+                },
+                nerbyColleges: ["658cec8e815b6541149be9b0"],
+                nearbyCollegesDistances: [4]
               }
-                // axios.post("https://pgbackend.adityachoudhury.com/api/property/interested", body , config)
+              
+                 axios.post("https://pgbackend.adityachoudhury.com/api/property/add", body , config)
                 .then((res) => {
                   if (res.status === 201) {
-                    alert("done")
+                    alert("post done successfully")
                     // toast("DONE")
                     // navigate("/")
+                    closeModal()
                   }
                   else
                     alert("error")
                 }).catch((err) => {
                   //   toast("already exist")
-                  alert("exist")
+                  toast("Incomplete Data")
                 })
-
+              // }
 
             }} className="Apply2" style={{ marginRight: "2rem", height: "2rem", background: "#3bf594" }}>Submit</button>
             <button

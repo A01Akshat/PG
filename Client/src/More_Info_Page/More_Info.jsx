@@ -72,7 +72,7 @@ const More_Info = () => {
                             {data.facilities && data.facilities.hotWater && <h1 className="Amnety">Geyser</h1>}
                             {data.facilities && data.facilities.laundry && <h1 className="Amnety">Laundry</h1>}
                             {data.facilities && data.facilities.ac && <h1 className="Amnety">AC</h1>}
-                            <h1 className="Amnety">Inverter</h1>
+                            {data.facilities && data.facilities.parking && <h1 className="Amnety">Parking</h1>}
                             {data.facilities && data.facilities.wifi && <h1 className="Amnety">Wi-Fi</h1>}
                         </div>
                     </h1>
