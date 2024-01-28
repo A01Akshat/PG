@@ -167,7 +167,7 @@ const Wrapcard_prev = () => {
               </h1>
               
             </div>
-            <button style={{marginTop:"6.5px",backgroundColor:"cyan",width: "295px",borderRadius: "15px" }}>Interested Students</button>
+            <button style={{marginTop:"6.9px",backgroundColor:"#e7eaf6",width: "292px",borderRadius: "12px",marginLeft:"2.5px",height:"24px" }}>Interested Students</button>
           </div>
         ))}
         
