@@ -88,7 +88,7 @@ const WrapCards = (props) => {
 
     return (
         <div data-aos={"fade-in"} >
-            <div style={{ display: "grid", gridTemplateColumns: "auto auto auto", alignItems: "center", justifyContent: "center" }}>
+            <div className='wrap-all' style={{ display: "grid", gridTemplateColumns: "auto auto auto", alignItems: "center", justifyContent: "center" }}>
 
 
 
@@ -115,7 +115,7 @@ const WrapCards = (props) => {
                                 <h3 >Rooms Available: {item?.rooms}</h3>
                                 <h3>Within: {item?.nearbyCollegesDistances[0]} KM</h3>
                                 <h1 className="more" style={{ marginLeft: "11.9rem", marginTop: "-1.5rem", cursor: "pointer" }} onClick={() => {
-                                    navigate("/More_Info", { state: { name: item._id } });
+                                    navigate("/More_Info", { state: { name: item._id , fromUser: "false" } });
                                 }}>More Info ➡️</h1>
                             </div>
                         </div>
