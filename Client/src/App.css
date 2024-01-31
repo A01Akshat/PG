@@ -90,6 +90,20 @@ input {
   z-index: 1000;
   width: 26rem;
 }
+.modal-post {
+  position: absolute;
+  /* top: 50%;
+  left: 50%; */
+  top: 90%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  /* z-index: 1000; */
+  width: 26rem;
+}
 
 
 .modal-content {
@@ -276,4 +290,33 @@ input {
   height: 40rem;
   overflow-y: scroll;
 
+}
+
+.wrap-post{
+  display: flex;
+  flex-direction: row;
+  
+  margin: auto;
+  margin-top: 0px;
+  
+}
+.prop-box , .prop-box2{
+  cursor: pointer;
+}
+.prop-box p{
+  border: 2px solid #FFA34D;
+  padding: 0.5rem;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  width: 25rem;
+  text-align: center;
+  border-right: none;
+}
+.prop-box2 p{
+  border: 2px solid #FFA34D;
+  padding: 0.5rem;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  width: 25rem;
+  text-align: center;
 }

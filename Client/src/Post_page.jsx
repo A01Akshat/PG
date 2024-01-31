@@ -19,7 +19,7 @@ const names = [
 const Main_Page = () => {
   
   let yellow = '#ffc800';
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(true);
   const [newName, setnewName] = useState("");
   const [search, setsearch] = useState("");
   const [check, setCheck] = useState("Hi");
@@ -115,8 +115,18 @@ const config = {
           <div className="w-1/5">
             <SidebarOwner />
           </div>
+          <div className="wrap-post">
+            {(isModalOpen) ? (<div className="prop-box"  onClick={openModal}>
+            <p style={{background:"#FFA34D"}}>Add your Property</p>
+            </div>) : (<div className="prop-box" onClick={openModal}>
+            <p>Add your Property</p>
+            </div>)}
+            <div className="prop-box2">
+            <p>Get your Property</p>
+            </div>
+          </div>
 
-          <div className="StatusOwner">
+          {/* <div className="StatusOwner">
             <div className="ListOfStudents" style={{ marginTop: "-140px", gap: "4rem" }}>
               <div className="eachStudentApplied" style={{ marginLeft: "3.5rem" }}>
                 <div className='eachStudentApplied-name' style={{ cursor: "pointer" }} onClick={openModal}>
@@ -152,21 +162,22 @@ const config = {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
 
 
         </div>
       </div>
       {isModalOpen && (
-        <div className="modal" style={{width:"40rem"}}>
+        <div className="modal-post" style={{width:"50rem"}}>
           <div className="modal-content" >
-            <h1 style={{ marginBottom: "10px" }}><u>Share you details:</u></h1>
+            <h1 style={{ marginBottom: "10px" }}><u>Share The Propert Details:</u></h1>
             <div style={{ display: "flex", flexDirection: "column", gap: "7px" }}>
             <div style={{display:"flex" , flexDirection:"row" , flexWrap:"wrap",gap:"0.2rem"}}>
               <input
                 type="text"
                 id="exampleInput"
                 name="exampleInput"
+                style={{width:"49.5%"}}
                 placeholder="Enter your PG's name"
                 className="input2"
                 value={name}
@@ -181,6 +192,7 @@ const config = {
                 name="exampleInput"
                 placeholder="Enter your phone number"
                 className="input2"
+                style={{width:"49.5%"}}
                 value={phone}
                 onChange={(e) => {
                   setphone(e.target.value)
@@ -192,6 +204,7 @@ const config = {
                 name="exampleInput"
                 placeholder="Enter your email"
                 className="input2"
+                style={{width:"49.5%"}}
                 value={email}
                 onChange={(e) => {
                   setemail(e.target.value)
@@ -204,6 +217,7 @@ const config = {
                 name="exampleInput"
                 placeholder="Enter your PG's Address"
                 className="input2"
+                style={{width:"49.5%"}}
                 value={address}
                 onChange={(e) => {
                   setaddress(e.target.value)
@@ -216,6 +230,7 @@ const config = {
                 name="exampleInput"
                 placeholder="Enter your PG's Rent"
                 className="input2"
+                style={{width:"49.5%"}}
                 value={rent}
                 onChange={(e) => {
                   setrent(e.target.value)
@@ -227,6 +242,7 @@ const config = {
                 name="exampleInput"
                 placeholder="Enter number of rooms available"
                 className="input2"
+                style={{width:"49.5%"}}
                 value={rooms}
                 onChange={(e) => {
                   setrooms(e.target.value)
@@ -238,16 +254,17 @@ const config = {
                 name="exampleInput"
                 placeholder="Enter the Nearby College"
                 className="input2"
+                style={{width:"49.5%"}}
                 value={coll}
                 onChange={(e) => {
                   setcoll(e.target.value)
                 }}
               />
               <div>
-              <select className='input2' >
-              <option value="" style={{color:"grey"}} disabled selected>Bathroom condition </option>
-                <option value="common">Common</option>
-                <option value="attached">Attached</option>
+              <select className='input2'  >
+              <option value="" style={{color:"grey" , width:"80%"}} disabled selected>Select the Bathroom condition </option>
+                <option style={{width:"49.5%"}} value="common">Common Bathroom</option>
+                <option style={{width:"49.5%"}} value="attached">Attached Bathroom</option>
                 
               </select>
               </div>

@@ -16,6 +16,11 @@ const SidebarOwner = () => {
           </div>
           <div className="each-sidebar-list">
             <p onClick={() => {
+                navigate('/fav')
+            }}>Favourites</p>
+          </div>
+          <div className="each-sidebar-list">
+            <p onClick={() => {
                 navigate('/Post_page')
             }}>POST</p>
           </div>
