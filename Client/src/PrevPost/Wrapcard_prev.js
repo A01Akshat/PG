@@ -147,6 +147,14 @@ const [stContact , setstContact] = useState("");
                     </div>
                 </div>
             )}
+            {/* <div className="wrap-post">
+            <div className="prop-box" onClick={()=>{navigate('/Post_page')}}>
+            <p>Add your Property</p>
+            </div>
+            <div className="prop-box2" onClick={()=>{navigate('/prev')}}>
+            <p>Get your Property</p>
+            </div>
+          </div> */}
     <div data-aos="fade-in">
       <div className='wrap-all'>
         {dataeach.map((item, index) => (

@@ -7,7 +7,7 @@ const SidebarOwner = () => {
   const navigate = useNavigate();
   return (
     <div>
-      <div className="SidebarOwner" style={{marginTop:"-1.3rem"}}>
+      <div className="SidebarOwner" style={{marginTop:"-1.5rem"}}>
         <div className="sidebar-dashboard-list">
         <div className="each-sidebar-list">
             <p onClick={() => {

@@ -20,6 +20,7 @@ const Main_Page = () => {
   
   let yellow = '#ffc800';
   const [isModalOpen, setIsModalOpen] = useState(true);
+  
   const [newName, setnewName] = useState("");
   const [search, setsearch] = useState("");
   const [check, setCheck] = useState("Hi");
@@ -83,6 +84,8 @@ const config = {
     setIsModalOpen(true);
   };
 
+ 
+
   const closeModal = () => {
     setIsModalOpen(false);
   };
@@ -121,7 +124,7 @@ const config = {
             </div>) : (<div className="prop-box" onClick={openModal}>
             <p>Add your Property</p>
             </div>)}
-            <div className="prop-box2">
+            <div className="prop-box2" onClick={()=>{navigate('/prev')}}>
             <p>Get your Property</p>
             </div>
           </div>
@@ -167,7 +170,7 @@ const config = {
 
         </div>
       </div>
-      {isModalOpen && (
+      {(isModalOpen) ? (
         <div className="modal-post" style={{width:"50rem"}}>
           <div className="modal-content" >
             <h1 style={{ marginBottom: "10px" }}><u>Share The Propert Details:</u></h1>
@@ -262,7 +265,7 @@ const config = {
               />
               <div>
               <select className='input2'  >
-              <option value="" style={{color:"grey" , width:"80%"}} disabled selected>Select the Bathroom condition </option>
+              <option value="" style={{color:"grey" , width:"80%" }} disabled selected>Select the Bathroom condition </option>
                 <option style={{width:"49.5%"}} value="common">Common Bathroom</option>
                 <option style={{width:"49.5%"}} value="attached">Attached Bathroom</option>
                 
@@ -402,13 +405,18 @@ const config = {
                 })
               // }
 
-            }} className="Apply2" style={{ marginRight: "2rem", height: "2rem", background: "#3bf594" }}>Submit</button>
-            <button
+            }} className="Apply2" style={{ marginRight: "2rem" , marginTop:"1rem", height: "2rem", background: "#3bf594" }}>Submit</button>
+            {/* <button
               onClick={closeModal}
-              className="Apply2" style={{ marginTop: "20px", marginBottom: "-25px", background: "red", height: "2rem" }}>Close</button>
+              className="Apply2" style={{ marginTop: "20px", marginBottom: "-25px", background: "red", height: "2rem" }}>Close</button> */}
           </div>
         </div>
-      )}
+      ) : ( <div className="modal-post" style={{width:"50rem" , marginTop:"-10rem"}}>
+            <div className="modal-content" >
+              <p>Thank You for adding the Property</p>
+        </div>
+        </div>
+        )}
 
 
     </>

@@ -9,6 +9,7 @@ import axios from 'axios';
 import Navbar from "../Navbar/Navbar";
 import SidebarOwner from '../DashBoardOwner/SidebarOwner';
 import Wrapcard_prev from "./Wrapcard_prev";
+import { useNavigate } from 'react-router';
 const names = [
   'PG', 'Home', 'Rooms'
 ]
@@ -53,6 +54,12 @@ const Main_Page = () => {
     return () => clearInterval(intervalID);
   }, [shuffle])
 
+  const [isModalOpen, setIsModalOpen] = useState(true);
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+const navigate = useNavigate();
 
   return (
     <>
@@ -72,9 +79,20 @@ const Main_Page = () => {
           <div className="w-1/5">
             <SidebarOwner/>
           </div>
-
-          <div className="w-4/5" data-aos={"fade-left"} >
+          <div className="w-4/5" style={{display:"flex" , flexDirection:"column"}}>
+          <div className="wrap-post" style={{ width:"100%"}}>
+           <div className="prop-box" onClick={()=>{navigate('/Post_Page')}}>
+            <p>Add your Property</p>
+            </div>
+            <div className="prop-box2" onClick={()=>{navigate('/prev')}}>
+            <p style={{background:"#FFA34D"}}>Get your Property</p>
+            </div>
+             
+          
+          </div>
+          <div data-aos={"fade-left"} >
             <Wrapcard_prev/>
+          </div>
           </div>
         </div>
       </div>
