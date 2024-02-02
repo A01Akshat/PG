@@ -24,7 +24,8 @@
   } */
   .student
   { 
-    background-color: #FCF5ED;    
+    /* background-color: #FCF5ED;   */
+    background-color: #f4bf96c7;  
     height: 100vh;
     display: flex;
    text-align: center;
@@ -57,7 +58,7 @@
 /* Login.css */
 
 .email_owner {
-  width: 80%;
+  width: 60%;
   padding: 20px 20px;
   margin: 8px 0;
   box-sizing: border-box;
@@ -74,7 +75,7 @@
 .email_owner::placeholder {
   color: #999;
 }
-.create{
+.create:hover{
   color: blue;
   cursor: pointer;
 }
@@ -99,3 +100,12 @@
   transform: translateY(-1px);
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
 }
+/* 
+button:hover{
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px);
+}
+button:active{
+  transform: translateY(-1px);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+} */

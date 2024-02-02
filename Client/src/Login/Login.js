@@ -6,6 +6,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import "./Login.css";
 import { useNavigate } from "react-router";
 import image from "../apartments.png";
+import logo from "./Timelaps.gif";
+
 
 const accessToken = localStorage.getItem("token");
 console.log(accessToken)
@@ -70,7 +72,7 @@ const Login = () => {
 
             <button type="submit" className="log_sub">Submit</button>
             <h1>New User?</h1>
-            <h1 className="create">Create an account</h1>
+            <h1 className="create" onClick={()=>{navigate("/signup")}}>Create an account</h1>
 
           </div>
         </form>
@@ -84,7 +86,7 @@ const Login = () => {
 
     <div className="student w-1/2">
    
-    <img src={image} />
+    <img src={logo} alt="" style={{marginRight:"2rem"}}/>
     <div className="stud_inputfields">
    
   
