@@ -19,4 +19,7 @@ router.get("/get/interested/:id?", Auth.verifytoken as any, Property.interestedG
 router.get("/get/userProperties", Auth.verifytoken as any, Property.getUserProperties as any);
 
 router.put("/update/db", Property.updateDb);
+router.post("/rating/add", Auth.verifytoken as any, Property.addRatings as any);
+router.get("/rating/:propertyId", Auth.verifytoken as any, Property.getUserRating as any);
+
 export default router;

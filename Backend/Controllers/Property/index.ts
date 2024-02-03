@@ -6,6 +6,8 @@ import Favourites from "../../Models/Favourites";
 import mongoose from "mongoose";
 import InterestedProperty from "../../Models/InterestedProperty";
 import { faker } from "@faker-js/faker"
+import Ratings from "../../Models/Ratings";
+import AvgRatings from "../../Models/AvgRatings";
 interface customRequest extends Request {
 	user_id: string;
 	_id: string;
@@ -26,7 +28,14 @@ const addProperty = async (req: customRequest, res: Response, next: NextFunction
 			owner: req._id
 		});
 
+		const rating = new AvgRatings({
+			propertyId: property._id,
+			rating: 0
+		});
+
+		property.rating = rating._id;
 		await property.save();
+		await rating.save();
 		return res.status(201).json();
 	} catch (err: any) {
 		let errMsg = err.message || "Internal Server Error";
@@ -44,7 +53,7 @@ const getProperty = async (req: Request, res: Response, next: NextFunction) => {
 			return res.status(404).json();
 		}
 
-		const property = await Property.findById(id).populate("nerbyColleges");
+		const property = await Property.findById(id).populate("nerbyColleges rating");
 		return res.status(200).json(property);
 	} catch (err: any) {
 		return res
@@ -59,7 +68,7 @@ const getAllProperty = async (
 	next: NextFunction
 ) => {
 	try {
-		const property = await Property.find().populate("nerbyColleges");
+		const property = await Property.find().populate("nerbyColleges rating");
 		return res.status(200).json(property);
 	} catch (err: any) {
 		console.log(err);
@@ -139,7 +148,7 @@ const getDashboardProperty = async (
 		const query = Property.find()
 			.select("name rent rooms nearbyColleges nearbyCollegesDistances")
 			.populate({
-				path: "nerbyColleges",
+				path: "nerbyColleges rating",
 				select: "-_id collegeName"
 			});
 
@@ -277,32 +286,50 @@ const updateDb = async (req: Request, res: Response, next: NextFunction) => {
 	// 	res.status(500).json({ success: false, message: 'Internal server error' });
 	// }
 
+	// try {
+	// 	// Find all properties in the database
+	// 	const properties = await Property.find();
+
+	// 	// Loop through each property
+	// 	for (const property of properties) {
+	// 		// Update the property with the new schema changes and random data
+	// 		enum furnish { "Furnished", "Semi Furnished", "Non Furnished" }
+	// 		enum bathroom { "Attached", "Common" }
+	// 		enum facilities { true, false }
+	// 		property.furnished = furnish[faker.helpers.enumValue(furnish)] as any;
+	// 		property.bathroom = bathroom[faker.helpers.enumValue(bathroom)] as any;
+	// 		if (property.facilities) {
+	// 			property.facilities.powerBackup = facilities[faker.helpers.enumValue(facilities)] as any;
+	// 		}
+
+
+	// 		// Save the updated property
+	// 		await property.save();
+	// 	}
+
+	// 	console.log("Properties updated successfully");
+	// 	return res.json();
+	// } catch (error) {
+	// 	console.error("Error updating properties:", error);
+	// 	return res.status(500).json("Internal Server Error");
+	// }
+
+
 	try {
-		// Find all properties in the database
 		const properties = await Property.find();
-
-		// Loop through each property
 		for (const property of properties) {
-			// Update the property with the new schema changes and random data
-			enum furnish { "Furnished", "Semi Furnished", "Non Furnished" }
-			enum bathroom { "Attached", "Common" }
-			enum facilities { true, false }
-			property.furnished = furnish[faker.helpers.enumValue(furnish)] as any;
-			property.bathroom = bathroom[faker.helpers.enumValue(bathroom)] as any;
-			if (property.facilities) {
-				property.facilities.powerBackup = facilities[faker.helpers.enumValue(facilities)] as any;
-			}
+			const rating = new AvgRatings({
+				propertyId: property._id,
+				rating: 0
+			});
 
-
-			// Save the updated property
+			await rating.save();
+			property.rating = rating._id;
 			await property.save();
 		}
-
-		console.log("Properties updated successfully");
-		return res.json();
-	} catch (error) {
-		console.error("Error updating properties:", error);
-		return res.status(500).json("Internal Server Error");
+		return res.status(200).json();
+	} catch (err) {
+		return res.status(500).json();
 	}
 
 }
@@ -310,10 +337,70 @@ const updateDb = async (req: Request, res: Response, next: NextFunction) => {
 const getUserProperties = async (req: customRequest, res: Response, next: NextFunction) => {
 	const owner = req._id;
 	try {
-		const properties = await Property.find({ owner: owner }).populate("nerbyColleges");
+		const properties = await Property.find({ owner: owner }).populate("nerbyColleges rating");
 		return res.status(200).json(properties);
 	} catch (err) {
 		return res.status(500).json({ message: "Internal Server Error!!" });
+	}
+}
+
+const addRatings = async (req: customRequest, res: Response, next: NextFunction) => {
+	try {
+		const { propertyId, rating } = req.body;
+		const { _id } = req;
+		if (!propertyId) {
+			return res.status(404).json({ message: "No Property Id found", success: false });
+		}
+		const isExisting = await Ratings.findOne({ propertyId: propertyId, userid: _id });
+		if (isExisting) {
+			isExisting.rating = rating;
+			await isExisting.save();
+		} else {
+			const ratings = new Ratings({
+				userid: _id,
+				propertyId: propertyId,
+				rating: rating
+			});
+			await ratings.save();
+		}
+
+		const allRatings: any = await Ratings.find({ propertyId: propertyId });
+		let sum = 0, count = 0;
+		for (let i = 0; i < allRatings.length; i++) {
+			sum += allRatings[i].rating;
+			count++;
+		}
+
+		const avg = sum / count;
+		const avgRating = await AvgRatings.findOne({ propertyId: propertyId });
+		if (avgRating) {
+			avgRating.rating = avg;
+			await avgRating.save();
+		}
+
+		return res.status(200).json();
+	} catch (err) {
+		console.log(err);
+		return res.status(500).json({
+			message: "Internal server Error",
+			reason: "Server/Database",
+			problem: err
+		});
+	}
+}
+
+const getUserRating = async (req: customRequest, res: Response, next: NextFunction) => {
+	try {
+		const { propertyId } = req.params;
+		const { _id } = req;
+		const rating = await Ratings.findOne({ propertyId: propertyId, userid: _id });
+		if (rating) {
+			return res.status(200).json(rating);
+		} else {
+			return res.status(404).json();
+		}
+	} catch (err) {
+
 	}
 }
 
@@ -329,7 +416,9 @@ const controllers = {
 	interestedPut,
 	interestedGet,
 	updateDb,
-	getUserProperties
+	getUserProperties,
+	addRatings,
+	getUserRating
 };
 
 export default controllers;

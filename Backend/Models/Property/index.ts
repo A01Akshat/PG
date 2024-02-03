@@ -87,6 +87,11 @@ const propertySchema = new mongoose.Schema(
 			required: true,
 			ref: "Users",
 		},
+		rating: {
+			type: mongoose.Schema.Types.ObjectId,
+			required: true,
+			ref: "AvgRatings",
+		}
 	},
 	{ timestamps: true }
 );
