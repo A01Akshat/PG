@@ -30,15 +30,17 @@ const propertySchema = new mongoose.Schema(
 			required: true,
 		},
 		furnished: {
-			type: Boolean,
-			default: false,
+			type: String, // Changed to string to accommodate options
+			enum: ["Furnished", "Semi Furnished", "Non Furnished"], // Enum for options
+			default: "Non Furnished", // Default value
 		},
 		rooms: {
 			type: Number,
 			required: true,
 		},
 		bathroom: {
-			type: Number,
+			type: String, // Changed to string to accommodate options
+			enum: ["Attached", "Common"], // Enum for options
 			required: true,
 		},
 		facilities: {
@@ -58,15 +60,15 @@ const propertySchema = new mongoose.Schema(
 				type: Boolean,
 				default: false,
 			},
-			lift: {
-				type: Boolean,
-				default: false,
-			},
 			food: {
 				type: Boolean,
 				default: false,
 			},
 			hotWater: {
+				type: Boolean,
+				default: false,
+			},
+			powerBackup: { // Added powerBackup
 				type: Boolean,
 				default: false,
 			},

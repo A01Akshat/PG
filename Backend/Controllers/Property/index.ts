@@ -5,6 +5,7 @@ import { Request, Response, NextFunction } from "express";
 import Favourites from "../../Models/Favourites";
 import mongoose from "mongoose";
 import InterestedProperty from "../../Models/InterestedProperty";
+import { faker } from "@faker-js/faker"
 interface customRequest extends Request {
 	user_id: string;
 	_id: string;
@@ -260,21 +261,50 @@ const interestedPut = async (req: Request, res: Response, next: NextFunction) =>
 };
 
 const updateDb = async (req: Request, res: Response, next: NextFunction) => {
+	// try {
+	// 	// You can set the owner field to a specific value or use any logic to determine its value
+	// 	const ownerValue = '654b53c2db93916cf4aaafb7';
+
+	// 	// Update all documents that don't have the owner field
+	// 	const result = await Property.updateMany(
+	// 		{ owner: { $exists: false } },
+	// 		{ $set: { owner: ownerValue } }
+	// 	);
+
+	// 	res.json({ success: true, message: `${result} records updated successfully.` });
+	// } catch (error) {
+	// 	console.error('Error updating records:', error);
+	// 	res.status(500).json({ success: false, message: 'Internal server error' });
+	// }
+
 	try {
-		// You can set the owner field to a specific value or use any logic to determine its value
-		const ownerValue = '654b53c2db93916cf4aaafb7';
+		// Find all properties in the database
+		const properties = await Property.find();
 
-		// Update all documents that don't have the owner field
-		const result = await Property.updateMany(
-			{ owner: { $exists: false } },
-			{ $set: { owner: ownerValue } }
-		);
+		// Loop through each property
+		for (const property of properties) {
+			// Update the property with the new schema changes and random data
+			enum furnish { "Furnished", "Semi Furnished", "Non Furnished" }
+			enum bathroom { "Attached", "Common" }
+			enum facilities { true, false }
+			property.furnished = furnish[faker.helpers.enumValue(furnish)] as any;
+			property.bathroom = bathroom[faker.helpers.enumValue(bathroom)] as any;
+			if (property.facilities) {
+				property.facilities.powerBackup = facilities[faker.helpers.enumValue(facilities)] as any;
+			}
 
-		res.json({ success: true, message: `${result} records updated successfully.` });
+
+			// Save the updated property
+			await property.save();
+		}
+
+		console.log("Properties updated successfully");
+		return res.json();
 	} catch (error) {
-		console.error('Error updating records:', error);
-		res.status(500).json({ success: false, message: 'Internal server error' });
+		console.error("Error updating properties:", error);
+		return res.status(500).json("Internal Server Error");
 	}
+
 }
 
 const getUserProperties = async (req: customRequest, res: Response, next: NextFunction) => {
