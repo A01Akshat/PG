@@ -177,7 +177,7 @@ const propertySearch = async (req: Request, res: Response, next: NextFunction) =
 		}
 
 		if (typeof req.query.furnished === 'string') {
-			filters['furnished'] = req.query.furnished.toLowerCase() === 'true';
+			filters['furnished'] = req.query.furnished;
 		}
 
 		if (typeof req.query.nearbyCollege === 'string') {
