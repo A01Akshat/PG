@@ -1,0 +1,45 @@
+
+.head
+{
+    text-align: center;
+    font-size: xx-large;
+}
+.overall{
+    display: flex;
+    flex-direction:row;
+}
+
+
+.inp_txt{
+    border: 2px solid black;
+    width: 80%;
+    padding: 15px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+
+    border-radius: 4px;
+    outline: none;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  .sub{
+    
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .sub:hover{
+    background-color: #0056b3;
+    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-3px);
+  }
+  
+  .sub:active{
+    transform: translateY(-1px);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  }

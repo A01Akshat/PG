@@ -25,23 +25,24 @@ const WrapCards = (props) => {
     const [fill, setfill] = useState(true);
     const [dataeach, setDataeach] = useState([]);
     const [favorites, setFavorites] = useState({});
-    useEffect(() => {
-        setsearch(props.check)
-        console.log(search)
-    },[props.check])
+    
+    // useEffect(() => {
+    //     setsearch(props.check)
+    //     console.log(search)
+    // },[search])
     
     const navigate = useNavigate();
-    if(search === "Hi")
+    if(props.check === "")
     var url = `https://pgbackend.adityachoudhury.com/api/property/get/search`
     else
-    var url = `https://pgbackend.adityachoudhury.com/api/property/get/search?nearbyCollege=KIIT`
+    var url = `https://pgbackend.adityachoudhury.com/api/property/get/search?nearbyCollege=${props.check}`
      
 
     //const url = `https://pgbackend.adityachoudhury.com/api/property/get/dashboard`;
     
     useEffect(() => {
         // console.log(props.check)
-        
+        console.log("fghjkl")
         axios.get(url, config)
             .then((res) => {
                 if (res.status === 200) {
@@ -55,9 +56,9 @@ const WrapCards = (props) => {
                 else
                     console.log("error")
             }).catch((err) => {
-                toast("already exist")
+                toast("No Result found")
             })
-    }, []);
+    }, [props.check]);
 
 
     const togglefav = (itemId) => {
@@ -87,7 +88,7 @@ const WrapCards = (props) => {
 
     return (
         <div data-aos={"fade-in"} >
-            <div style={{ display: "grid", gridTemplateColumns: "auto auto auto", alignItems: "center", justifyContent: "center" }}>
+            <div className='wrap-all' style={{ display: "grid", gridTemplateColumns: "auto auto auto", alignItems: "center", justifyContent: "center" }}>
 
 
 
@@ -114,7 +115,7 @@ const WrapCards = (props) => {
                                 <h3 >Rooms Available: {item?.rooms}</h3>
                                 <h3>Within: {item?.nearbyCollegesDistances[0]} KM</h3>
                                 <h1 className="more" style={{ marginLeft: "11.9rem", marginTop: "-1.5rem", cursor: "pointer" }} onClick={() => {
-                                    navigate("/More_Info", { state: { name: item._id } });
+                                    navigate("/More_Info", { state: { name: item._id , fromUser: "false" } });
                                 }}>More Info ➡️</h1>
                             </div>
                         </div>

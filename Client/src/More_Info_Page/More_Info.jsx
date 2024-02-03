@@ -29,6 +29,7 @@ const More_Info = () => {
     const [coll , setcoll] = useState("");
     const location = useLocation();
     const s = location.state?.name;
+    const book = location.state?.fromUser;
 
     useEffect(() => {
         const fetchData = async () => {
@@ -61,7 +62,7 @@ const More_Info = () => {
             <div className={`hero-div w-[100%] h-[100vh] ${isModalOpen ? 'blur' : ''}`}>
                 <img src={line} className="line-img" alt="line"></img>
                 <div className="info_div  text-lg">
-                    <h1 style={{ marginTop: "-5rem" }}>PG's Name: <span className="text-lg" style={{ marginLeft: "3.6rem", fontWeight: "600" }}>{data.name} <button className="Apply2" style={{ marginLeft: "29rem" , height:"2rem" }} onClick={openModal}>Book Now</button></span></h1>
+                    <h1 style={{ marginTop: "-5rem" }}>PG's Name: <span className="text-lg" style={{ marginLeft: "3.6rem", fontWeight: "600" }}>{data.name} {(book === "false") ? (<button className="Apply2" style={{ marginLeft: "29rem" , height:"2rem" }} onClick={openModal}>Book Now</button>) : (<></>)}</span></h1>
                     <h1 style={{ marginTop: "3rem" }}>Contact: <span className="text-lg" style={{ marginLeft: "5.3rem", fontWeight: "600" }}>{data.ownerContact}</span></h1>
                     <h1 style={{ marginTop: "3rem" }}>Address:<span className="text-lg" style={{ marginLeft: "5.5rem", fontWeight: "600" }}>{data.address}</span></h1>
                     <h1 style={{ marginTop: "3rem" }}>Nearest College: <span className="text-lg Amnety2" style={{ marginLeft: "21px", fontWeight: "600" }}>{data?.nerbyColleges?.[0]?.collegeName}</span></h1>
@@ -72,7 +73,7 @@ const More_Info = () => {
                             {data.facilities && data.facilities.hotWater && <h1 className="Amnety">Geyser</h1>}
                             {data.facilities && data.facilities.laundry && <h1 className="Amnety">Laundry</h1>}
                             {data.facilities && data.facilities.ac && <h1 className="Amnety">AC</h1>}
-                            <h1 className="Amnety">Inverter</h1>
+                            {data.facilities && data.facilities.parking && <h1 className="Amnety">Parking</h1>}
                             {data.facilities && data.facilities.wifi && <h1 className="Amnety">Wi-Fi</h1>}
                         </div>
                     </h1>

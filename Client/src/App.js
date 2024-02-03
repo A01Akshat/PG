@@ -11,7 +11,11 @@ import { Route } from 'react-router-dom';
 import Favourite from './Favourites/Favourite';
 import FavouritePage from './Favourites/FavouritePage';
 import Main_PageOwner from './DashBoardOwner/Main_PageOwner';
-import Post_page from "../src/Post_page"
+import Post_page from "../src/Post_page";
+import Prevpost from "./PrevPost/Prev";
+import Signup from './Signup/Signup';
+
+
 const App = () => {
   return (
     <div className="flex">
@@ -31,7 +35,10 @@ const App = () => {
     <Route path='/more_info' element={<More_Info/>} />
     <Route path='/dasboardOwner' element={<Main_PageOwner/>} />
     <Route path='/Post_page' element={<Post_page/>} />
+    <Route path='/prev' element={<Prevpost/>} />
+    <Route path='/signup' element={<Signup/>} />
 
+    
     </Routes>
     </Router>
       

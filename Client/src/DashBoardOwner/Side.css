@@ -1,0 +1,24 @@
+.sidebar {
+    width: 200px;
+    height: 100%;
+    background-color: #333;
+    color: #fff;
+    padding-top: 20px;
+  }
+  
+  .sidebar-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .sidebar-icon {
+    font-size: 1.5em;
+    margin-right: 10px;
+  }
+  
+  .sidebar-text {
+    font-size: 1.1em;
+  }
+  

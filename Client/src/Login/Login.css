@@ -12,7 +12,7 @@
 {
     color: #f4bf9600;
 }
-.email_owner
+/* .email_owner
 {
     padding: 10px;
     border-radius: 1rem;
@@ -21,10 +21,11 @@
     font-size: 13px;
     
     opacity: 1; 
-  }
+  } */
   .student
   { 
-    background-color: #FCF5ED;    
+    /* background-color: #FCF5ED;   */
+    background-color: #f4bf96c7;  
     height: 100vh;
     display: flex;
    text-align: center;
@@ -49,3 +50,62 @@
     flex-direction: column;
     gap: 15px;
   }
+
+  .png_apart{
+    margin-left: 2rem;
+
+  }
+/* Login.css */
+
+.email_owner {
+  width: 60%;
+  padding: 20px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.email_owner:focus {
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.email_owner::placeholder {
+  color: #999;
+}
+.create:hover{
+  color: blue;
+  cursor: pointer;
+}
+.log_sub{
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007BFF;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.log_sub:hover{
+  background-color: #0056b3;
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px);
+}
+
+.log_sub:active{
+  transform: translateY(-1px);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
+/* 
+button:hover{
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px);
+}
+button:active{
+  transform: translateY(-1px);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+} */
