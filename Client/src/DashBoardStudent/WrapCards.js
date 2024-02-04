@@ -95,7 +95,9 @@ const WrapCards = (props) => {
                 {dataeach?.map((item, index) => {
                     
                     return (
-                        <div className='each-card-style' key={item._id}>
+                        <div className='each-card-style' style={{cursor:"pointer"}} onClick={() => {
+                            navigate("/More_Info", { state: { name: item._id , fromUser: "false" } });
+                        }} key={item._id}>
                             {/* IMAGE DIV */}
                             <div style={{ borderRadius: "20px" }}>
                                 <img src={image} style={{ width: "295px", height: "240px", borderRadius: "19px", padding: "5px" }} />
@@ -114,9 +116,9 @@ const WrapCards = (props) => {
                                 <h3 >Nearest College: {item?.nerbyColleges[0]?.collegeName}</h3>
                                 <h3 >Rooms Available: {item?.rooms}</h3>
                                 <h3>Within: {item?.nearbyCollegesDistances[0]} KM</h3>
-                                <h1 className="more" style={{ marginLeft: "11.9rem", marginTop: "-1.5rem", cursor: "pointer" }} onClick={() => {
+                                {/* <h1 className="more" style={{ marginLeft: "11.9rem", marginTop: "-1.5rem", cursor: "pointer" }} onClick={() => {
                                     navigate("/More_Info", { state: { name: item._id , fromUser: "false" } });
-                                }}>More Info ➡️</h1>
+                                }}>More Info ➡️</h1> */}
                             </div>
                         </div>
                     );
