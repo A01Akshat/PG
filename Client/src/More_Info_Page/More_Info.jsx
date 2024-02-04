@@ -12,9 +12,9 @@ import More_Info_basic from './More_Info_basic';
 const accessToken = localStorage.getItem('token');
 
 const config = {
-  headers: {
-    Authorization: `Bearer ${accessToken}`,
-  },
+    headers: {
+        Authorization: `Bearer ${accessToken}`,
+    },
 };
 
 
@@ -101,6 +101,7 @@ const More_Info = () => {
 
             
           </div>
+          <More_Info_basic />
         
 
         </div>
