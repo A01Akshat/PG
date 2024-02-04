@@ -12,9 +12,9 @@ import More_Info_basic from './More_Info_basic';
 const accessToken = localStorage.getItem('token');
 
 const config = {
-  headers: {
-    Authorization: `Bearer ${accessToken}`,
-  },
+    headers: {
+        Authorization: `Bearer ${accessToken}`,
+    },
 };
 
 
@@ -22,12 +22,12 @@ const More_Info = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const [data, setData] = useState({});
-    const [name , setname] = useState("");
-    const [phone , setphone] = useState("");
-    const [email , setemail] = useState("");
-    const [gender , setgender] = useState("");
-    const [year , setyear] = useState("");
-    const [coll , setcoll] = useState("");
+    const [name, setname] = useState("");
+    const [phone, setphone] = useState("");
+    const [email, setemail] = useState("");
+    const [gender, setgender] = useState("");
+    const [year, setyear] = useState("");
+    const [coll, setcoll] = useState("");
     const location = useLocation();
     const s = location.state?.name;
     const book = location.state?.fromUser;
@@ -59,10 +59,10 @@ const More_Info = () => {
     };
     return (
         <>
-        <Navbar/>
-        <More_Info_basic />
-        
-                    </>
+            <Navbar />
+            <More_Info_basic />
+
+        </>
     );
 };
 
