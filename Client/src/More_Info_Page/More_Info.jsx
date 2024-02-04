@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import image from '../Image/1669125652900.jpg';
 import line from '../Image/line.png';
 import '../App.css';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import AOS from 'aos';
 import { toast } from 'react-toastify';
 import axios from 'axios';
@@ -19,7 +19,7 @@ const config = {
 
 
 const More_Info = () => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(true);
 
     const [data, setData] = useState({});
     const [name , setname] = useState("");
@@ -28,6 +28,9 @@ const More_Info = () => {
     const [gender , setgender] = useState("");
     const [year , setyear] = useState("");
     const [coll , setcoll] = useState("");
+    const [basic , setbasic] = useState(true);
+    const [ratings , setratings] = useState(false);
+    const [bookNow , setbookNow] = useState(false);
     const location = useLocation();
     const s = location.state?.name;
     const book = location.state?.fromUser;
@@ -57,10 +60,52 @@ const More_Info = () => {
     const closeModal = () => {
         setIsModalOpen(false);
     };
+    const navigate = useNavigate()
     return (
         <>
+        {/* <Navbar/> */}
+        <div className='hero-div'>
         <Navbar/>
-        <More_Info_basic />
+        <div className="wrap-post"style={{marginTop:"5rem"}} >
+            {(basic) ? (<div className="prop-box-more">
+            <p style={{background:"#FF7C00"}}>Basic Information</p>
+            </div>) : (<div className="prop-box-more" onClick={() => {
+                setbasic(true)
+                setbookNow(false)
+                setratings(false)
+            }}>
+            <p>Basic Information</p>
+            </div>) }
+
+            {(bookNow) ? (<div className="prop-box3-more">
+            <p style={{background:"#FF7C00"}}>Book Now</p>
+            </div>) : (<div className="prop-box3-more" onClick={() => {
+                setbookNow(true)
+                setbasic(false)
+                setratings(false)
+            }}>
+            <p>Book Now</p>
+            </div>) }
+
+
+            {(ratings) ? (<div className="prop-box2-more">
+            <p style={{background:"#FF7C00"}}>Ratings & Reviews</p>
+            </div>) : (<div className="prop-box2-more" onClick={() => {
+                setratings(true)
+                setbookNow(false)
+                setbasic(false)
+            }}>
+            <p>Ratings & Reviews</p>
+            </div>) }
+
+
+            
+          </div>
+        
+
+        </div>
+        
+        
         
                     </>
     );
