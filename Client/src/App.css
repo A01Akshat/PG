@@ -185,7 +185,7 @@ input {
   color: rgba(255,163,77,1);
 }
 
-.sidebar-dashboard-list{
+.sidebar-dashboard-list , .pro-sidebar{
   height: 100vh;
  
  padding: 10px 10px 50px 20px;
@@ -286,7 +286,9 @@ input {
 .wrap-all{
   width: 100%;
   display: flex;
+  flex-direction: row;
   justify-content: center;
+  gap: 1.5rem;
   flex-wrap: wrap;
   height: 40rem;
   overflow-y: scroll;
@@ -320,4 +322,11 @@ input {
   border-bottom-right-radius: 10px;
   width: 25rem;
   text-align: center;
+}
+.each-card-style{
+  height: 350px;
+  width: 300px;
+  border: 2px solid black;
+  border-radius: 19px;
+  margin-top: 0.5rem;
 }

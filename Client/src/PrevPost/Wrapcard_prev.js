@@ -158,10 +158,10 @@ const [stContact , setstContact] = useState("");
     <div data-aos="fade-in">
       <div className='wrap-all'>
         {dataeach.map((item, index) => (
-          <div style={{ height: "286px", width: "300px", border: "2px solid black", margin: "1rem", borderRadius: "19px" }} key={item._id}>
+          <div className='each-card-style' style={{height:"375px"}} key={item._id}>
             {/* IMAGE DIV */}
             <div style={{ borderRadius: "20px" }}>
-              <img src={image} style={{ width: "100%", height: "150px", borderRadius: "19px", padding: "5px" }} alt="property" />
+              <img src={image} style={{ width: "295px", height: "240px", borderRadius: "19px", padding: "5px" }} alt="property" />
             </div>
             {/* INFO DIV */}
             <div style={{ margin: "1px", padding: "7px", fontSize: "14.5px" }}>

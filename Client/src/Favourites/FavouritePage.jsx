@@ -6,6 +6,9 @@ import '../App.css'
 import AOS from 'aos';
 import axios from 'axios';
 import WrapCards from '../DashBoardStudent/WrapCards';
+import Navbar from '../Navbar/Navbar';
+import SidebarOwner from '../DashBoardOwner/SidebarOwner';
+import Wrapcard_prev from '../PrevPost/Wrapcard_prev';
 // import { Toast } from 'react-toastify/dist/components';
 const names = [
   'PG', 'Home', 'Rooms'
@@ -50,8 +53,10 @@ const FavouritePage = () => {
   
   
   return (
-    <div>
-        <div style={{ width: "100%", height: "250px" , paddingTop:"0.1rem"}} className="hero-div">
+    <>
+    <Navbar/>
+      {/* , backgroundColor: "#EEF5FF" */}
+      <div style={{ width: "100%", height: "250px" }} className="hero-div">
         <div style={{ display: "flex", marginTop: "80px", alignItems: "center", flexDirection: "column", gap: "20px" }}>
           <h1 style={{ textAlign: "center" }} className=" text-3xl text-white">Search {newName}</h1>
           <div className="search-bar">
@@ -63,15 +68,17 @@ const FavouritePage = () => {
 
         <div style={{ display: "flex", flexDirection: "row", marginTop: "6rem" }}>
           <div className="w-1/5">
-            <Filters />
+            <SidebarOwner/>
           </div>
-
-          <div className="w-4/5" data-aos={"fade-left"} >
-            <Favourite check={check} />
+          <div className="w-4/5" style={{display:"flex" , flexDirection:"column"}}>
+          
+          <div data-aos={"fade-left"} >
+          <Favourite check={check} />
+          </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import image from '../Image/1669125652900.jpg';
+import "../App.css"
 
 const accessToken = localStorage.getItem('token');
 
@@ -60,35 +61,19 @@ const Favourite = () => {
   return (
     <div data-aos={'fade-in'}>
       <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'auto auto auto',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
+        className='wrap-all'
       >
         {data.map((item, index) => {
         return(
           <div
-            style={{
-              height: '260px',
-              width: '300px',
-              border: '2px solid black',
-              margin: '1rem',
-              borderRadius: '19px',
-            }}
+          className='each-card-style'
             key={item.propertyId._id}
           >
             {/* IMAGE DIV */}
             <div style={{ borderRadius: '20px' }}>
               <img
                 src={image}
-                style={{
-                  width: '100%',
-                  height: '150px',
-                  borderRadius: '19px',
-                  padding: '5px',
-                }}
+                style={{ width: "295px", height: "240px", borderRadius: "19px", padding: "5px" }}
               />
             </div>
 
@@ -117,7 +102,7 @@ const Favourite = () => {
                   cursor: 'pointer',
                 }}
                 onClick={() => {
-                  navigate('/More_Info', { state: { name: item.propertyId._id } });
+                  navigate("/More_Info", { state: { name: item.propertyId._id , fromUser: "false" } });
                 }}
               >
                 More Info ➡️
