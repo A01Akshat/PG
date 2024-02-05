@@ -23,7 +23,7 @@ input {
 .hero-div
 {
   background-image: radial-gradient( circle farthest-corner at -8.9% 51.2%,  rgba(255,124,0,1) 0%, rgba(255,124,0,1) 15.9%, rgba(255,163,77,1) 15.9%, rgba(255,163,77,1) 24.4%, rgba(19,30,37,1) 24.5%, rgba(19,30,37,1) 66% );
-  height: 100vh;
+  height: 112vh;
   width: 100vw;
   /* display: flex;
   flex-direction: column;
@@ -191,7 +191,7 @@ input {
 }
 
 .sidebar-dashboard-list , .pro-sidebar{
-  height: 100vh;
+  height: 104vh;
  
  padding: 10px 10px 50px 20px;
  background-image: linear-gradient( 179.6deg,  rgba(0,19,26,1) -4.9%, rgba(0,77,105,1) 108.4% );
@@ -199,7 +199,7 @@ input {
  /* background-image: linear-gradient( 124.1deg,  rgba(255,148,215,1) 12.3%, rgba(251,223,242,1) 65.2% ); background-image: radial-gradient( circle 993px at 0.5% 50.5%,  rgba(137,171,245,0.37) 0%, rgba(245,247,252,1) 100.2% );} */
 }
 .each-sidebar-list{
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: white;
   margin-top: 3rem;
 }

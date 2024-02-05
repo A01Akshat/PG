@@ -1,60 +1,62 @@
-
-.head
-{
-    text-align: center;
-    font-size: xx-large;
-}
-.overall{
-    display: flex;
-    flex-direction:row;
+.head {
+  text-align: center;
+  font-size: xx-large;
 }
 
+.overall {
+  display: flex;
+  flex-direction: row;
+}
 
-.inp_txt{
-  background: rgb(241, 235, 235);
-    border: none;
-    width: 90%;
-    padding: 15px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    height: 3rem;
-    border-radius: 4px;
-    outline: none;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    /* margin-left: 3rem; */
-    text-align: center;
-    font-weight: 600;
 
-  }
-  .sub{
-    
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007BFF;
-    color: white;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-    margin-left: 7rem;
-    margin-top: 1rem;
-    width: 12rem;
-  }
-  
-  .sub:hover{
-    background-color: #0056b3;
-    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.2);
-    transform: translateY(-3px);
-  }
-  
-  .sub:active{
-    transform: translateY(-1px);
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
-  }
-  .form-signup{
-    border: 2px solid black;
-    padding: 1rem;
-    width: 70%;
-    margin-left: 3rem;
-    padding-left: 2rem;
-  }
+.inp_txt {
+  background: rgba(241, 235, 235, 0.54);
+  border: none;
+  width: 90%;
+  padding: 15px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  height: 3rem;
+  border-radius: 4px;
+  outline: none;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  /* margin-left: 3rem; */
+  text-align: center;
+  font-weight: 600;
+
+}
+
+.sub {
+
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007BFF;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  margin-left: 7rem;
+  margin-top: 1rem;
+  width: 12rem;
+}
+
+.sub:hover {
+  background-color: #0056b3;
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px);
+}
+
+.sub:active {
+  transform: translateY(-1px);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.form-signup {
+  border: 2px solid black;
+  padding: 1rem;
+  width: 70%;
+  margin-left: 3rem;
+  padding-left: 2rem;
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+}

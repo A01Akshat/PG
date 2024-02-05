@@ -3,6 +3,7 @@ import gif from "./Day and Night.gif"
 import "./Signup.css"
 import axios from "axios";
 import { useNavigate } from "react-router";
+import NavLogin from "../Login/NavLogin"
 
 
 const accessToken = localStorage.getItem("token");
@@ -74,7 +75,7 @@ const Signup = () => {
         {/* <h1 className="head">SIGNUP</h1> */}
       
 
-
+        <NavLogin/>
         <div className="overall">
             <div style={{width:"90%"}}>
             <img src={gif} style={{width:"100%" , height:"100%"}}></img>
@@ -90,7 +91,7 @@ const Signup = () => {
                 <input type="text" className="inp_txt" placeholder="Enter Phone Number" value={num} onChange={handlenum}></input>
             
                 <div><button type="submit" className="sub">Create</button></div>
-                <p style={{marginTop:"1rem"}}>Already have an account , Please <span style={{color:"blue",cursor:"pointer"}} onClick={() => {
+                <p style={{marginTop:"1rem"}}>Already have an account? Please <span style={{color:"blue",cursor:"pointer"}} onClick={() => {
                     navigate('/login')
                 }}>LogIn </span></p>
                 </div>

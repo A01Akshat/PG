@@ -2,6 +2,11 @@ import React from "react";
 import "../App.css";
 import { useNavigate } from "react-router";
 import Post_page from "../Post_page"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHouse } from "@fortawesome/free-solid-svg-icons";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faSquarePlus } from "@fortawesome/free-solid-svg-icons";
+import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 
 const SidebarOwner = () => {
   const navigate = useNavigate();
@@ -12,17 +17,17 @@ const SidebarOwner = () => {
         <div className="each-sidebar-list">
             <p onClick={() => {
                 navigate('/')
-            }}>FEED</p>
+            }}><FontAwesomeIcon icon={faHouse}/> FEED</p>
           </div>
           <div className="each-sidebar-list">
             <p onClick={() => {
                 navigate('/fav')
-            }}>FAVOURITES</p>
+            }}><FontAwesomeIcon icon={faHeart} /> FAVOURITES</p>
           </div>
           <div className="each-sidebar-list">
             <p onClick={() => {
                 navigate('/Post_page')
-            }}>POST</p>
+            }}><FontAwesomeIcon icon={faSquarePlus} /> POST</p>
           </div>
           {/* <div className="each-sidebar-list">
             <p onClick={() => {
@@ -46,7 +51,7 @@ const SidebarOwner = () => {
                 navigate("/login");
               }}
             >
-              Log Out
+              <FontAwesomeIcon icon={faRightFromBracket} /> Log Out
             </p>
           </div>
         </div>
