@@ -62,7 +62,7 @@ input {
   border: 2px solid black;
   border-radius: 20px;
   color: black;
-  padding: 2px 12px;
+  /* padding: 2px 2px; */
   text-align: center;
   text-decoration: none;
   display: inline-block;
