@@ -7,6 +7,8 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "../App.css"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 const accessToken = localStorage.getItem("token");
 let config = {
@@ -88,17 +90,19 @@ const WrapCards = (props) => {
 
     return (
         <div data-aos={"fade-in"} >
-            <div className='wrap-all' style={{ display: "grid", gridTemplateColumns: "auto auto auto", alignItems: "center", justifyContent: "center" }}>
+            <div className='wrap-all'>
 
 
 
                 {dataeach?.map((item, index) => {
                     
                     return (
-                        <div style={{ height: "260px", width: "300px", border: "2px solid black", margin: "1rem", borderRadius: "19px" }} key={item._id}>
+                        <div className='each-card-style' style={{cursor:"pointer"}} onClick={() => {
+                            navigate("/More_Info", { state: { name: item._id , fromUser: "false" } });
+                        }} key={item._id}>
                             {/* IMAGE DIV */}
                             <div style={{ borderRadius: "20px" }}>
-                                <img src={image} style={{ width: "100%", height: "150px", borderRadius: "19px", padding: "5px" }} />
+                                <img src={image} style={{ width: "295px", height: "240px", borderRadius: "19px", padding: "5px" }} />
                             </div>
 
                             {/* INFO DIV */}
@@ -114,9 +118,9 @@ const WrapCards = (props) => {
                                 <h3 >Nearest College: {item?.nerbyColleges[0]?.collegeName}</h3>
                                 <h3 >Rooms Available: {item?.rooms}</h3>
                                 <h3>Within: {item?.nearbyCollegesDistances[0]} KM</h3>
-                                <h1 className="more" style={{ marginLeft: "11.9rem", marginTop: "-1.5rem", cursor: "pointer" }} onClick={() => {
+                                <h1 className="more" style={{ marginLeft: "14.9rem", marginTop: "-1.5rem", cursor: "pointer" }} onClick={() => {
                                     navigate("/More_Info", { state: { name: item._id , fromUser: "false" } });
-                                }}>More Info ➡️</h1>
+                                }}><FontAwesomeIcon icon={faStar} /> 3.9</h1>
                             </div>
                         </div>
                     );

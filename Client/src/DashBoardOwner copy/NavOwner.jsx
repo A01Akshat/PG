@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Navbar.css';
+import './Nav.css';
 import { useNavigate } from 'react-router';
 
 const Navbar = () => {
@@ -15,7 +15,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-brand">
-        <span className="navbar-logo cursor-pointer" onClick={()=>{navigate("/")}}>PG-ᕼᑌᗷ</span>
+        <span className="navbar-logo">PG-ᕼᑌᗷ</span>
         
         
         {/* <span className="navbar-logo">𝚁𝚎𝚏𝚎𝚛𝙷𝚞𝚋</span> */}
@@ -29,11 +29,7 @@ const Navbar = () => {
         {/* <div>
         <h2 style={{fontSize:"1.2rem"}}>Home</h2>
         </div> */}
-        <div style={{display:"flex" , flexDirection:"row" , gap:"1rem"}}>
-        <h2 style={{fontSize:"1.2rem"}} className="cursor-pointer" onClick={()=>{navigate("/fav")}}>Home</h2>
-        <h2 style={{fontSize:"1.2rem"}} className="cursor-pointer" onClick={()=>{navigate("/fav")}}>About</h2>
-        <h2 style={{fontSize:"1.2rem"}} className="cursor-pointer" onClick={()=>{navigate("/fav")}}>Contact Us</h2>
-        </div>
+       
         {/* <div>
         <h2 style={{fontSize:"1.2rem"}}>Contact Us</h2>
         </div> */}

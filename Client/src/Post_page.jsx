@@ -98,6 +98,8 @@ const config = {
   const [furnished, setfurnished] = useState(false);
   const [nonfurnished, setnonfurnished] = useState(false);
   const [semifurnished, setsemifurnished] = useState(false);
+  const [bathroomcond, setbathroomcond] = useState("");
+  const [fur, setfur] = useState("");
 
   return (
     <>
@@ -264,10 +266,13 @@ const config = {
                 }}
               />
               <div>
-              <select className='input2'  >
-              <option value="" style={{color:"grey" , width:"80%" }} disabled selected>Select the Bathroom condition </option>
-                <option style={{width:"49.5%"}} value="common">Common Bathroom</option>
-                <option style={{width:"49.5%"}} value="attached">Attached Bathroom</option>
+              <select className='input2' onChange={(e) => {
+                  setbathroomcond(e.target.value)
+                  alert(bathroomcond)
+                }}    >
+              <option style={{color:"grey" , width:"80%" }} disabled selected>Select the Bathroom condition </option>
+                <option style={{width:"49.5%"}} value="Common" >Common Bathroom</option>
+                <option style={{width:"49.5%"}} value="Attached">Attached Bathroom</option>
                 
               </select>
               </div>
@@ -287,6 +292,7 @@ const config = {
               setfurnished(false)
              }} >Fully Furnished</button>) :(<button  className="each-amenities" style={{width:"8rem"}}  onClick={() => {
               setfurnished(true)
+              setfur("Furnished")
               setsemifurnished(false)
               setnonfurnished(false)
              }} >Fully Furnished</button>)}
@@ -295,6 +301,7 @@ const config = {
             {(semifurnished) ? (<button  className="each-amenities"  style={{background:"rgba(32, 178, 171, 0.411)", width:"8rem"}} onClick={() => {
               setsemifurnished(false)
              }} >Semi Furnished</button>) :(<button  className="each-amenities" style={{width:"8rem"}} onClick={() => {
+              setfur("Semi Furnished")
               setsemifurnished(true)
               setnonfurnished(false)
               setfurnished(false)
@@ -306,6 +313,7 @@ const config = {
               setnonfurnished(true)
               setfurnished(false)
               setsemifurnished(false)
+              setfur("Non Furnished")
              }} >Non Furnished</button>)}
    </div>             
          
@@ -373,9 +381,9 @@ const config = {
                   "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDA...",
                   "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA..."
                 ],
-                furnished: true,
+                furnished: fur,
                 rooms: rooms,
-                bathroom: 1,
+                bathroom: bathroomcond,
                 facilities: {
                   wifi: wifi,
                   parking: parking,
@@ -383,7 +391,8 @@ const config = {
                   ac: ac,
                   lift: false,
                   food: mess,
-                  hotWater: geyser
+                  hotWater: geyser,
+                  powerBackup:true,
                 },
                 nerbyColleges: ["658cec8e815b6541149be9b0"],
                 nearbyCollegesDistances: [4]
