@@ -484,7 +484,10 @@ const getPropertyReview = async (req: customRequest, res: Response, next: NextFu
 		const { propertyId } = req.params;
 		const propertyReview = await Reviews.find({
 			propertyId: propertyId
-		}).populate("rating");
+		}).populate({
+			path: "userid",
+			select: "name" // Select only the name field from the User model
+		}).populate("rating");;
 		return res.status(200).json(propertyReview);
 	} catch (err) {
 		return res.status(500).json();
