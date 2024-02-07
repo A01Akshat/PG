@@ -100,21 +100,26 @@ const Main_Page = () => {
   const [semifurnished, setsemifurnished] = useState(false);
   const [bathroomcond, setbathroomcond] = useState("");
   const [fur, setfur] = useState("");
-  const[collid,setcollid]=useState("");
+
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [base, setbase] = useState("");
+  
+
+  const handleFileInputChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64String = reader.result.split(',')[1];
+        setSelectedFile(base64String);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
 
-  useEffect(() => {
-    const fetchColleges = async () => {
-      try {
-        const response = await axios.get('https://pgbackend.adityachoudhury.com/api/college');
-        setColleges(response.data); 
-      } catch (error) {
-        console.log('Error fetching colleges');
-      }
-    };
 
-    fetchColleges();
-  }, []);
+  
 
   return (
     <>
@@ -145,46 +150,6 @@ const Main_Page = () => {
               <p>Get your Property</p>
             </div>
           </div>
-
-          {/* <div className="StatusOwner">
-            <div className="ListOfStudents" style={{ marginTop: "-140px", gap: "4rem" }}>
-              <div className="eachStudentApplied" style={{ marginLeft: "3.5rem" }}>
-                <div className='eachStudentApplied-name' style={{ cursor: "pointer" }} onClick={openModal}>
-                  <p>Add Property</p>
-                </div>
-                <div>
-                  <button className='btn-ProfleStatusOwner'></button>
-                </div>
-              </div>
-              <div className="eachStudentApplied" style={{ marginLeft: "3.5rem" }}>
-                <div className='eachStudentApplied-name' onClick={() => {
-               
-                  axios.get("https://pgbackend.adityachoudhury.com/api/property/get/userProperties", config)
-                .then((res) => {
-                  if (res.status === 200) {
-                    alert("done")
-                    console.log(res)
-                    // toast("DONE")
-                    // navigate("/")
-                  }
-                  else
-                    alert("error")
-                }).catch((err) => {
-                  //   toast("already exist")
-                  alert("exist")
-                })
-
-                }}>
-                  <p onClick={()=>{navigate('/prev')}}>Show Your Listed Property</p>
-                </div>
-                <div>
-                  <button className='btn-ProfleStatusOwner'></button>
-                </div>
-              </div>
-            </div>
-          </div> */}
-
-
         </div>
       </div>
       {(isModalOpen) ? (
@@ -366,15 +331,15 @@ const Main_Page = () => {
                     setlaundry(true)
                   }} >Laundry</button>)}
 
-                  {(geyser) ? (<button className="each-amenities" style={{ background: "rgba(32, 178, 171, 0.411)" }} onClick={() => {
-                    setgeyser(false)
-                  }} >Geyser</button>) : (<button className="each-amenities" onClick={() => {
-                    setgeyser(true)
-                  }} >Geyser</button>)}
-                </div>
-
-              </div>
-
+{(geyser) ? (<button  className="each-amenities" style={{background:"rgba(32, 178, 171, 0.411)"}} onClick={() => {
+              setgeyser(false)
+             }} >Geyser</button>) :(<button  className="each-amenities" onClick={() => {
+              setgeyser(true)
+             }} >Geyser</button>)}
+             </div>             
+         
+             </div>
+             
             </div>
             {/* Add more content or form fields as needed */}
             <button onClick={() => {
@@ -382,7 +347,7 @@ const Main_Page = () => {
               //   toast("Incomplete Data")
               // }
               // else{
-
+              
               const body = {
                 name: name,
                 description: "Secluded property with stunning hill views",
@@ -390,11 +355,7 @@ const Main_Page = () => {
                 address: address,
                 rent: rent,
                 specialOffers: "Nature trails for residents",
-                photos: [
-                  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...",
-                  "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDA...",
-                  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA..."
-                ],
+                photos: [base],
                 furnished: fur,
                 rooms: rooms,
                 bathroom: bathroomcond,
@@ -408,11 +369,11 @@ const Main_Page = () => {
                   hotWater: geyser,
                   powerBackup: true,
                 },
-                nerbyColleges: [collid],
+                nerbyColleges: ["658cec8e815b6541149be9b0"],
                 nearbyCollegesDistances: [4]
               }
-
-              axios.post("https://pgbackend.adityachoudhury.com/api/property/add", body, config)
+              
+                 axios.post("https://pgbackend.adityachoudhury.com/api/property/add", body , config)
                 .then((res) => {
                   if (res.status === 201) {
                     alert("post done successfully")

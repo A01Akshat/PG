@@ -139,8 +139,8 @@ const More_Info = () => {
 
 
                 {isModalOpen && (
-                    <div className="modal" style={{marginTop:"4rem"}}>
-                        <div className="modal-content">
+                    <div className="modal" style={{marginTop:"4rem" }}>
+                        <div className="modal-content" >
                             <h1 style={{ marginBottom: "10px" }}><u>Share you details:</u></h1>
                             <div style={{ display: "flex", flexDirection: "column", gap: "7px" }}>
                                 <input
@@ -183,7 +183,7 @@ const More_Info = () => {
                                         setmale(false)
                                     }} >Male</button>) : (<button className="each-amenities" style={{ width: "8rem" }} onClick={() => {
                                         setmale(true)
-
+                                        setgender("male")
                                         setfemale(false)
 
                                     }} >Male</button>)}
@@ -194,6 +194,7 @@ const More_Info = () => {
                                     }} >Female</button>) : (<button className="each-amenities" style={{ width: "8rem" }} onClick={() => {
 
                                         setfemale(true)
+                                        setgender("female")
                                         setmale(false)
 
                                     }} >Female</button>)}
@@ -245,8 +246,6 @@ const More_Info = () => {
                                             //   toast("already exist")
                                             alert("exist")
                                         })
-
-
                                 }} className="Apply2" style={{ marginRight: "2rem", height: "2rem", background: "#3bf594" }}>Submit</button>
                                 <button
                                     onClick={closeModal}

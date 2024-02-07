@@ -118,7 +118,8 @@ const WrapCards = (props) => {
                                 <h3 >Nearest College: {item?.nerbyColleges[0]?.collegeName}</h3>
                                 <h3 >Rooms Available: {item?.rooms}</h3>
                                 <h3>Within: {item?.nearbyCollegesDistances[0]} KM</h3>
-                                <h1 className="feed-rate" style={{ marginLeft: "15.5rem", marginTop: "-1.5rem", cursor: "pointer" }}><FontAwesomeIcon icon={faStar} /> {item?.rating.rating}</h1>
+                               
+                                <h1 className="feed-rate" style={{ marginLeft: "15.5rem", marginTop: "-1.5rem" }}><FontAwesomeIcon icon={faStar} /> {item?.rating.rating}</h1>
                             </div>
                         </div>
                     );
