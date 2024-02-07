@@ -132,7 +132,7 @@ const More_Info = () => {
 
                 </div>
                 {isbasic && <More_Info_basic />}
-                {rate && <RateReview/>}
+                {rate && <RateReview id={s} />}
 
 
 

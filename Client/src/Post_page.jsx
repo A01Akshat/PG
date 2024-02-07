@@ -356,11 +356,18 @@ const Main_Page = () => {
 
             </div>
             {/* Add more content or form fields as needed */}
+            <input type="file" onChange={handleFileInputChange} />
+            {/* <button onClick={() => {
+              const gh = `data:image/jpeg;base64,${selectedFile}`
+              console.log(gh)
+            }}>get</button> */}
             <button onClick={() => {
               // if(name === "" || ownerContact === "" || address === "" || rent === "" || rooms === ""){
               //   toast("Incomplete Data")
               // }
               // else{
+                const gh = `data:image/jpeg;base64,${selectedFile}`
+
 
               const body = {
                 name: name,
@@ -369,11 +376,7 @@ const Main_Page = () => {
                 address: address,
                 rent: rent,
                 specialOffers: "Nature trails for residents",
-                photos: [
-                  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...",
-                  "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDA...",
-                  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA..."
-                ],
+                photos: [ gh ],
                 furnished: fur,
                 rooms: rooms,
                 bathroom: bathroomcond,

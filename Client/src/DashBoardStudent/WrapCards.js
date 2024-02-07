@@ -27,6 +27,7 @@ const WrapCards = (props) => {
     const [fill, setfill] = useState(true);
     const [dataeach, setDataeach] = useState([]);
     const [favorites, setFavorites] = useState({});
+    const [getimg , setgetimg] = useState("");
     
     // useEffect(() => {
     //     setsearch(props.check)
@@ -51,6 +52,7 @@ const WrapCards = (props) => {
                     
                     console.log(res.data.results);
                     setDataeach(res.data.results);
+                   
                     // toast("DONE")
 
                     // console.log(dataeach[0].name);
@@ -102,7 +104,7 @@ const WrapCards = (props) => {
                         }} key={item._id}>
                             {/* IMAGE DIV */}
                             <div style={{ borderRadius: "20px" }}>
-                                <img src={image} style={{ width: "295px", height: "240px", borderRadius: "19px", padding: "5px",marginLeft:"1.4px" }} />
+                                <img src={item.photos[0]} style={{ width: "295px", height: "240px", borderRadius: "19px", padding: "5px",marginLeft:"1.4px" }} />
                             </div>
 
                             {/* INFO DIV */}
@@ -119,7 +121,7 @@ const WrapCards = (props) => {
                                 <h3 >Rooms Available: {item?.rooms}</h3>
                                 <h3>Within: {item?.nearbyCollegesDistances[0]} KM</h3>
                                
-                                <h1 className="feed-rate" style={{ marginLeft: "15.5rem", marginTop: "-1.5rem" }}><FontAwesomeIcon icon={faStar} /> {item?.rating.rating}</h1>
+                                <h1 className="feed-rate" style={{ marginLeft: "15.2rem", marginTop: "-1.5rem" }}><FontAwesomeIcon icon={faStar} /> {item?.rating.rating}</h1>
                             </div>
                         </div>
                     );
