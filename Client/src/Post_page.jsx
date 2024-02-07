@@ -100,10 +100,11 @@ const Main_Page = () => {
   const [semifurnished, setsemifurnished] = useState(false);
   const [bathroomcond, setbathroomcond] = useState("");
   const [fur, setfur] = useState("");
+  const [collid, setcollid] = useState("");
 
   const [selectedFile, setSelectedFile] = useState(null);
   const [base, setbase] = useState("");
-  
+
 
   const handleFileInputChange = (event) => {
     const file = event.target.files[0];
@@ -116,10 +117,23 @@ const Main_Page = () => {
       reader.readAsDataURL(file);
     }
   };
+  useEffect(() => {
+    const fetchColleges = async () => {
+      try {
+        const response = await axios.get('https://pgbackend.adityachoudhury.com/api/college');
+        setColleges(response.data); // Assuming response.data contains the array of colleges
+      } catch (error) {
+        console.error('Error fetching colleges:', error);
+        // Handle error gracefully, e.g., display a message to the user
+      }
+    };
+
+    fetchColleges();
+  }, []);
 
 
 
-  
+
 
   return (
     <>
@@ -331,15 +345,15 @@ const Main_Page = () => {
                     setlaundry(true)
                   }} >Laundry</button>)}
 
-{(geyser) ? (<button  className="each-amenities" style={{background:"rgba(32, 178, 171, 0.411)"}} onClick={() => {
-              setgeyser(false)
-             }} >Geyser</button>) :(<button  className="each-amenities" onClick={() => {
-              setgeyser(true)
-             }} >Geyser</button>)}
-             </div>             
-         
-             </div>
-             
+                  {(geyser) ? (<button className="each-amenities" style={{ background: "rgba(32, 178, 171, 0.411)" }} onClick={() => {
+                    setgeyser(false)
+                  }} >Geyser</button>) : (<button className="each-amenities" onClick={() => {
+                    setgeyser(true)
+                  }} >Geyser</button>)}
+                </div>
+
+              </div>
+
             </div>
             {/* Add more content or form fields as needed */}
             <button onClick={() => {
@@ -347,7 +361,7 @@ const Main_Page = () => {
               //   toast("Incomplete Data")
               // }
               // else{
-              
+
               const body = {
                 name: name,
                 description: "Secluded property with stunning hill views",
@@ -355,7 +369,11 @@ const Main_Page = () => {
                 address: address,
                 rent: rent,
                 specialOffers: "Nature trails for residents",
-                photos: [base],
+                photos: [
+                  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...",
+                  "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDA...",
+                  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA..."
+                ],
                 furnished: fur,
                 rooms: rooms,
                 bathroom: bathroomcond,
@@ -369,11 +387,11 @@ const Main_Page = () => {
                   hotWater: geyser,
                   powerBackup: true,
                 },
-                nerbyColleges: ["658cec8e815b6541149be9b0"],
+                nerbyColleges: [collid],
                 nearbyCollegesDistances: [4]
               }
-              
-                 axios.post("https://pgbackend.adityachoudhury.com/api/property/add", body , config)
+
+              axios.post("https://pgbackend.adityachoudhury.com/api/property/add", body, config)
                 .then((res) => {
                   if (res.status === 201) {
                     alert("post done successfully")
