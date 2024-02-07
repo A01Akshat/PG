@@ -16,9 +16,8 @@ app.use(
 	})
 );
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
+app.use(express.json({ limit: '1000mb' }));
+app.use(express.urlencoded({ limit: '1000mb', extended: true }));
 app.use(cookieParser());
 
 app.use((req: Request, res: Response, next: NextFunction) => {
@@ -42,7 +41,7 @@ app.get("/", (req: Request, res: Response, next: NextFunction) => {
 app.get("/health", (req: Request, res: Response) => {
 	return res.status(200).json({
 		status: 200,
-		message:"Server is up and running"
+		message: "Server is up and running"
 	})
 });
 
