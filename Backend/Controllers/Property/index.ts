@@ -119,6 +119,12 @@ const getFavourite = async (
 					path: "nerbyColleges",
 					model: "Colleges",
 				},
+			}).populate({
+				path: "propertyId",
+				populate: {
+					path: "rating",
+					model:"AvgRatings"
+				}
 			});
 		return res.status(200).json(favourites);
 	} catch (err) {
@@ -130,6 +136,19 @@ const getFavourite = async (
 	}
 };
 
+const removeFavourite = async (
+	req: customRequest,
+	res: Response,
+	next: NextFunction
+) => {
+	try {
+		const { propertyId } = req.params;
+		const deleted = await Favourites.findOneAndDelete({ propertyId: propertyId, userId: req._id });
+		return res.status(200).json();
+	} catch (err) {
+		return res.status(500).json(err);
+	}
+}
 
 const getDashboardProperty = async (
 	req: Request,
@@ -411,6 +430,7 @@ const controllers = {
 	getAllProperty,
 	addFavourite,
 	getFavourite,
+	removeFavourite,
 	getDashboardProperty,
 	propertySearch,
 	interestedPut,
