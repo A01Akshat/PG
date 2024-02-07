@@ -368,3 +368,9 @@ input {
   border-radius: 19px;
   margin-top: 0.5rem;
 }
+
+.feed-rate:hover
+{
+  color: #FF7C00;
+
+}
