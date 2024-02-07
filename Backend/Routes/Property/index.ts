@@ -14,6 +14,12 @@ router.post(
 	Property.addFavourite as any
 );
 
+router.delete(
+	"/favourite/delete/:propertyId",
+	Auth.verifytoken as any,
+	Property.removeFavourite as any
+);
+
 router.get("/get/search", Property.propertySearch);
 router.get("/get/interested/:id?", Auth.verifytoken as any, Property.interestedGet as any);
 router.get("/get/userProperties", Auth.verifytoken as any, Property.getUserProperties as any);

@@ -17,31 +17,31 @@ const names = [
   'PG', 'Home', 'Rooms'
 ]
 const Main_Page = () => {
-  
+
   let yellow = '#ffc800';
   const [isModalOpen, setIsModalOpen] = useState(true);
-  
+
   const [newName, setnewName] = useState("");
   const [search, setsearch] = useState("");
   const [check, setCheck] = useState("Hi");
   const [name, setname] = useState("");
   const [phone, setphone] = useState("");
   const [email, setemail] = useState("");
-  const [address , setaddress] = useState("");
+  const [address, setaddress] = useState("");
   const [gender, setgender] = useState("");
   const [rent, setrent] = useState("");
   const [rooms, setrooms] = useState("");
-  const [coll, setcoll] = useState("");
+  const [colleges, setColleges] = useState([]);
   const [bgColor, setBgColor] = useState(yellow);
   const navigate = useNavigate();
 
   const accessToken = localStorage.getItem('token');
 
-const config = {
-  headers: {
-    Authorization: `Bearer ${accessToken}`,
-  },
-};
+  const config = {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  };
 
 
 
@@ -84,7 +84,7 @@ const config = {
     setIsModalOpen(true);
   };
 
- 
+
 
   const closeModal = () => {
     setIsModalOpen(false);
@@ -141,121 +141,120 @@ const config = {
             <SidebarOwner />
           </div>
           <div className="wrap-post">
-            {(isModalOpen) ? (<div className="prop-box"  onClick={openModal}>
-            <p style={{background:"#FFA34D"}}>Add your Property</p>
+            {(isModalOpen) ? (<div className="prop-box" onClick={openModal}>
+              <p style={{ background: "#FFA34D" }}>Add your Property</p>
             </div>) : (<div className="prop-box" onClick={openModal}>
-            <p>Add your Property</p>
+              <p>Add your Property</p>
             </div>)}
-            <div className="prop-box2" onClick={()=>{navigate('/prev')}}>
-            <p>Get your Property</p>
+            <div className="prop-box2" onClick={() => { navigate('/prev') }}>
+              <p>Get your Property</p>
             </div>
           </div>
         </div>
       </div>
       {(isModalOpen) ? (
-        <div className="modal-post" style={{width:"50rem"}}>
+        <div className="modal-post" style={{ width: "50rem" }}>
           <div className="modal-content" >
-            <h1 style={{ marginBottom: "10px" }}><u>Share The Propert Details:</u></h1>
+            <h1 style={{ marginBottom: "10px" }}><u>Share The Property Details:</u></h1>
             <div style={{ display: "flex", flexDirection: "column", gap: "7px" }}>
-            <div style={{display:"flex" , flexDirection:"row" , flexWrap:"wrap",gap:"0.2rem"}}>
-              <input
-                type="text"
-                id="exampleInput"
-                name="exampleInput"
-                style={{width:"49.5%"}}
-                placeholder="Enter your PG's name"
-                className="input2"
-                value={name}
-                onChange={(e) => {
-                  setname(e.target.value)
-                }}
-              />
+              <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", gap: "0.2rem" }}>
+                <input
+                  type="text"
+                  id="exampleInput"
+                  name="exampleInput"
+                  style={{ width: "49.5%" }}
+                  placeholder="Enter your PG's name"
+                  className="input2"
+                  value={name}
+                  onChange={(e) => {
+                    setname(e.target.value)
+                  }}
+                />
 
-              <input
-                type="text"
-                id="exampleInput"
-                name="exampleInput"
-                placeholder="Enter your phone number"
-                className="input2"
-                style={{width:"49.5%"}}
-                value={phone}
-                onChange={(e) => {
-                  setphone(e.target.value)
-                }}
-              />
-              <input
-                type="text"
-                id="exampleInput"
-                name="exampleInput"
-                placeholder="Enter your email"
-                className="input2"
-                style={{width:"49.5%"}}
-                value={email}
-                onChange={(e) => {
-                  setemail(e.target.value)
-                }}
-              />
+                <input
+                  type="text"
+                  id="exampleInput"
+                  name="exampleInput"
+                  placeholder="Enter your phone number"
+                  className="input2"
+                  style={{ width: "49.5%" }}
+                  value={phone}
+                  onChange={(e) => {
+                    setphone(e.target.value)
+                  }}
+                />
+                <input
+                  type="text"
+                  id="exampleInput"
+                  name="exampleInput"
+                  placeholder="Enter your email"
+                  className="input2"
+                  style={{ width: "49.5%" }}
+                  value={email}
+                  onChange={(e) => {
+                    setemail(e.target.value)
+                  }}
+                />
 
-              <input
-                type="text"
-                id="exampleInput"
-                name="exampleInput"
-                placeholder="Enter your PG's Address"
-                className="input2"
-                style={{width:"49.5%"}}
-                value={address}
-                onChange={(e) => {
-                  setaddress(e.target.value)
-                }}
-              />
+                <input
+                  type="text"
+                  id="exampleInput"
+                  name="exampleInput"
+                  placeholder="Enter your PG's Address"
+                  className="input2"
+                  style={{ width: "49.5%" }}
+                  value={address}
+                  onChange={(e) => {
+                    setaddress(e.target.value)
+                  }}
+                />
 
-              <input
-                type="text"
-                id="exampleInput"
-                name="exampleInput"
-                placeholder="Enter your PG's Rent"
-                className="input2"
-                style={{width:"49.5%"}}
-                value={rent}
-                onChange={(e) => {
-                  setrent(e.target.value)
-                }}
-              />
-              <input
-                type="text"
-                id="exampleInput"
-                name="exampleInput"
-                placeholder="Enter number of rooms available"
-                className="input2"
-                style={{width:"49.5%"}}
-                value={rooms}
-                onChange={(e) => {
-                  setrooms(e.target.value)
-                }}
-              />
-              <input
-                type="text"
-                id="exampleInput"
-                name="exampleInput"
-                placeholder="Enter the Nearby College"
-                className="input2"
-                style={{width:"49.5%"}}
-                value={coll}
-                onChange={(e) => {
-                  setcoll(e.target.value)
-                }}
-              />
-              <div>
-              <select className='input2' onChange={(e) => {
-                  setbathroomcond(e.target.value)
-                  alert(bathroomcond)
-                }}    >
-              <option style={{color:"grey" , width:"80%" }} disabled selected>Select the Bathroom condition </option>
-                <option style={{width:"49.5%"}} value="Common" >Common Bathroom</option>
-                <option style={{width:"49.5%"}} value="Attached">Attached Bathroom</option>
-                
-              </select>
-              </div>
+                <input
+                  type="text"
+                  id="exampleInput"
+                  name="exampleInput"
+                  placeholder="Enter your PG's Rent"
+                  className="input2"
+                  style={{ width: "49.5%" }}
+                  value={rent}
+                  onChange={(e) => {
+                    setrent(e.target.value)
+                  }}
+                />
+                <input
+                  type="text"
+                  id="exampleInput"
+                  name="exampleInput"
+                  placeholder="Enter number of rooms available"
+                  className="input2"
+                  style={{ width: "49.5%" }}
+                  value={rooms}
+                  onChange={(e) => {
+                    setrooms(e.target.value)
+                  }}
+                />
+                <div>
+                  <select className='input2' onChange={(e) => {
+                    setcollid(e.target.value)
+                    alert(collid)
+                  }} >
+                    <option style={{ color: "grey", width: "80%" }} disabled selected >Select your Nearest College </option>
+                    {colleges.map(data => (
+                      <option key={data._id} value={data._id} >{data.collegeName}</option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <select className='input2' onChange={(e) => {
+                    setbathroomcond(e.target.value)
+                    alert(bathroomcond)
+                  }}    >
+                    <option style={{ color: "grey", width: "80%" }} disabled selected>Select the Bathroom condition </option>
+                    <option style={{ width: "49.5%" }} value="Common" >Common Bathroom</option>
+                    <option style={{ width: "49.5%" }} value="Attached">Attached Bathroom</option>
+
+                  </select>
+                </div>
               </div>
               {/* <div style={{border:"2px solid grey"}}>
               <select >
@@ -266,71 +265,71 @@ const config = {
               </div> */}
 
               <div>
-              <h2 className='input2' style={{color:"grey" , fontSize:"14px" , width:"100%"}}>How the property is Furnished</h2>
-              <div style={{display:"flex",flexDirection:"row",gap:"1rem",flexWrap:"wrap" , marginTop:"0.7rem"}}>
-             {(furnished) ? (<button  className="each-amenities"  style={{background:"rgba(32, 178, 171, 0.411)" , width:"8rem"}} onClick={() => {
-              setfurnished(false)
-             }} >Fully Furnished</button>) :(<button  className="each-amenities" style={{width:"8rem"}}  onClick={() => {
-              setfurnished(true)
-              setfur("Furnished")
-              setsemifurnished(false)
-              setnonfurnished(false)
-             }} >Fully Furnished</button>)}
-            
-            
-            {(semifurnished) ? (<button  className="each-amenities"  style={{background:"rgba(32, 178, 171, 0.411)", width:"8rem"}} onClick={() => {
-              setsemifurnished(false)
-             }} >Semi Furnished</button>) :(<button  className="each-amenities" style={{width:"8rem"}} onClick={() => {
-              setfur("Semi Furnished")
-              setsemifurnished(true)
-              setnonfurnished(false)
-              setfurnished(false)
-             }} >Semi Furnished</button>)}
+                <h2 className='input2' style={{ color: "grey", fontSize: "14px", width: "100%" }}>How the property is Furnished</h2>
+                <div style={{ display: "flex", flexDirection: "row", gap: "1rem", flexWrap: "wrap", marginTop: "0.7rem" }}>
+                  {(furnished) ? (<button className="each-amenities" style={{ background: "rgba(32, 178, 171, 0.411)", width: "8rem" }} onClick={() => {
+                    setfurnished(false)
+                  }} >Fully Furnished</button>) : (<button className="each-amenities" style={{ width: "8rem" }} onClick={() => {
+                    setfurnished(true)
+                    setfur("Furnished")
+                    setsemifurnished(false)
+                    setnonfurnished(false)
+                  }} >Fully Furnished</button>)}
 
-{(nonfurnished) ? (<button  className="each-amenities"  style={{background:"rgba(32, 178, 171, 0.411)", width:"8rem"}} onClick={() => {
-              setnonfurnished(false)
-             }} >Non Furnished</button>) :(<button  className="each-amenities" style={{width:"8rem"}}  onClick={() => {
-              setnonfurnished(true)
-              setfurnished(false)
-              setsemifurnished(false)
-              setfur("Non Furnished")
-             }} >Non Furnished</button>)}
-   </div>             
-         
+
+                  {(semifurnished) ? (<button className="each-amenities" style={{ background: "rgba(32, 178, 171, 0.411)", width: "8rem" }} onClick={() => {
+                    setsemifurnished(false)
+                  }} >Semi Furnished</button>) : (<button className="each-amenities" style={{ width: "8rem" }} onClick={() => {
+                    setfur("Semi Furnished")
+                    setsemifurnished(true)
+                    setnonfurnished(false)
+                    setfurnished(false)
+                  }} >Semi Furnished</button>)}
+
+                  {(nonfurnished) ? (<button className="each-amenities" style={{ background: "rgba(32, 178, 171, 0.411)", width: "8rem" }} onClick={() => {
+                    setnonfurnished(false)
+                  }} >Non Furnished</button>) : (<button className="each-amenities" style={{ width: "8rem" }} onClick={() => {
+                    setnonfurnished(true)
+                    setfurnished(false)
+                    setsemifurnished(false)
+                    setfur("Non Furnished")
+                  }} >Non Furnished</button>)}
+                </div>
+
               </div>
               <div>
-                <h2 className='input2' style={{color:"grey" , fontSize:"14px", width:"100%"}}>Select the Facilities offered</h2>
-             <div style={{display:"flex",flexDirection:"row",gap:"1rem",flexWrap:"wrap" , marginTop:"0.7rem"}}>
-             {(wifi) ? (<button  className="each-amenities" style={{background:"rgba(32, 178, 171, 0.411)"}} onClick={() => {
-              setwifi(false)
-             }} >Wifi</button>) :(<button  className="each-amenities" onClick={() => {
-              setwifi(true)
-             }} >Wifi</button>)}
-            
-            
-            {(ac) ? (<button  className="each-amenities" style={{background:"rgba(32, 178, 171, 0.411)"}} onClick={() => {
-              setac(false)
-             }} >AC</button>) :(<button  className="each-amenities" onClick={() => {
-              setac(true)
-             }} >AC</button>)}
+                <h2 className='input2' style={{ color: "grey", fontSize: "14px", width: "100%" }}>Select the Facilities offered</h2>
+                <div style={{ display: "flex", flexDirection: "row", gap: "1rem", flexWrap: "wrap", marginTop: "0.7rem" }}>
+                  {(wifi) ? (<button className="each-amenities" style={{ background: "rgba(32, 178, 171, 0.411)" }} onClick={() => {
+                    setwifi(false)
+                  }} >Wifi</button>) : (<button className="each-amenities" onClick={() => {
+                    setwifi(true)
+                  }} >Wifi</button>)}
 
-{(parking) ? (<button  className="each-amenities" style={{background:"rgba(32, 178, 171, 0.411)"}} onClick={() => {
-              setparking(false)
-             }} >Parking</button>) :(<button  className="each-amenities" onClick={() => {
-              setparking(true)
-             }} >Parking</button>)}
 
-{(mess) ? (<button  className="each-amenities" style={{background:"rgba(32, 178, 171, 0.411)"}} onClick={() => {
-              setmess(false)
-             }} >Mess</button>) :(<button  className="each-amenities" onClick={() => {
-              setmess(true)
-             }} >Mess</button>)}
+                  {(ac) ? (<button className="each-amenities" style={{ background: "rgba(32, 178, 171, 0.411)" }} onClick={() => {
+                    setac(false)
+                  }} >AC</button>) : (<button className="each-amenities" onClick={() => {
+                    setac(true)
+                  }} >AC</button>)}
 
-{(laundry) ? (<button  className="each-amenities" style={{background:"rgba(32, 178, 171, 0.411)"}} onClick={() => {
-              setlaundry(false)
-             }} >Laundry</button>) :(<button  className="each-amenities" onClick={() => {
-              setlaundry(true)
-             }} >Laundry</button>)}
+                  {(parking) ? (<button className="each-amenities" style={{ background: "rgba(32, 178, 171, 0.411)" }} onClick={() => {
+                    setparking(false)
+                  }} >Parking</button>) : (<button className="each-amenities" onClick={() => {
+                    setparking(true)
+                  }} >Parking</button>)}
+
+                  {(mess) ? (<button className="each-amenities" style={{ background: "rgba(32, 178, 171, 0.411)" }} onClick={() => {
+                    setmess(false)
+                  }} >Mess</button>) : (<button className="each-amenities" onClick={() => {
+                    setmess(true)
+                  }} >Mess</button>)}
+
+                  {(laundry) ? (<button className="each-amenities" style={{ background: "rgba(32, 178, 171, 0.411)" }} onClick={() => {
+                    setlaundry(false)
+                  }} >Laundry</button>) : (<button className="each-amenities" onClick={() => {
+                    setlaundry(true)
+                  }} >Laundry</button>)}
 
 {(geyser) ? (<button  className="each-amenities" style={{background:"rgba(32, 178, 171, 0.411)"}} onClick={() => {
               setgeyser(false)
@@ -340,21 +339,14 @@ const config = {
              </div>             
          
              </div>
-             <input type="file" onChange={handleFileInputChange} />
-             <button onClick={() => {
-              
-             }}>get</button>
-             
              
             </div>
             {/* Add more content or form fields as needed */}
             <button onClick={() => {
-
-
-const base = `data:image/png;base64,${selectedFile}`;
-
-              
-             
+              // if(name === "" || ownerContact === "" || address === "" || rent === "" || rooms === ""){
+              //   toast("Incomplete Data")
+              // }
+              // else{
               
               const body = {
                 name: name,
@@ -375,13 +367,11 @@ const base = `data:image/png;base64,${selectedFile}`;
                   lift: false,
                   food: mess,
                   hotWater: geyser,
-                  powerBackup:true,
+                  powerBackup: true,
                 },
-                nerbyColleges: ["658cecb1815b6541149be9b4"],
+                nerbyColleges: ["658cec8e815b6541149be9b0"],
                 nearbyCollegesDistances: [4]
               }
-
-
               
                  axios.post("https://pgbackend.adityachoudhury.com/api/property/add", body , config)
                 .then((res) => {
@@ -399,18 +389,18 @@ const base = `data:image/png;base64,${selectedFile}`;
                 })
               // }
 
-            }} className="Apply2" style={{ marginRight: "2rem" , marginTop:"1rem", height: "2rem", background: "#3bf594" }}>Submit</button>
+            }} className="Apply2" style={{ marginRight: "2rem", marginTop: "1rem", height: "2rem", background: "#3bf594" }}>Submit</button>
             {/* <button
               onClick={closeModal}
               className="Apply2" style={{ marginTop: "20px", marginBottom: "-25px", background: "red", height: "2rem" }}>Close</button> */}
           </div>
         </div>
-      ) : ( <div className="modal-post" style={{width:"50rem" , marginTop:"-10rem"}}>
-            <div className="modal-content" >
-              <p>Thank You for adding the Property</p>
+      ) : (<div className="modal-post" style={{ width: "50rem", marginTop: "-10rem" }}>
+        <div className="modal-content" >
+          <p>Thank You for adding the Property</p>
         </div>
-        </div>
-        )}
+      </div>
+      )}
 
 
     </>

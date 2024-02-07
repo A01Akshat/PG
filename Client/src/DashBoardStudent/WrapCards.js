@@ -102,7 +102,7 @@ const WrapCards = (props) => {
                         }} key={item._id}>
                             {/* IMAGE DIV */}
                             <div style={{ borderRadius: "20px" }}>
-                                <img src={image} style={{ width: "295px", height: "240px", borderRadius: "19px", padding: "5px" }} />
+                                <img src={image} style={{ width: "295px", height: "240px", borderRadius: "19px", padding: "5px",marginLeft:"1.4px" }} />
                             </div>
 
                             {/* INFO DIV */}
@@ -118,7 +118,8 @@ const WrapCards = (props) => {
                                 <h3 >Nearest College: {item?.nerbyColleges[0]?.collegeName}</h3>
                                 <h3 >Rooms Available: {item?.rooms}</h3>
                                 <h3>Within: {item?.nearbyCollegesDistances[0]} KM</h3>
-                                <h1 className="more" style={{ marginLeft: "14.9rem", marginTop: "-1.5rem"  }}><FontAwesomeIcon icon={faStar} />{item?.rating?.rating}</h1>
+                               
+                                <h1 className="feed-rate" style={{ marginLeft: "15.5rem", marginTop: "-1.5rem" }}><FontAwesomeIcon icon={faStar} /> {item?.rating.rating}</h1>
                             </div>
                         </div>
                     );
