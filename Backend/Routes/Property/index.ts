@@ -19,6 +19,10 @@ router.delete(
 	Auth.verifytoken as any,
 	Property.removeFavourite as any
 );
+router.post("/review/add/:id", Auth.verifytoken as any, Property.addUserReview as any);
+router.get("/review/get/user/:propertyId", Auth.verifytoken as any, Property.getUserReview as any);
+router.get("/review/get/:propertyId", Property.getPropertyReview as any);
+
 
 router.get("/get/search", Property.propertySearch);
 router.get("/get/interested/:id?", Auth.verifytoken as any, Property.interestedGet as any);

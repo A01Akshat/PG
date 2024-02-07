@@ -8,6 +8,7 @@ import InterestedProperty from "../../Models/InterestedProperty";
 import { faker } from "@faker-js/faker"
 import Ratings from "../../Models/Ratings";
 import AvgRatings from "../../Models/AvgRatings";
+import Reviews from "../../Models/Reviews";
 interface customRequest extends Request {
 	user_id: string;
 	_id: string;
@@ -123,7 +124,7 @@ const getFavourite = async (
 				path: "propertyId",
 				populate: {
 					path: "rating",
-					model:"AvgRatings"
+					model: "AvgRatings"
 				}
 			});
 		return res.status(200).json(favourites);
@@ -424,6 +425,73 @@ const getUserRating = async (req: customRequest, res: Response, next: NextFuncti
 }
 
 
+const addUserReview = async (req: customRequest, res: Response, next: NextFunction) => {
+	try {
+		const { _id } = req;
+		const { review } = req.body;
+		const { id } = req.params;
+		if (!review) {
+			return res.status(404).json({ message: "Please write something to add a review" });
+		}
+
+		const userRating = await Ratings.findOne({ propertyId: id, userid: _id });
+		if (!userRating) {
+			return res.status(404).json({ message: "Please first add a rating then try adding a review!!" });
+		}
+
+		const existingProperty = await Reviews.findOne({
+			userid: _id,
+			propertyId: id
+		});
+		if (existingProperty) {
+			existingProperty.review = review;
+			await existingProperty.save();
+		} else {
+			const propertyReview = new Reviews({
+				userid: _id,
+				propertyId: id,
+				rating: userRating._id,
+				review: review
+			});
+			await propertyReview.save();
+		}
+		return res.status(200).json();
+	} catch (err) {
+		console.log(err);
+		return res.status(500).json({ success: false, message: "Internal Server Error" });
+	}
+}
+
+
+const getUserReview = async (req: customRequest, res: Response, next: NextFunction) => {
+	try {
+		const { propertyId } = req.params;
+		const userReview = await Reviews.findOne({
+			userid: req._id,
+			propertyId: propertyId
+		}).populate("rating");
+		if (!userReview) {
+			return res.status(404).json();
+		}
+		return res.status(200).json(userReview);
+	} catch (err) {
+		return res.status(500).json();
+	}
+}
+
+const getPropertyReview = async (req: customRequest, res: Response, next: NextFunction) => {
+	try {
+		const { propertyId } = req.params;
+		const propertyReview = await Reviews.find({
+			propertyId: propertyId
+		}).populate("rating");
+		return res.status(200).json(propertyReview);
+	} catch (err) {
+		return res.status(500).json();
+	}
+}
+
+
 const controllers = {
 	addProperty,
 	getProperty,
@@ -438,7 +506,10 @@ const controllers = {
 	updateDb,
 	getUserProperties,
 	addRatings,
-	getUserRating
+	getUserRating,
+	addUserReview,
+	getUserReview,
+	getPropertyReview
 };
 
 export default controllers;
