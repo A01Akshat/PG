@@ -41,23 +41,7 @@ const More_Info_basic = () => {
     const s = location.state?.name;
     const book = location.state?.fromUser;
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const url = `https://pgbackend.adityachoudhury.com/api/property/rating/658cee91815b6541149be9bf`;
-                const response = await axios.get(url);
-                if (response.status === 200) {
-                    console.log(response);
-                    setData(response.data);
-                    // toast("DONE");
-                }
-            } catch (error) {
-                toast("Error fetching data");
-            }
-        };
-
-        fetchData();
-    }, [s]);
+    
 
     const openModal = () => {
         setIsModalOpen(true);
@@ -71,6 +55,7 @@ const More_Info_basic = () => {
     const [rate3 , setrate3] = useState(false);
     const [rate4 , setrate4] = useState(false);
     const [rate5 , setrate5] = useState(false);
+    const [rate , setrate] = useState(0);
     return (
         <>
             <div className="rect-box">
@@ -84,26 +69,32 @@ const More_Info_basic = () => {
                             setrate4(false)
                             setrate3(false)
                             setrate2(false)
+                            setrate(1)
                         }} />) : (<FontAwesomeIcon icon={faStar} style={{color:"red",height:"2rem" , width:"2rem"}} onClick={() => {
                             setrate1(true)
+                            setrate(1)
                         }} />)}
 
 {(rate2) ? (<FontAwesomeIcon icon={faStar} style={{color:"blue",height:"2rem" , width:"2rem"}} onClick={() => {
                             setrate5(false)
                             setrate4(false)
                             setrate3(false)
+                            setrate(2)
                             
                         }} />) : (<FontAwesomeIcon icon={faStar} style={{color:"red",height:"2rem" , width:"2rem"}} onClick={() => {
                             setrate2(true)
                             setrate1(true)
+                            setrate(2)
                         }} />)}
 
 {(rate3) ? (<FontAwesomeIcon icon={faStar} style={{color:"blue",height:"2rem" , width:"2rem"}} onClick={() => {
                             setrate5(false)
                             setrate4(false)
+                            setrate(3)
                             
                         }} />) : (<FontAwesomeIcon icon={faStar} style={{color:"red",height:"2rem" , width:"2rem"}} onClick={() => {
                             setrate3(true)
+                            setrate(3)
                             
                             setrate2(true)
                             setrate1(true)
@@ -111,12 +102,14 @@ const More_Info_basic = () => {
 
 {(rate4) ? (<FontAwesomeIcon icon={faStar} style={{color:"blue",height:"2rem" , width:"2rem"}} onClick={() => {
                             setrate5(false)
+                            setrate(4)
                            
                         }} />) : (<FontAwesomeIcon icon={faStar} style={{color:"red",height:"2rem" , width:"2rem"}} onClick={() => {
                             setrate4(true)
                             setrate3(true)
                             setrate2(true)
                             setrate1(true)
+                            setrate(4)
                         }} />)}
 
 {(rate5) ? (<FontAwesomeIcon icon={faStar} style={{color:"blue",height:"2rem" , width:"2rem"}} />) : (<FontAwesomeIcon icon={faStar} style={{color:"red",height:"2rem" , width:"2rem"}} onClick={() => {
@@ -125,12 +118,51 @@ const More_Info_basic = () => {
                             setrate3(true)
                             setrate2(true)
                             setrate1(true)
+                            setrate(5)
                         }} />)}
                         </div>
                         <p style={{fontWeight:"600",marginTop:"0.5rem"}}>Please share your opinion about this PG</p>
                         <textarea className='inp-reveiw' placeholder='Your Review' cols="30" rows="10"></textarea>
 
-                        <button className='btn-sendFeedback'>Send Feedback</button>
+                        <button className='btn-sendFeedback' onClick={() => {
+                            alert(rate)
+                            axios.get("https://pgbackend.adityachoudhury.com/api/property/rating/6580244dd67740a7082abf9b", config)
+                            .then((res) => {
+                                if (res.status === 200) {
+                                    
+                                    alert("done")
+                                    console.log(res)
+                                    // toast("DONE")
+                                    // navigate("/")
+                                }
+                                else
+                                    alert("error")
+                            }).catch((err) => {
+                                //   toast("already exist")
+                                alert("exist")
+                            })
+                        }}>Send Feedback</button>
+                        <button onClick={() => {
+                            alert("fghj")
+                            const body = {
+                                propertyId:"65c20e1e5eb50f74c1386f92",
+                                rating : 3
+                            }
+                            axios.post("https://pgbackend.adityachoudhury.com/api/property/rating/add", body, config)
+                            .then((res) => {
+                                if (res.status === 200) {
+                                    
+                                    alert("done")
+                                    // toast("DONE")
+                                    // navigate("/")
+                                }
+                                else
+                                    alert("error")
+                            }).catch((err) => {
+                                //   toast("already exist")
+                                alert("exist")
+                            })
+                        }}>Post</button>
 
                    
                     </div>

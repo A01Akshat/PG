@@ -101,6 +101,26 @@ const config = {
   const [bathroomcond, setbathroomcond] = useState("");
   const [fur, setfur] = useState("");
 
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [base, setbase] = useState("");
+  
+
+  const handleFileInputChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64String = reader.result.split(',')[1];
+        setSelectedFile(base64String);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+
+
+  
+
   return (
     <>
       <Navbar />
@@ -130,46 +150,6 @@ const config = {
             <p>Get your Property</p>
             </div>
           </div>
-
-          {/* <div className="StatusOwner">
-            <div className="ListOfStudents" style={{ marginTop: "-140px", gap: "4rem" }}>
-              <div className="eachStudentApplied" style={{ marginLeft: "3.5rem" }}>
-                <div className='eachStudentApplied-name' style={{ cursor: "pointer" }} onClick={openModal}>
-                  <p>Add Property</p>
-                </div>
-                <div>
-                  <button className='btn-ProfleStatusOwner'></button>
-                </div>
-              </div>
-              <div className="eachStudentApplied" style={{ marginLeft: "3.5rem" }}>
-                <div className='eachStudentApplied-name' onClick={() => {
-               
-                  axios.get("https://pgbackend.adityachoudhury.com/api/property/get/userProperties", config)
-                .then((res) => {
-                  if (res.status === 200) {
-                    alert("done")
-                    console.log(res)
-                    // toast("DONE")
-                    // navigate("/")
-                  }
-                  else
-                    alert("error")
-                }).catch((err) => {
-                  //   toast("already exist")
-                  alert("exist")
-                })
-
-                }}>
-                  <p onClick={()=>{navigate('/prev')}}>Show Your Listed Property</p>
-                </div>
-                <div>
-                  <button className='btn-ProfleStatusOwner'></button>
-                </div>
-              </div>
-            </div>
-          </div> */}
-
-
         </div>
       </div>
       {(isModalOpen) ? (
@@ -360,14 +340,21 @@ const config = {
              </div>             
          
              </div>
+             <input type="file" onChange={handleFileInputChange} />
+             <button onClick={() => {
+              
+             }}>get</button>
+             
              
             </div>
             {/* Add more content or form fields as needed */}
             <button onClick={() => {
-              // if(name === "" || ownerContact === "" || address === "" || rent === "" || rooms === ""){
-              //   toast("Incomplete Data")
-              // }
-              // else{
+
+
+const base = `data:image/png;base64,${selectedFile}`;
+
+              
+             
               
               const body = {
                 name: name,
@@ -376,11 +363,7 @@ const config = {
                 address: address,
                 rent: rent,
                 specialOffers: "Nature trails for residents",
-                photos: [
-                  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...",
-                  "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDA...",
-                  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA..."
-                ],
+                photos: [base],
                 furnished: fur,
                 rooms: rooms,
                 bathroom: bathroomcond,
@@ -394,9 +377,11 @@ const config = {
                   hotWater: geyser,
                   powerBackup:true,
                 },
-                nerbyColleges: ["658cec8e815b6541149be9b0"],
+                nerbyColleges: ["658cecb1815b6541149be9b4"],
                 nearbyCollegesDistances: [4]
               }
+
+
               
                  axios.post("https://pgbackend.adityachoudhury.com/api/property/add", body , config)
                 .then((res) => {
