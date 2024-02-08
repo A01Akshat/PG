@@ -206,29 +206,33 @@ const More_Info_basic = (props) => {
                         }}>Send Feedback</button>
 
                     </div>
+                    <div className='review-box'>
+                        <h1 className='review-box-count'>{getreview.length} review found</h1>
+                       
                     <div className="wrap-get-rate">
-                        {getreview?.map((item, index) => {
-
-                            return (
-                                <div className="username-rate">
-                                    <div>
-                                        <FontAwesomeIcon icon={faUser} className='user-icon-rate-get' />
-                                    </div>
-                                    <div>
-                                        <div style={{ display: "flex", flexDirection: "column", gap: "0.1rem", marginTop: "-0.2rem" }}>
-                                            <p style={{ fontWeight: "700" }}>{item.userid.name}</p>
-                                            <div style={{ marginTop: "-0.5rem" }}>
-                                                {item.rating.rating}
-
-                                                <FontAwesomeIcon icon={faStar} style={{ color: "yellow", height: "1rem", width: "1rem" }} />
-                                                <FontAwesomeIcon icon={faStar} style={{ color: "yellow", height: "1rem", width: "1rem" }} />
-                                                <FontAwesomeIcon icon={faStar} style={{ color: "yellow", height: "1rem", width: "1rem" }} />
-                                                <FontAwesomeIcon icon={faStar} style={{ color: "yellow", height: "1rem", width: "1rem" }} />
-                                                <FontAwesomeIcon icon={faStar} style={{ color: "yellow", height: "1rem", width: "1rem" }} />
-
-                                            </div>
-                                        </div>
-                                        <p style={{ width: "40rem" }}>{item.review}</p>
+                    {getreview?.map((item, index) => {
+                    
+                    return (
+                        <div className="username-rate">
+                            <div>
+                    <FontAwesomeIcon icon={faUser} className='user-icon-rate-get' />
+                    </div>
+                    <div>
+                    <div style={{display:"flex" , flexDirection:"column", gap:"0.1rem" , marginTop:"-0.2rem"}}>
+                        <p style={{fontWeight:"700"}}>{item.userid.name}</p>
+                        <div style={{marginTop:"-0.5rem"}}>
+                            {/* {item.rating.rating} */}
+                            
+                        { (item.rating.rating == 1) ? (<FontAwesomeIcon icon={faStar} style={{color:"yellow",height:"1rem" , width:"1rem"}} />) : ((item.rating.rating == 2) ? (<><FontAwesomeIcon icon={faStar} style={{color:"yellow",height:"1rem" , width:"1rem"}} /><FontAwesomeIcon icon={faStar} style={{color:"yellow",height:"1rem" , width:"1rem"}} /></>) : ((item.rating.rating == 3) ? (<><FontAwesomeIcon icon={faStar} style={{color:"yellow",height:"1rem" , width:"1rem"}} /><FontAwesomeIcon icon={faStar} style={{color:"yellow",height:"1rem" , width:"1rem"}} /><FontAwesomeIcon icon={faStar} style={{color:"yellow",height:"1rem" , width:"1rem"}} /></>) : ((item.rating.rating == 4) ? (<><FontAwesomeIcon icon={faStar} style={{color:"yellow",height:"1rem" , width:"1rem"}} /><FontAwesomeIcon icon={faStar} style={{color:"yellow",height:"1rem" , width:"1rem"}} /><FontAwesomeIcon icon={faStar} style={{color:"yellow",height:"1rem" , width:"1rem"}} /><FontAwesomeIcon icon={faStar} style={{color:"yellow",height:"1rem" , width:"1rem"}} /></>) : ((item.rating.rating == 5) ? (<><FontAwesomeIcon icon={faStar} style={{color:"yellow",height:"1rem" , width:"1rem"}} /><FontAwesomeIcon icon={faStar} style={{color:"yellow",height:"1rem" , width:"1rem"}} /><FontAwesomeIcon icon={faStar} style={{color:"yellow",height:"1rem" , width:"1rem"}} /><FontAwesomeIcon icon={faStar} style={{color:"yellow",height:"1rem" , width:"1rem"}} /><FontAwesomeIcon icon={faStar} style={{color:"yellow",height:"1rem" , width:"1rem"}} /></>) : (<>5454</>)))))}
+                        {/* <FontAwesomeIcon icon={faStar} style={{color:"yellow",height:"1rem" , width:"1rem"}} />
+                        <FontAwesomeIcon icon={faStar} style={{color:"blue",height:"1rem" , width:"1rem"}} />
+                        <FontAwesomeIcon icon={faStar} style={{color:"blue",height:"1rem" , width:"1rem"}} />
+                        <FontAwesomeIcon icon={faStar} style={{color:"blue",height:"1rem" , width:"1rem"}} /> */}
+                        
+                        
+                        </div>
+                    </div>
+                    <p style={{width:"40rem"}}>{item.review}</p>
 
                                     </div>
                                 </div>
@@ -236,6 +240,7 @@ const More_Info_basic = (props) => {
                         })}
 
 
+                    </div>
                     </div>
 
 

@@ -31,6 +31,26 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    var pwd_expression = /^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[#?!@$%^&*-])/;
+    var letters = /^[a-zA-Z][a-zA-Z ]*$/;
+    var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    var mobnum = /(0|91)?[6-9][0-9]{9}/;
+    if(owner_email === "" || owner_pass === ""){
+      alert("Please fill all the fields")
+  }
+    else if(owner_email==="")
+    {
+        alert('Please enter your Username');
+    }
+    else if(owner_email.length < 4 || owner_email.length > 20 )
+    {
+        alert('Username must be of minimum of 4 character and max of 20 characters');
+    }
+    else if(owner_pass==="")
+    {
+        alert('Please enter Password');
+    }
+    else{
     console.log('Email:', owner_email);
     console.log('Pass:', owner_pass);
     const signup = {
@@ -44,11 +64,10 @@ const Login = () => {
           toast("DONE")
           navigate("/")
         }
-        else
-          console.log("error")
       }).catch((err) => {
-        toast("already exist")
+        toast("Invalid Login Credential")
       })
+    }
   };
 
   const handleChangePass = (e) => {

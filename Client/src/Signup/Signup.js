@@ -42,6 +42,57 @@ const Signup = () => {
 
     const handlesub = (e) => {
         e.preventDefault();
+        var pwd_expression = /^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[#?!@$%^&*-])/;
+    var letters = /^[a-zA-Z][a-zA-Z ]*$/;
+    var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    var mobnum = /(0|91)?[6-9][0-9]{9}/;
+        if(name==="" || email==="" || username === "" || pass === "" || num === ""){
+            alert("Please fill all the fields")
+        }
+        else if(name==="")
+        {
+            alert('Please enter your Name');
+        }
+        else if(!letters.test(name))
+        {
+            alert('Name field required only alphabet characters');
+        }
+
+
+        else if(email==="")
+        {
+            alert('Please enter your email id');
+        }
+        else if (!filter.test(email))
+        {
+            alert('Invalid email');
+        }
+        else if(pass==="")
+    {
+        alert('Please enter Password');
+    }
+    else if(pass.length < 8){
+    alert("length should be minimum of 8 charaters")
+}
+
+else if(num==="")
+{
+    alert('Please enter your Number');
+}
+else if(!mobnum.test(num))
+{
+    alert('Mobile number must be of 10 characters');
+}
+
+else if(username==="")
+{
+    alert('Please enter your Username');
+}
+else if(username.length < 4 || username.length > 20 )
+{
+    alert('Username must be of minimum of 4 character and max of 20 characters');
+}
+else{
         const signup = {
           name:name,
           email:email,
@@ -64,6 +115,7 @@ const Signup = () => {
 
             alert("ERROR")
           })
+        }
       };
 
 

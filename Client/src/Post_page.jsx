@@ -89,6 +89,16 @@ const Main_Page = () => {
   const closeModal = () => {
     setIsModalOpen(false);
   };
+  const [isModalOpen2, setIsModalOpen2] = useState(false);
+
+  const openModal2 = () => {
+    setIsModalOpen2(true);
+};
+
+const closeModal2 = () => {
+    setIsModalOpen2(false);
+};
+
   const [wifi, setwifi] = useState(false);
   const [ac, setac] = useState(false);
   const [parking, setparking] = useState(false);
@@ -101,6 +111,7 @@ const Main_Page = () => {
   const [bathroomcond, setbathroomcond] = useState("");
   const [fur, setfur] = useState("");
   const [collid, setcollid] = useState("");
+  const [nearestColl, setnearestColl] = useState("");
 
   const [selectedFile, setSelectedFile] = useState(null);
   const [base, setbase] = useState("");
@@ -249,15 +260,33 @@ const Main_Page = () => {
                 />
                  <input type="file" onChange={handleFileInputChange}/>
                 <div>
-                  <select className='input2' onChange={(e) => {
-                    setcollid(e.target.value)
-                    alert(collid)
-                  }} >
-                    <option style={{ color: "grey", width: "80%" }} disabled selected >Select your Nearest College </option>
+                  <div onClick={openModal2} > ADD college
+                    {/* <option style={{ color: "grey", width: "80%" }} disabled selected >Select your Nearest College </option>
                     {colleges.map(data => (
                       <option key={data._id} value={data._id} >{data.collegeName}</option>
+                    ))} */}
+                  </div>
+                  {isModalOpen2 && (
+                    <div className="modal" style={{marginTop:"4rem" }}>
+                        <div className="modal-content" >
+                            <h1 style={{ marginBottom: "10px" }}><u>Select the Nearest College</u></h1>
+                            <div style={{ display: "flex", flexDirection: "column", gap: "7px", height:"15rem" , overflowY:"scroll" }}>
+                            {colleges.map(data => (
+                      <div className='each-collName' key={data._id} value={data._id} style={{cursor:"pointer"}} onClick={() => {
+                        setnearestColl(data._id)
+                        closeModal2()
+                      }} >{data.collegeName}</div>
                     ))}
-                  </select>
+
+                                </div>
+                                {/* Add more content or form fields as needed */}
+                               
+                                <button
+                                    onClick={closeModal2}
+                                    className="Apply2" style={{ marginTop: "20px", marginBottom: "-25px", background: "red", height: "2rem" }}>Close</button>
+                            </div>
+                        </div>
+            )}
                 </div>
                 <div>
                   <select className='input2' onChange={(e) => {
@@ -367,6 +396,8 @@ const Main_Page = () => {
               //   toast("Incomplete Data")
               // }
               // else{
+                alert(nearestColl)
+                alert(bathroomcond)
                 const gh = `data:image/jpeg;base64,${selectedFile}`
 
 
@@ -391,7 +422,7 @@ const Main_Page = () => {
                   hotWater: geyser,
                   powerBackup: true,
                 },
-                nerbyColleges: [collid],
+                nerbyColleges: [nearestColl],
                 nearbyCollegesDistances: [4]
               }
 
