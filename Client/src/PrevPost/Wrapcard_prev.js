@@ -158,7 +158,8 @@ const Wrapcard_prev = () => {
             </div>
           </div> */}
       <div data-aos="fade-in">
-        <div className='wrap-all' >
+        
+        {(dataeach.length == 0) ? (<><div style={{textAlign:"center" , fontSize:"2rem"}}>OOPS ! You haven't posted any property </div></>) :(<div className='wrap-all' >
           {dataeach.map((item, index) => (
             <div className='each-card-style cursor-pointer' style={{ height: "375px" }} key={item._id} onClick={() => navigate("/More_Info", { state: { name: item._id, fromUser: "true" }, })}>
               {/* IMAGE DIV */}
@@ -193,7 +194,7 @@ const Wrapcard_prev = () => {
             </div>
           ))}
 
-        </div>
+        </div>)}
       </div>
     </>
 

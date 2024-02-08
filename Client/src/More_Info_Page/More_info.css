@@ -1,6 +1,6 @@
 .rect-box {
     height: 420px;
-    width: 76rem;
+    width: 77rem;
     border: 2px solid black;
     /* margin: 1rem; */
     border-radius: 19px;
@@ -101,15 +101,22 @@
   flex-direction: row;
  
 }
+
 .wrap-get-rate{
-  margin-top: 2.5rem;
+  /* margin-top: 2.5rem; */
   margin-left: 1.2rem;
   height: 23rem;
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  width: 47rem;
   
+}
+.review-box-count{
+  text-align: center;
+  margin-top: 1.5rem;
+  font-weight: 500;
 }
 .user-icon-rate-get{
   height: 1.3rem;
