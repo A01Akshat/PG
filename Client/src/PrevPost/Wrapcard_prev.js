@@ -160,26 +160,26 @@ const Wrapcard_prev = () => {
       <div data-aos="fade-in">
         <div className='wrap-all' >
           {dataeach.map((item, index) => (
-            <div className='each-card-style cursor-pointer' style={{ height: "375px" }} key={item._id} onClick={() => navigate("/More_Info", { state: { name: item._id, fromUser: "true" }, })}>
+            <div className='each-card-style' style={{ height: "375px" }} key={item._id}>
               {/* IMAGE DIV */}
               <div style={{ borderRadius: "20px" }}>
-                <img src={image} style={{ width: "295px", height: "240px", borderRadius: "19px", padding: "5px" }} alt="property" />
+                <img src={item.photos[0]} style={{ width: "295px", height: "240px", borderRadius: "19px", padding: "5px",cursor:"pointer" }} alt="property"  onClick={() => navigate("/More_Info", { state: { name: item._id, fromUser: "true" }, })}/>
               </div>
               {/* INFO DIV */}
-              <div style={{ margin: "1px", padding: "7px", fontSize: "14.5px" }}>
+              <div style={{ margin: "1px", padding: "7px", fontSize: "13.7px" }}>
                 <div style={{ display: "flex", flexDirection: "row" }}>
-                  <h3>Rent: ₹{item?.rent}</h3>
+                  <h3 style={{fontFamily:"cursive"}}>Rent: ₹{item?.rent}</h3>
                 </div>
                 <h3>Nearest College: {item?.nerbyColleges[0]?.collegeName}</h3>
                 <h3>Rooms Available: {item?.rooms}</h3>
                 <h3>Within: {item?.nearbyCollegesDistances[0]} KM</h3>
-                <h1 className="more" style={{ marginLeft: "15.5rem", marginTop: "-1.5rem", cursor: "pointer" }}>
+                <h1 className="more" style={{ marginLeft: "15.5rem", marginTop: "-1.5rem", cursor: "pointer",width:"3rem",color:"#ff7b00a5" }}>
                   <FontAwesomeIcon icon={faStar} /> {item?.rating.rating}
                 </h1>
 
               </div>
-              <button style={{ marginTop: "6.9px", backgroundColor: "#e7eaf6", width: "292px", borderRadius: "12px", marginLeft: "2.5px", height: "24px" }} onClick={() => {
-                alert("fghjk")
+              <button style={{ marginTop: "6.9px", backgroundColor: "#e7eaf6", width: "292px", borderRadius: "12px", marginLeft: "2.5px", height: "27.8px",fontWeight:"600" }} onClick={() => {
+                
                 setstName("")
                 setstGender("")
                 setstCollegeName("")

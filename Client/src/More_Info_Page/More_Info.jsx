@@ -153,6 +153,7 @@ const More_Info = () => {
                                     onChange={(e) => {
                                         setname(e.target.value)
                                     }}
+                                    style={{width:"23.5rem"}}
                                 />
 
                                 <input
@@ -165,6 +166,7 @@ const More_Info = () => {
                                     onChange={(e) => {
                                         setphone(e.target.value)
                                     }}
+                                    style={{width:"23.5rem"}}
                                 />
                                 <input
                                     type="text"
@@ -176,9 +178,10 @@ const More_Info = () => {
                                     onChange={(e) => {
                                         setemail(e.target.value)
                                     }}
+                                    style={{width:"23.5rem"}}
                                 />
-                                <h2 className="input2" style={{ color: "grey", fontSize: "14px", width: "79%" }}>Select your Gender</h2>
-                                <div style={{ display: "flex", flexDirection: "row", gap: "1rem", flexWrap: "wrap", marginLeft:"1.3rem" }}>
+                                <h2 className="input2" style={{ color: "grey", fontSize: "14px", width: "79%",width:"23.5rem" }}>Select your Gender</h2>
+                                <div style={{ display: "flex", flexDirection: "row", gap: "1rem", flexWrap: "wrap", marginLeft:"3.3rem" }}>
                                     {(male) ? (<button className="each-amenities" style={{ background: "rgba(32, 178, 171, 0.411)", width: "8rem" }} onClick={() => {
                                         setmale(false)
                                     }} >Male</button>) : (<button className="each-amenities" style={{ width: "8rem" }} onClick={() => {
@@ -209,6 +212,7 @@ const More_Info = () => {
                                         onChange={(e) => {
                                             setyear(e.target.value)
                                         }}
+                                        style={{width:"23.5rem"}}
                                     />
                                     <input
                                         type="text"
@@ -220,6 +224,7 @@ const More_Info = () => {
                                         onChange={(e) => {
                                             setcoll(e.target.value)
                                         }}
+                                        style={{width:"23.5rem"}}
                                     />
                                 </div>
                                 {/* Add more content or form fields as needed */}
@@ -246,10 +251,10 @@ const More_Info = () => {
                                             //   toast("already exist")
                                             alert("exist")
                                         })
-                                }} className="Apply2" style={{ marginRight: "2rem", height: "2rem", background: "#3bf594" }}>Submit</button>
-                                <button
+                                }} className="Apply2" style={{marginTop: "20px", marginRight: "1rem", height: "2rem", background: "#3bf594" }}>Submit</button>
+                                {/* <button
                                     onClick={closeModal}
-                                    className="Apply2" style={{ marginTop: "20px", marginBottom: "-25px", background: "red", height: "2rem" }}>Close</button>
+                                    className="Apply2" style={{ marginTop: "20px", marginBottom: "-25px", background: "red", height: "2rem" }}>Close</button> */}
                             </div>
                         </div>
             )}

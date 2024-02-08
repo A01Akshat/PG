@@ -68,14 +68,14 @@ const More_Info_basic = () => {
         <>
             <div className="rect-box">
                 <div className="wrap">
-                    <img src={image} className="property-image" alt="property" />
+                    <img src={data.photos} className="property-image" alt="property" />
                     <h1 className="mx-[9rem] text-xl" style={{ marginTop: "-10px" }}>𝑅𝑒𝓃𝓉: ₹{data?.rent}</h1>
                     <h1 className="mx-[9rem] text-xl" style={{ marginTop: "-3px" }}>𝑅𝑜𝑜𝓂𝓈: {data?.rooms}</h1>
                     <div className="info_div  text-lg">
                         <h1 style={{ marginTop: "-36rem" }}><FontAwesomeIcon icon={faHouse}/> PG's Name: <span className="text-lg" style={{ marginLeft: "3.8rem", fontWeight: "600" }}>{data.name}</span></h1>
                         <h1 style={{ marginTop: "1.7rem" }}><FontAwesomeIcon icon={faAddressBook} /> Contact: <span className="text-lg" style={{ marginLeft: "5.3rem", fontWeight: "600" }}>{data.ownerContact}</span></h1>
                         <h1 style={{ marginTop: "1.7rem" }}><FontAwesomeIcon icon={faLocationDot} /> Address:<span className="text-lg" style={{ marginLeft: "5.9rem", fontWeight: "600" }}>{data.address}</span></h1>
-                        <h1 style={{ marginTop: "1.7rem" }}><FontAwesomeIcon icon={faBuildingColumns} /> Nearest College: <span className="text-lg Amnety2" style={{ marginLeft: "21px", fontWeight: "600" }}>{data?.nerbyColleges?.[0]?.collegeName}</span></h1>
+                        <h1 style={{ marginTop: "1.7rem" }}><FontAwesomeIcon icon={faBuildingColumns} /> Nearest College: <span className="text-lg Amnety" style={{ marginLeft: "20.6px", fontWeight: "600",backgroundColor:"lightgoldenrodyellow" }}>{data?.nerbyColleges?.[0]?.collegeName}</span></h1>
                         <h1 style={{ marginTop: "1.7rem" }}><FontAwesomeIcon icon={faWifi} /> Amenities:
                             <div style={{ display: "flex", flexDirection: "row", flexWrap:"wrap", marginLeft: "11.1rem", marginTop: "-2rem", gap: "14px", fontWeight: "600" }}>
 

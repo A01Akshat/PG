@@ -68,25 +68,26 @@ const Favourite = () => {
         {data.map((item, index) => {
           return (
             <div
-              className='each-card-style cursor-pointer'
-              onClick={() => {
-                    navigate("/More_Info", { state: { name: item.propertyId._id, fromUser: "false" } });
-                  }}
+              className='each-card-style'
+             
 
               key={item.propertyId._id}
             >
               {/* IMAGE DIV */}
               <div style={{ borderRadius: '20px' }}>
                 <img
-                  src={image}
-                  style={{ width: "295px", height: "240px", borderRadius: "19px", padding: "5px" }}
+                  src={item.propertyId.photos[0]}
+                  style={{ width: "295px", height: "240px", borderRadius: "19px", padding: "5px",cursor:"pointer" }}
+                  onClick={() => {
+                    navigate("/More_Info", { state: { name: item.propertyId._id, fromUser: "false" } });
+                  }}
                 />
               </div>
 
               {/* INFO DIV */}
-              <div style={{ margin: '1px', padding: '7px', fontSize: '14.5px' }}>
+              <div style={{ margin: '1px', padding: '7px', fontSize: '13.7px' }}>
                 <div style={{ display: 'flex', flexDirection: 'row' }}>
-                  <h3>Rent:₹{item.propertyId.rent}</h3>
+                  <h3 style={{fontFamily:"cursive"}}>Rent:₹{item.propertyId.rent}</h3>
                   <button
                     style={{ marginLeft: '11.5rem' }}
                   // onClick={() => {
@@ -106,6 +107,8 @@ const Favourite = () => {
                     marginLeft: '15.5rem',
                     marginTop: '-1.5rem',
                     cursor: 'pointer',
+                    width:"3rem",
+                    color:"#ff7b00a5"
                   }}
                   
                 >

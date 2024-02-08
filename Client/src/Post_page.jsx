@@ -156,18 +156,18 @@ const Main_Page = () => {
           </div>
           <div className="wrap-post">
             {(isModalOpen) ? (<div className="prop-box" onClick={openModal}>
-              <p style={{ background: "#FFA34D" }}>Add your Property</p>
+              <p style={{ background: "#FFA34D" }}>Add a new Property</p>
             </div>) : (<div className="prop-box" onClick={openModal}>
-              <p>Add your Property</p>
+              <p>Add a new Property</p>
             </div>)}
             <div className="prop-box2" onClick={() => { navigate('/prev') }}>
-              <p>Get your Property</p>
+              <p>Show your Previous Property</p>
             </div>
           </div>
         </div>
       </div>
       {(isModalOpen) ? (
-        <div className="modal-post" style={{ width: "50rem" }}>
+        <div className="modal-post" style={{ width: "50rem",top:"95%" }}>
           <div className="modal-content" >
             <h1 style={{ marginBottom: "10px" }}><u>Share The Property Details:</u></h1>
             <div style={{ display: "flex", flexDirection: "column", gap: "7px" }}>
@@ -247,6 +247,7 @@ const Main_Page = () => {
                     setrooms(e.target.value)
                   }}
                 />
+                 <input type="file" onChange={handleFileInputChange}/>
                 <div>
                   <select className='input2' onChange={(e) => {
                     setcollid(e.target.value)
@@ -356,7 +357,7 @@ const Main_Page = () => {
 
             </div>
             {/* Add more content or form fields as needed */}
-            <input type="file" onChange={handleFileInputChange} />
+           
             {/* <button onClick={() => {
               const gh = `data:image/jpeg;base64,${selectedFile}`
               console.log(gh)

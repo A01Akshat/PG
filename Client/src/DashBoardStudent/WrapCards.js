@@ -99,18 +99,18 @@ const WrapCards = (props) => {
                 {dataeach?.map((item, index) => {
                     
                     return (
-                        <div className='each-card-style' style={{cursor:"pointer"}} onClick={() => {
-                            navigate("/More_Info", { state: { name: item._id , fromUser: "false" } });
-                        }} key={item._id}>
+                        <div className='each-card-style' key={item._id}>
                             {/* IMAGE DIV */}
                             <div style={{ borderRadius: "20px" }}>
-                                <img src={item.photos[0]} style={{ width: "295px", height: "240px", borderRadius: "19px", padding: "5px",marginLeft:"1.4px" }} />
+                                <img src={item.photos[0]} alt="Property Image" style={{cursor:"pointer", width: "295px", height: "240px", borderRadius: "19px", padding: "5px",marginLeft:"1.4px" }} onClick={() => {
+                            navigate("/More_Info", { state: { name: item._id , fromUser: "false" } });
+                        }} />
                             </div>
 
                             {/* INFO DIV */}
-                            <div style={{ margin: "1px", padding: "7px", fontSize: "14.5px" }}>
+                            <div style={{ margin: "1px", padding: "7px", fontSize: "13.7px" }}>
                                 <div style={{ display: "flex", flexDirection: "row" }}>
-                                    <h3>Rent:₹{item?.rent}</h3>
+                                    <h3 style={{fontFamily:"cursive"}}>Rent:₹{item?.rent}</h3>
                                     <button style={{ marginLeft: "11.5rem" }} onClick={() => { togglefav(item._id); }}>
                                         {(favorites[item._id]) ?
                                             (<svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 512 512"><path fill="#f50f0f" d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" /></svg>) :
@@ -121,7 +121,7 @@ const WrapCards = (props) => {
                                 <h3 >Rooms Available: {item?.rooms}</h3>
                                 <h3>Within: {item?.nearbyCollegesDistances[0]} KM</h3>
                                
-                                <h1 className="feed-rate" style={{ marginLeft: "15.2rem", marginTop: "-1.5rem" }}><FontAwesomeIcon icon={faStar} /> {item?.rating.rating}</h1>
+                                <h1 className="feed-rate" style={{ marginLeft: "15.2rem", marginTop: "-1.5rem",width:"3rem" }}><FontAwesomeIcon icon={faStar} /> {item?.rating.rating}</h1>
                             </div>
                         </div>
                     );
