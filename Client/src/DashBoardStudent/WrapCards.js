@@ -104,7 +104,7 @@ const WrapCards = (props) => {
                         }} key={item._id}>
                             {/* IMAGE DIV */}
                             <div style={{ borderRadius: "20px" }}>
-                                <img src={item.photos[0]} style={{ width: "295px", height: "240px", borderRadius: "19px", padding: "5px",marginLeft:"1.4px" }} />
+                                <img src={item.photos[0]} style={{ width: "295px", height: "240px", borderRadius: "19px", padding: "5px",marginLeft:"1.4px" }} alt='PG image' />
                             </div>
 
                             {/* INFO DIV */}
