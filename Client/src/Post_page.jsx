@@ -258,14 +258,29 @@ const closeModal2 = () => {
                     setrooms(e.target.value)
                   }}
                 />
-                 <input type="file" onChange={handleFileInputChange}/>
-                <div>
-                  <div onClick={openModal2} > ADD college
-                    {/* <option style={{ color: "grey", width: "80%" }} disabled selected >Select your Nearest College </option>
-                    {colleges.map(data => (
-                      <option key={data._id} value={data._id} >{data.collegeName}</option>
-                    ))} */}
+                <div id="exampleInput"
+                  
+                  className="input2"
+                  style={{ width: "49.5%" , color:"grey",textAlign:"left",cursor:"pointer" }}
+                  onClick={openModal2}><p>ADD College</p>
                   </div>
+                  <div>
+                  <select className='input2' style={{width:"100%"}} onChange={(e) => {
+                    setbathroomcond(e.target.value)
+                    alert(bathroomcond)
+                  }}    >
+                    <option style={{ color: "grey", width: "80%" }} disabled selected>Select the Bathroom condition </option>
+                    <option style={{ width: "49.5%" }} value="Common" >Common Bathroom</option>
+                    <option style={{ width: "49.5%" }} value="Attached">Attached Bathroom</option>
+
+                  </select>
+                </div>
+                <div id="exampleInput"
+                   style={{ width: "100%" , color:"grey",textAlign:"left",cursor:"pointer" , display:"flex" , flexDirection:"row" , gap:"0.3rem" }}
+                  className="input2"> <p style={{width:"35%"}}> Add pictures of that PG </p>
+                 <input  type="file" onChange={handleFileInputChange}/>
+                  </div>
+                <div>
                   {isModalOpen2 && (
                     <div className="modal" style={{marginTop:"4rem" }}>
                         <div className="modal-content" >
@@ -288,17 +303,7 @@ const closeModal2 = () => {
                         </div>
             )}
                 </div>
-                <div>
-                  <select className='input2' onChange={(e) => {
-                    setbathroomcond(e.target.value)
-                    alert(bathroomcond)
-                  }}    >
-                    <option style={{ color: "grey", width: "80%" }} disabled selected>Select the Bathroom condition </option>
-                    <option style={{ width: "49.5%" }} value="Common" >Common Bathroom</option>
-                    <option style={{ width: "49.5%" }} value="Attached">Attached Bathroom</option>
-
-                  </select>
-                </div>
+                
               </div>
               {/* <div style={{border:"2px solid grey"}}>
               <select >
