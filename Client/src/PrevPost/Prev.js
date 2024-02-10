@@ -82,10 +82,10 @@ const navigate = useNavigate();
           <div className="w-4/5" style={{display:"flex" , flexDirection:"column"}}>
           <div className="wrap-post" style={{ width:"100%"}}>
            <div className="prop-box" onClick={()=>{navigate('/Post_Page')}}>
-            <p>Add your Property</p>
+            <p>Add a New Property</p>
             </div>
             <div className="prop-box2" onClick={()=>{navigate('/prev')}}>
-            <p style={{background:"#FFA34D"}}>Get your Property</p>
+            <p style={{background:"#FFA34D"}}>Show your Previous Property</p>
             </div>
              
           

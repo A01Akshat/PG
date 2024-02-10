@@ -33,6 +33,7 @@ const Main_Page = () => {
   const [rooms, setrooms] = useState("");
   const [colleges, setColleges] = useState([]);
   const [bgColor, setBgColor] = useState(yellow);
+  const [dist,setdist]=useState([]);
   const navigate = useNavigate();
 
   const accessToken = localStorage.getItem('token');
@@ -169,7 +170,7 @@ const closeModal2 = () => {
             {(isModalOpen) ? (<div className="prop-box" onClick={openModal}>
               <p style={{ background: "#FFA34D" }}>Add a new Property</p>
             </div>) : (<div className="prop-box" onClick={openModal}>
-              <p>Add a new Property</p>
+              <p>Add a New Property</p>
             </div>)}
             <div className="prop-box2" onClick={() => { navigate('/prev') }}>
               <p>Show your Previous Property</p>
@@ -258,11 +259,24 @@ const closeModal2 = () => {
                     setrooms(e.target.value)
                   }}
                 />
+                {/* nearbyCollegesDistances */}
+                <input
+                  type="text"
+                  id="exampleInput"
+                  name="exampleInput"
+                  placeholder="Enter the Distance of Nearest College in KM"
+                  className="input2"
+                  style={{ width: "49.5%" }}
+                  value={dist}
+                  onChange={(e) => {
+                    setdist(e.target.value)
+                  }}
+                />
                 <div id="exampleInput"
                   
                   className="input2"
                   style={{ width: "49.5%" , color:"grey",textAlign:"left",cursor:"pointer" }}
-                  onClick={openModal2}><p>ADD College</p>
+                  onClick={openModal2}><p>Add Nearest College</p>
                   </div>
                   <div>
                   <select className='input2' style={{width:"100%"}} onChange={(e) => {
@@ -277,7 +291,7 @@ const closeModal2 = () => {
                 </div>
                 <div id="exampleInput"
                    style={{ width: "100%" , color:"grey",textAlign:"left",cursor:"pointer" , display:"flex" , flexDirection:"row" , gap:"0.3rem" }}
-                  className="input2"> <p style={{width:"35%"}}> Add pictures of that PG </p>
+                  className="input2"> <p style={{width:"35%"}}> Add pictures of your PG </p>
                  <input  type="file" onChange={handleFileInputChange}/>
                   </div>
                 <div>
@@ -428,7 +442,7 @@ const closeModal2 = () => {
                   powerBackup: true,
                 },
                 nerbyColleges: [nearestColl],
-                nearbyCollegesDistances: [4]
+                nearbyCollegesDistances: [dist]
               }
 
               axios.post("https://pgbackend.adityachoudhury.com/api/property/add", body, config)

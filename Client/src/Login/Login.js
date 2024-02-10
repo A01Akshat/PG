@@ -83,9 +83,9 @@ const Login = () => {
 
         <form onSubmit={handleSubmit}>
           <div className="owner">
-            <h1 className=" text-black text-2xl flex items-center justify-center" style={{marginTop:"3.5rem"}}>Welcome!</h1>
+            <h1 className=" text-black text-2xl flex items-center justify-center" style={{marginTop:"3.5rem",fontFamily:"cursive"}}>Welcome!</h1>
 
-            <h3>Join us today for the best deal to rent your PG!</h3>
+            <h3 style={{fontFamily:"sans"}}>Join us today for the best deal to either list your PG or rent a PG!</h3>
             <input className="email_owner w-[13rem]" placeholder="Username" name="owner_email" id='owner_email'
               value={owner_email} onChange={handleChange} ></input>
             {/* <h1 className="hh">dhsjdsjd</h1> */}

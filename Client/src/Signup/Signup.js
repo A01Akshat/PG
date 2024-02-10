@@ -138,8 +138,8 @@ else{
                 <div className="form-signup">
                 <input type="text" className="inp_txt" placeholder="Enter First Name and Last Name" value={name} onChange={handlename}></input>
                 <input type="text" className="inp_txt" placeholder="Enter Username" value={username} onChange={handleuser}></input>
-                <input type="text" className="inp_txt" placeholder="Enter Password" value={pass} onChange={handlepass}></input>
-                <input type="text" className="inp_txt" placeholder="Enter Email" value={email} onChange={handlemail}></input>
+                <input type="password" className="inp_txt" placeholder="Enter Password" value={pass} onChange={handlepass}></input>
+                <input type="text" className="inp_txt" placeholder="Enter Email-ID" value={email} onChange={handlemail}></input>
                 <input type="text" className="inp_txt" placeholder="Enter Phone Number" value={num} onChange={handlenum}></input>
             
                 <div><button type="submit" className="sub">Create</button></div>
