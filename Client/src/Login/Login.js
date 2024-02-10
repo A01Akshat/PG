@@ -89,7 +89,7 @@ const Login = () => {
             <input className="email_owner w-[13rem]" placeholder="Username" name="owner_email" id='owner_email'
               value={owner_email} onChange={handleChange} ></input>
             {/* <h1 className="hh">dhsjdsjd</h1> */}
-            <input className="email_owner w-[13rem]" placeholder="Password" name="owner_pass" id='owner_pass'
+            <input type="password" className="email_owner w-[13rem]" placeholder="Password" name="owner_pass" id='owner_pass'
               value={owner_pass} onChange={handleChangePass} ></input>
 
             <button type="submit" className="log_sub">Submit</button>

@@ -112,32 +112,32 @@ const Wrapcard_prev = () => {
               </div>)}
               <div className="int-right">
                 <div className="stname" style={{ width: "90%" }}>
-                  <p style={{ color: "#8A8A8A" }}>Students Name</p>
+                  <p style={{ color: "#8A8A8A" }}>Student's Name</p>
                   <p>{stName}</p>
                 </div>
 
                 <div className="stname" style={{ width: "90%" }}>
-                  <p style={{ color: "#8A8A8A" }}>Student's Contact Details</p>
+                  <p style={{ color: "#8A8A8A" }}>Contact Details</p>
                   <p>{stContact}</p>
                 </div>
 
                 <div className="stname" style={{ width: "90%" }}>
-                  <p style={{ color: "#8A8A8A" }}>Student's E-mail</p>
+                  <p style={{ color: "#8A8A8A" }}>E-mail</p>
                   <p>{stEmail}</p>
                 </div>
 
                 <div className="stname" style={{ width: "90%" }}>
-                  <p style={{ color: "#8A8A8A" }}>Student's College Name</p>
+                  <p style={{ color: "#8A8A8A" }}>College Name</p>
                   <p>{stCollegeName}</p>
                 </div>
 
                 <div style={{ display: "flex", flexDirection: "row", gap: "2rem", justifyContent: "space-around" }}>
                   <div className="stname">
-                    <p style={{ color: "#8A8A8A" }}>Student Gender</p>
+                    <p style={{ color: "#8A8A8A" }}>Gender</p>
                     <p>{stGender}</p>
                   </div>
                   <div className="styear">
-                    <p style={{ color: "#8A8A8A" }}>Student Current Year</p>
+                    <p style={{ color: "#8A8A8A" }}>Current Year</p>
                     <p>{stCurrYear}</p>
                   </div>
                 </div>
