@@ -12,7 +12,7 @@ const app = express();
 app.use(
 	cors({
 		credentials: true,
-		origin: ["http://localhost:5173", "http://localhost:5000"],
+		origin: ["http://localhost:5173", "http://localhost:5000","https://65ef425af01d7e08003b1ce3--preeminent-marigold-78291b.netlify.app"],
 	})
 );
 
